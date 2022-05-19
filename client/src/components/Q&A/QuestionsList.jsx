@@ -63,9 +63,14 @@ class QuestionsList extends React.Component {
   render() {
     return (
       <>
-        {this.state.questions.map(question =>
-          <IndividualQuestion question={question}/>
-        )}
+
+        {this.state.questions.map((question) => (
+          <IndividualQuestion
+            key={question.question_id}
+            question={question}
+          />
+        ))}
+
         <button>Add Question</button>
       </>
     )
