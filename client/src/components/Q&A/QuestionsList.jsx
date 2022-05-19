@@ -71,7 +71,7 @@ class QuestionsList extends React.Component {
           />
         ))}
 
-        <button>Add Question</button>
+        <div> <button>Add Question</button> </div>
       </>
     )
   }
