@@ -1,5 +1,6 @@
 import React from "react";
 // import { hot } from 'react-hot-loader/root';
+import StarRating from "./Overview/ProductInformation/StarRating.jsx"
 
 class App extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class App extends React.Component {
     return (
       <>
         <h1>
-          Hello Robert
+          < StarRating />
         </h1>
       </>
     );
