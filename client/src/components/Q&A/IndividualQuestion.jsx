@@ -1,4 +1,5 @@
 import React from "react";
+import AnswersList from "./AnswersList.jsx";
 
 
 class IndividualQuestion extends React.Component {
@@ -12,9 +13,20 @@ class IndividualQuestion extends React.Component {
 
   render() {
     return (
-      <ul>
-        Q: {this.state.indvQuestion}
-      </ul>
+      <>
+        <ul>
+          Q: {this.state.indvQuestion}
+        </ul>
+        <ul>
+          A: <AnswersList
+          answers={this.state.answers}
+          // key={}
+          />
+        </ul>
+
+        Was this helpful?
+        <button>Yes</button>
+      </>
     )
   }
 }
