@@ -1,5 +1,6 @@
 import React from "react";
 // import { hot } from 'react-hot-loader/root';
+import QuestionsList from "./Q&A/QuestionsList.jsx"
 
 class App extends React.Component {
   render() {
@@ -9,6 +10,8 @@ class App extends React.Component {
         <h1>
           Hello Robert
         </h1>
+
+        <QuestionsList />
       </>
     );
   }
