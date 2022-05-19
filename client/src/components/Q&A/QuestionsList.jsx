@@ -1,6 +1,6 @@
 import React from "react";
+import axios from "axios";
 import IndividualQuestion from "./IndividualQuestion.jsx";
-
 
 var testQuestions = {
   "product_id": "5",
@@ -59,6 +59,10 @@ class QuestionsList extends React.Component {
       questions: testQuestions.results
     }
   }
+
+  // componentDidMount() {
+  //   this.setState({questions: axios.get('/qa/questions')})
+  // }
 
   render() {
     return (
