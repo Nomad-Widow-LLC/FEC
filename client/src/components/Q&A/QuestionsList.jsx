@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import IndividualQuestion from "./IndividualQuestion.jsx";
 
 
@@ -63,10 +63,9 @@ class QuestionsList extends React.Component {
   render() {
     return (
       <>
-        {this.state.questions.map((question) => {
+        {this.state.questions.map(question =>
           <IndividualQuestion question={question}/>
-          console.log(question)
-        })}
+        )}
         <button>Add Question</button>
       </>
     )
