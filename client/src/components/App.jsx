@@ -1,6 +1,9 @@
 import React from "react";
 // import { hot } from 'react-hot-loader/root';
 import QuestionsList from "./Q&A/QuestionsList.jsx"
+import ReviewWidget from './R&R/ReviewWidget.jsx';
+
+
 
 class App extends React.Component {
   render() {
@@ -13,6 +16,7 @@ class App extends React.Component {
 
         <QuestionsList />
       </>
+     <ReviewWidget />
     );
   }
 }
