@@ -1,23 +1,20 @@
 import React from "react";
-import Card from "./Related/Card.jsx";
 // import { hot } from 'react-hot-loader/root';
 import StarRating from "./Overview/ProductInformation/StarRating.jsx"
 import ReviewWidget from './R&R/ReviewWidget.jsx';
+import Card from './components/Card.jsx';
 
 
 
 class App extends React.Component {
   render() {
+   // const { name } = 'Robert';
     return (
       <>
-        <h1>
-          Hello Robert
-        </h1>
-        <Card />
-      </>
-     <ReviewWidget />
         < StarRating />
+        <Card />
         {/* <ReviewWidget /> */}
+
      </>
     );
   }
