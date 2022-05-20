@@ -1,5 +1,5 @@
 require('dotenv').config();
-const config = require('./config.js');
+const config = require('../client/dist/config.js');
 const axios = require('axios');
 
 const path = require("path")

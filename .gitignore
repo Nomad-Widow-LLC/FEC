@@ -106,7 +106,6 @@ client/dist/bundle.js
 
 #client config
 client/dist/config.js
-server/config.js
 
 # R&R Branch ignores
 # client/dist/dummyReviews.js

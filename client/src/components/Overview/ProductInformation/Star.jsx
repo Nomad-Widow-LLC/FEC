@@ -1,5 +1,5 @@
 import React, {useState, useMemo} from 'react'
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const Star = ({index, rating}) => {
 
@@ -25,14 +25,13 @@ const Star = ({index, rating}) => {
   return (
     <div className='star'>
       <span className='unratedStar'>
-        <FaStar fill='black'/>
+        <FaRegStar fill='black'/>
       </span>
       <span className={`ratingStar ${widthClass}`}>
-        <FaStar fill='yellow'/>
+        <FaStar fill='black'/>
       </span>
     </div>
   )
-
 }
 
 export default Star;
