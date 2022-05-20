@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import  useToGetProducts from './hooks.js';
 
 var Card = (props) => {
 
+  let products = useToGetProducts();
 
   return (
     <div id="card">
-      Hello Card!
+      <div>{products[0].name}</div>
     </div>
   )
 }
