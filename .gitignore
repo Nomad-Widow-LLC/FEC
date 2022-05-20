@@ -80,7 +80,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist/bundle.js
+client/dist/bundle.js
 
 # Gatsby files
 .cache/
@@ -106,3 +106,6 @@ dist/bundle.js
 
 #client config
 client/dist/config.js
+
+# R&R Branch ignores
+# client/dist/dummyReviews.js
