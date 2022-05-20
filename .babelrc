@@ -7,7 +7,5 @@
       }
     ],
     "@babel/preset-react"
-  ],
-  "plugins": [
   ]
 }
