@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Star from './Star.jsx';
+import config from '../../../../../client/dist/config.js'
 
 const StarRating = () => {
   // states:
@@ -7,8 +8,10 @@ const StarRating = () => {
   const [rating, setRating] = useState(0);
 
   // get request to get rating of product and set state of rating
+  // if there are no ratings/reviews, this section is hidden
+  // axios.get
   useEffect(() => {
-    setRating(4);
+    setRating(2);
   })
 
   return (
@@ -18,6 +21,7 @@ const StarRating = () => {
           <Star index={index} rating={rating} key={index}/>
         )
       })}
+      <button> Read all # reviews </button>
     </div>
   )
 }

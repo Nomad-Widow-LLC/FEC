@@ -12,7 +12,8 @@ const Star = ({index, rating}) => {
   }, [index, rating]);
 
   return (
-    <FaStar fill={fill}/>
+      <FaStar fill={fill}/>
+
   )
 
 }
