@@ -15,13 +15,13 @@ const StarRating = () => {
   }, [])
 
   return (
-    <span className='StarRating'>
+    <span className='starRating'>
       {[1,2,3,4,5].map((index) => {
         return (
           <Star index={index } rating={rating} key={index}/>
         )
       })}
-      {/* <button> Read all # reviews </button> */}
+      <button className='viewAllRatings'> Read all # reviews </button>
     </span>
   )
 }

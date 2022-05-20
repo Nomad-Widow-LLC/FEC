@@ -29,3 +29,11 @@
 .ratingStar100 {
   width: 100%;
 }
+
+.starRating {
+  position: relative;
+}
+
+.viewAllRatings {
+  position: fixed;
+}
