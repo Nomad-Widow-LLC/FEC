@@ -1,9 +1,6 @@
 import React, {useState, useMemo} from 'react'
 import { FaStar } from 'react-icons/fa';
 
-// index: 3
-// rating: 2.9
-
 const Star = ({index, rating}) => {
 
   let widthClass = '';
