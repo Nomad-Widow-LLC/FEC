@@ -11,7 +11,7 @@ const StarRating = () => {
   // if there are no ratings/reviews, this section is hidden
   // axios.get
   useEffect(() => {
-    setRating(4.3);
+    setRating(3.8);
   }, [])
 
   return (
