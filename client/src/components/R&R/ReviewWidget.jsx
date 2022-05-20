@@ -1,6 +1,6 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
-import config from '../../../dist/config.js';
+// import config from '../../../dist/config.js';
 
 
 export default function ReviewWidget () {
