@@ -1,0 +1,39 @@
+.star {
+  position: relative;
+  display: inline-block
+}
+
+.ratingStar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.ratingStar0 {
+  width: 0%;
+}
+
+.ratingStar25 {
+  width: 25%;
+}
+
+.ratingStar50 {
+  width: 50%;
+}
+
+.ratingStar75 {
+  width: 75%;
+}
+
+.ratingStar100 {
+  width: 100%;
+}
+
+.starRating {
+  position: relative;
+}
+
+.viewAllRatings {
+  position: fixed;
+}

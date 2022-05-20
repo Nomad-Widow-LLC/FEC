@@ -9,6 +9,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+<<<<<<< HEAD
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -402,10 +403,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+=======
+>>>>>>> 06168abcdc225374b08e8c504cd7cb05238a2bff
 /***/ "./client/src/index.jsx":
 /*!******************************!*\
   !*** ./client/src/index.jsx ***!
   \******************************/
+<<<<<<< HEAD
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -487,11 +491,17 @@ eval("/**\n * @license React\n * scheduler.development.js\n *\n * Copyright (c) 
 
 "use strict";
 eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ \"./node_modules/scheduler/cjs/scheduler.development.js\");\n}\n\n\n//# sourceURL=webpack://fec/./node_modules/scheduler/index.js?");
+=======
+/***/ (() => {
+
+eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/lib/index.js):\\nSyntaxError: /Users/szetodonna/HackReactor/FEC/.babelrc: Error while parsing config - JSON5: invalid character '<' at 10:1\\n    at syntaxError (/Users/szetodonna/HackReactor/FEC/node_modules/json5/lib/parse.js:1083:17)\\n    at invalidChar (/Users/szetodonna/HackReactor/FEC/node_modules/json5/lib/parse.js:1028:12)\\n    at Object.afterArrayValue (/Users/szetodonna/HackReactor/FEC/node_modules/json5/lib/parse.js:672:15)\\n    at Object.default (/Users/szetodonna/HackReactor/FEC/node_modules/json5/lib/parse.js:146:37)\\n    at lex (/Users/szetodonna/HackReactor/FEC/node_modules/json5/lib/parse.js:78:42)\\n    at Object.parse (/Users/szetodonna/HackReactor/FEC/node_modules/json5/lib/parse.js:25:17)\\n    at /Users/szetodonna/HackReactor/FEC/node_modules/@babel/core/lib/config/files/configuration.js:264:23\\n    at /Users/szetodonna/HackReactor/FEC/node_modules/@babel/core/lib/config/files/utils.js:30:12\\n    at Generator.next (<anonymous>)\\n    at Function.<anonymous> (/Users/szetodonna/HackReactor/FEC/node_modules/@babel/core/lib/gensync-utils/async.js:25:3)\");\n\n//# sourceURL=webpack://fec/./client/src/index.jsx?");
+>>>>>>> 06168abcdc225374b08e8c504cd7cb05238a2bff
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
+<<<<<<< HEAD
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
@@ -575,6 +585,14 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = __webpack_require__("./client/src/index.jsx");
+=======
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./client/src/index.jsx"]();
+>>>>>>> 06168abcdc225374b08e8c504cd7cb05238a2bff
 /******/ 	
 /******/ })()
 ;
