@@ -4,10 +4,6 @@ import  useToGetProducts from './lib/hooks.js';
 
 var Card = (props) => {
 
-<<<<<<< HEAD
-  let products = useToGetProducts();
-=======
->>>>>>> main
 
   return (
     <div id="card">
