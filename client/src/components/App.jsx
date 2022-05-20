@@ -1,6 +1,7 @@
 import React from "react";
 // import { hot } from 'react-hot-loader/root';
 import QuestionsList from "./Q&A/QuestionsList.jsx";
+import StarRating from "./Overview/ProductInformation/StarRating.jsx"
 import ReviewWidget from './R&R/ReviewWidget.jsx';
 
 
@@ -15,7 +16,9 @@ class App extends React.Component {
         </h1>
         <QuestionsList />
         <ReviewWidget />
-      </>
+        < StarRating />
+        {/* <ReviewWidget /> */}
+     </>
     );
   }
 }
