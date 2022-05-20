@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <>
         < StarRating />
-        <ReviewWidget />
+        {/* <ReviewWidget /> */}
      </>
     );
   }

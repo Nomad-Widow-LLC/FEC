@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Star from './Star.jsx';
-import config from '../../../../../client/dist/config.js'
+// import config from '../../../../../client/dist/config.js'
 
 const StarRating = () => {
   // states:
@@ -11,18 +11,18 @@ const StarRating = () => {
   // if there are no ratings/reviews, this section is hidden
   // axios.get
   useEffect(() => {
-    setRating(2);
-  })
+    setRating(4.3);
+  }, [])
 
   return (
-    <div className='StarRating'>
-      {[1, 2, 3, 4, 5].map((index) => {
+    <span className='StarRating'>
+      {[1,2,3,4,5].map((index) => {
         return (
-          <Star index={index} rating={rating} key={index}/>
+          <Star index={index } rating={rating} key={index}/>
         )
       })}
-      <button> Read all # reviews </button>
-    </div>
+      {/* <button> Read all # reviews </button> */}
+    </span>
   )
 }
 
