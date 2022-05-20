@@ -10,8 +10,8 @@ class App extends React.Component {
    // const { name } = 'Robert';
     return (
       <>
-        < StarRating />
-        {/* <ReviewWidget /> */}
+        {/* < StarRating /> */}
+        <ReviewWidget />
      </>
     );
   }
