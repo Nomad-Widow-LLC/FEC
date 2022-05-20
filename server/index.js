@@ -6,4 +6,8 @@ const app = express();
 app.use(express.static(path.join(__dirname, "../client/dist")));
 // other configuration...
 
+app.get('/product', (req, res) => {
+
+});
+
 app.listen(3001);

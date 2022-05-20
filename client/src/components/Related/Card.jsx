@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import  useToGetProducts from './hooks.js';
+import  useToGetProducts from './lib/hooks.js';
 
 var Card = (props) => {
 
@@ -8,7 +8,7 @@ var Card = (props) => {
 
   return (
     <div id="card">
-      <div>{products[0].name}</div>
+      Hello Card!
     </div>
   )
 }
