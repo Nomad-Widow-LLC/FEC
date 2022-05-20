@@ -1,6 +1,6 @@
 import React from "react";
 // import { hot } from 'react-hot-loader/root';
-import QuestionsList from "./Q&A/QuestionsList.jsx"
+import QuestionsList from "./Q&A/QuestionsList.jsx";
 import ReviewWidget from './R&R/ReviewWidget.jsx';
 
 
@@ -13,10 +13,9 @@ class App extends React.Component {
         <h1>
           Hello Robert
         </h1>
-
         <QuestionsList />
+        <ReviewWidget />
       </>
-     <ReviewWidget />
     );
   }
 }
