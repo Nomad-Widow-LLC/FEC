@@ -5,7 +5,7 @@ import config from '../../../dist/config.js';
 
 export default function ReviewWidget () {
 
-
+  const [reviews, setReviews] = useState([]);
 
 
 
@@ -22,7 +22,7 @@ export default function ReviewWidget () {
 
   return (
     <div className="review-widget">
-      This is a Review Widget!!!
+      <div className="review-title">Reviews</div>
     </div>
   );
 };
