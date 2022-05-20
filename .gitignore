@@ -108,4 +108,4 @@ client/dist/bundle.js
 client/dist/config.js
 
 # R&R Branch ignores
-# client/dist/dummyReviews.js
+client/dist/dummyReviews.js
