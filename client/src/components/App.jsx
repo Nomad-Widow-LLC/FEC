@@ -1,6 +1,6 @@
 import React from "react";
 // import { hot } from 'react-hot-loader/root';
-import StarRating from "./Overview/ProductInformation/StarRating.jsx"
+import ProductInfo from "./Overview/ProductInformation/ProductionInfo.jsx"
 import ReviewWidget from './R&R/ReviewWidget.jsx';
 
 
@@ -10,7 +10,7 @@ class App extends React.Component {
    // const { name } = 'Robert';
     return (
       <>
-        < StarRating />
+        < ProductInfo />
         {/* <ReviewWidget /> */}
      </>
     );
