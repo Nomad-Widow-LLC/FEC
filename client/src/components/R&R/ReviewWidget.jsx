@@ -1,13 +1,11 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import config from '../../../dist/config.js';
-
+import styled from 'styled-components';
 // Import DummyData, until able to handle server api calls
 import dummyData from '../../../dist/dummyData.js';
-
 //Child Components
 import ReviewsList from './ReviewsList.jsx';
-
 // Create Context Globally
 export const AllReviews = createContext();
 
@@ -20,7 +18,7 @@ export default function ReviewWidget () {
 
 
   // useEffect(() => {
-  //   axios.get(`${config.API_PATHNAME}reviews/?product_id=2`, {headers: {Authorization: `${config.GITHUB_API}` }})
+  //   axios.get('/review', {headers: {Authorization: `${config.GITHUB_API}` }})
   //     .then((data) => {
   //       console.log(data);
   //     })
@@ -31,14 +29,35 @@ export default function ReviewWidget () {
   // }, [])
 
 
+  //Styled Components go here
+  const ReviewFlexBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start
+  `
+  const Title = styled.h1`
+    font-size: 1.5em;
+    text-align: left;
+    color: palevioletred;
 
+  `;
 
+  const List = styled.div`
+    padding: 10px;
+  `
   return (
+
     <div className="review-widget">
-      <div className="review-title">Reviews</div>
+      <ReviewFlexBox>
+      <Title>
+        <div className="review-title">Reviews</div>
+      </Title>
         <AllReviews.Provider value={{reviewData, setReviewData}}>
-          <ReviewsList />
+          <List>
+            <ReviewsList />
+          </List>
         </AllReviews.Provider>
+      </ReviewFlexBox>
     </div>
   );
 };

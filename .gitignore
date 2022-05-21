@@ -109,3 +109,4 @@ client/dist/config.js
 
 # R&R Branch ignores
 client/dist/dummyData.js
+client/dist/dummyReviews.js

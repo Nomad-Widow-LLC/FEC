@@ -5,7 +5,9 @@ import dummyData from '../../../dist/dummyData.js';
 
 // export default function GetReviews () {
 //   // Using Dummy Data
-//   const [reviews, setReviews] = useState(dummyData);
+//   const [reviews, setReviews] = useState([]);
+
+//   useEffect()
 
 //  return reviews
 // }
