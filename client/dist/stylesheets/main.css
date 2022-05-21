@@ -9,7 +9,11 @@ color scheme
    display:inline-block;
    border-style: solid;
    border-color: black;
-   font-size: 5px
+   font-size: 5px;
+ }
+
+ .ProductCategory, .ProductTitle, .Price, .ProductOverview, .SocialMedia {
+   margin:0px 5px 3px 0px
  }
 
  .readAllRatingsButton {

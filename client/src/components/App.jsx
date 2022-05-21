@@ -1,6 +1,6 @@
 import React from "react";
 // import { hot } from 'react-hot-loader/root';
-import ProductInfo from "./Overview/ProductInformation/ProductionInfo.jsx"
+import ProductInfo from "./Overview/ProductInformation/ProductInfo.jsx"
 import ReviewWidget from './R&R/ReviewWidget.jsx';
 
 

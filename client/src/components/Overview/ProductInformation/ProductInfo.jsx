@@ -11,9 +11,7 @@ const ProductInfo = () => {
     let product_id = '40344';
     axios.get('/product?product_id=' + product_id)
       .then((response) => {
-        console.log('PRODUCT DETAIL', response.data)
-        console.log('RATING', rating)
-        setProduct(response.data)
+        setProduct(response.data);
       })
       .catch((err) => {
         console.log('could not access data');
@@ -32,6 +30,7 @@ const ProductInfo = () => {
       return avgRating;
     })
     .then((avgRating) => {
+      console.log(avgRating);
       setRating(avgRating);
     })
     .catch((err) => {
