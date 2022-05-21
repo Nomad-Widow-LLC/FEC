@@ -5,9 +5,33 @@ import styled from 'styled-components';
 // Import DummyData, until able to handle server api calls
 import dummyData from '../../../dist/dummyData.js';
 //Child Components
+import NewReview from './NewReview.jsx';
 import ReviewsList from './ReviewsList.jsx';
 // Create Context Globally
 export const AllReviews = createContext();
+
+//Styled Components go here
+const ReviewWidgetContainer = styled.div`
+  border-style: groove;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 5px;
+`
+
+const ReviewFlexBoxTop = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+
+`
+const Title = styled.h1`
+  font-size: 30px;
+  text-align: left;
+  color: black;
+  padding-right: 10px;
+`;
+
+
 
 
 export default function ReviewWidget () {
@@ -29,35 +53,22 @@ export default function ReviewWidget () {
   // }, [])
 
 
-  //Styled Components go here
-  const ReviewFlexBox = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-content: flex-start
-  `
-  const Title = styled.h1`
-    font-size: 1.5em;
-    text-align: left;
-    color: palevioletred;
 
-  `;
-
-  const List = styled.div`
-    padding: 10px;
-  `
   return (
-
     <div className="review-widget">
-      <ReviewFlexBox>
-      <Title>
-        <div className="review-title">Reviews</div>
-      </Title>
+    <ReviewWidgetContainer>
+      <ReviewFlexBoxTop>
+        <Title>
+          <div className="review-title">Reviews</div>
+        </Title>
+        <NewReview />
+      </ReviewFlexBoxTop>
+
         <AllReviews.Provider value={{reviewData, setReviewData}}>
-          <List>
-            <ReviewsList />
-          </List>
+
+          <ReviewsList />
         </AllReviews.Provider>
-      </ReviewFlexBox>
+    </ReviewWidgetContainer>
     </div>
   );
 };
