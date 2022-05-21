@@ -5,9 +5,21 @@ import axios from 'axios';
 const ProductInfo = () => {
   const [rating, setRating] = useState(0);
   const [reviewNum, setReviewNum] = useState(0);
+  const [product, setProduct] = useState({});
 
   useEffect(() => {
     let product_id = '40344';
+    axios.get('/product?product_id=' + product_id)
+      .then((response) => {
+        console.log('PRODUCT DETAIL', response.data)
+        console.log('RATING', rating)
+        setProduct(response.data)
+      })
+      .catch((err) => {
+        console.log('could not access data');
+        return;
+      })
+
     axios.get('/review?product_id=' + product_id)
     .then( (response) => {
       let sumRating = 0;
@@ -26,16 +38,16 @@ const ProductInfo = () => {
       console.log('could not access data');
       return;
     })
-  }, [rating, reviewNum])
+  }, [])
 
   return (
     <div className='ProductInfo'>
       <StarRating rating={rating} reviewNum={reviewNum}/>
-      <h6 className='ProductCategory'>Product Category</h6>
-      <h3 className='ProductTitle'>Product Title</h3>
-      <h6 className='Price'>Price</h6>
-      <div className='ProductOverview'>Product Overview</div>
-      <div className='SocialMedia'>Share on Social Media</div>
+      <h6 className='ProductCategory'>{product.category}</h6>
+      <h3 className='ProductTitle'>{product.name}</h3>
+      <h6 className='Price'>${product.default_price}</h6>
+      <h6 className='ProductOverview'>{product.description}</h6>
+      <h6 className='SocialMedia'>Share on Social Media</h6>
     </div>
   )
 }

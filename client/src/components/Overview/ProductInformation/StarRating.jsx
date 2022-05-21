@@ -10,7 +10,7 @@ const StarRating = ({rating, reviewNum}) => {
     <span className='starRating'>
       {[1,2,3,4,5].map((index) => {
         return (
-          <Star index={index } rating={rating} key={index}/>
+          <Star index={index} rating={rating} key={index}/>
         )
       })}
       <button className='readAllRatingsButton'> Read all {reviewNum} reviews </button>
