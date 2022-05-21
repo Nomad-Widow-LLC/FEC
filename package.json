@@ -8,6 +8,7 @@
     "array-flatten": "^1.1.1",
     "axios": "^0.27.2",
     "babel": "^6.23.0",
+    "bluebird": "^3.7.2",
     "body-parser": "^1.20.0",
     "bytes": "^3.1.2",
     "call-bind": "^1.0.2",
@@ -73,7 +74,7 @@
   "scripts": {
     "server-dev": "npx nodemon --watch server server/index.js",
     "client-dev": "npx webpack --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node server.js"
   },
   "repository": {

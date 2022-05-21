@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Star from './Star.jsx';
 import axios from 'axios';
 
-const StarRating = () => {
+const StarRating = (props) => { // --> delete props
   const [rating, setRating] = useState(0);
   const [reviewNum, setReviewNum] = useState(0);
 
@@ -11,9 +11,9 @@ const StarRating = () => {
   useEffect(() => {
     // ** THIS NEEDS TO BE CHANGED **
     // when user clicks on an item, they should be able to get information on a specific item
-    let product_id = '40344'
+    // let product_id = '40344' --> change back before commit
 
-    axios.get('/review?product_id=' + product_id)
+    axios.get('/review?product_id=' + props.product_id) // --> change this back to just product_id
     .then( (response) => {
       let sumRating = 0;
       let results = response.data.results
