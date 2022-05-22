@@ -3,7 +3,8 @@ import axios from 'axios';
 import config from '../../../dist/config.js';
 import styled from 'styled-components';
 // Import DummyData, until able to handle server api calls
-import dummyData from '../../../dist/dummyData.js';
+import dummyReviewListData from '../../../dist/dummyReviewListData.js';
+import dummyMetaReviewData from '../../../dist/dummyMetaReviewData.js';
 //Child Components
 import NewReview from './NewReview.jsx';
 import ReviewsList from './ReviewsList.jsx';
@@ -37,8 +38,8 @@ const Title = styled.h1`
 export default function ReviewWidget () {
 
   //Using DummyData, need to refactor to use API Atelier
-  const [reviewData, setReviewData] = useState(dummyData);
-
+  const [reviewData, setReviewData] = useState(dummyReviewListData);
+  const [metaData, setMetaData] = useState(dummyMetaReviewData);
 
 
   // useEffect(() => {
