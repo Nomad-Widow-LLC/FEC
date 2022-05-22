@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import dummyReviewListData from '../../../dist/dummyReviewListData.js';
 import dummyMetaReviewData from '../../../dist/dummyMetaReviewData.js';
 //Child Components
-import NewReview from './NewReview.jsx';
-import ReviewsList from './ReviewsList.jsx';
+import NewReview from './AddReview/NewReview.jsx';
+import ReviewsList from './ReviewList/ReviewsList.jsx';
 // Create Context Globally
 export const AllReviews = createContext();
 

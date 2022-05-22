@@ -1,6 +1,6 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import {format, parseISO} from 'date-fns';
-import Star from '../Overview/ProductInformation/Star.jsx';
+import Star from '../../Overview/ProductInformation/Star.jsx';
 import styled from 'styled-components';
 import {FaUserCircle, FaCheck} from 'react-icons/fa';
 
@@ -83,6 +83,7 @@ export default function ReviewListEntries ({review}) {
 
   const [bodyReviewlength, setBodyReviewlength] = useState(review.body.length);
   const [fullBodyReview, setFullBodyReview] = useState(false);
+  const [helpful, setHelpful] = useState(false);
 
 
 
@@ -170,4 +171,4 @@ export default function ReviewListEntries ({review}) {
 
 // Still need to implement the following:
 // #1: Star Rating Rerender Issue
-// #2
+// #2:

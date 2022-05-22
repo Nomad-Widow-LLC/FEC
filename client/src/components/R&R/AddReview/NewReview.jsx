@@ -25,16 +25,7 @@ export default function NewReview () {
 
   return(
     <div className="new-review">
-      <ReviewButtonItem
-      onClick={handleClick}
-      >Write A Review
-        {/* <input
-          type="button"
-          value="Write A Review"
-          onClick={handleClick}
-        /> */}
-
-      </ReviewButtonItem>
+      <ReviewButtonItem onClick={handleClick}>Write A Review</ReviewButtonItem>
     </div>
   );
 

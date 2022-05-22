@@ -1,6 +1,6 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
-import dummyData from '../../../dist/dummyData.js';
+import dummyData from '../../../dist/dummyReviewListData.js';
 
 
 // export default function GetReviews () {

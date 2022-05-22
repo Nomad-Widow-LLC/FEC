@@ -2,7 +2,7 @@ import React, {useState, useContext, createContext, useEffect} from 'react';
 import ReviewListEntries from './ReviewListEntries.jsx';
 
 import styled from 'styled-components';
-import {AllReviews} from './ReviewWidget.jsx';
+import {AllReviews} from '../ReviewWidget.jsx';
 
 // Styled Components
 const List = styled.div`
