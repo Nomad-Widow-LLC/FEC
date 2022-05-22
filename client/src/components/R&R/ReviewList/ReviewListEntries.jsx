@@ -5,9 +5,9 @@ import {FaUserCircle, FaCheck} from 'react-icons/fa';
 
 import Star from '../../Overview/ProductInformation/Star.jsx';
 import ReviewBody from './ReviewBody.jsx';
+import ReviewPhotos from './ReviewPhotos.jsx';
 import ReviewHelpfulness from './ReviewHelpfulness.jsx';
 import ReviewResponse from './ReviewResponse.jsx';
-import ReviewPhotos from './ReviewPhotos.jsx';
 
 
 const IndvReview = styled.div`
@@ -138,6 +138,8 @@ export default function ReviewListEntries ({review}) {
           return <ReviewPhotos key={index} photo={photo}/>
         })}
       </PhotoItem>
+
+      <ReviewHelpfulness helpful={review.helpfulness} />
 
     </IndvReview>
 
