@@ -30,6 +30,8 @@ const Title = styled.h1`
   text-align: left;
   color: black;
   padding-right: 10px;
+  margin-left: 10px;
+
 `;
 
 

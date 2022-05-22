@@ -139,6 +139,9 @@ export default function ReviewListEntries ({review}) {
         })}
       </PhotoItem>
 
+      {review.response ? <ReviewResponse response={review.response}/> : <></>}
+
+
       <ReviewHelpfulness helpful={review.helpfulness} />
 
     </IndvReview>
