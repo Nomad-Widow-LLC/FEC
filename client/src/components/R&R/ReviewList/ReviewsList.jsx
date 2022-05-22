@@ -20,7 +20,6 @@ export default function ReviewsList () {
 
   return (
     <List>
-
       <div className="review-list">
       {reviewData.results.map((review, index) => {
         return <ReviewListEntries key={index} review={review}/>

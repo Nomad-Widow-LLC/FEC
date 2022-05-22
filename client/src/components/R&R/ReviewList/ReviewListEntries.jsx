@@ -7,6 +7,7 @@ import Star from '../../Overview/ProductInformation/Star.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import ReviewHelpfulness from './ReviewHelpfulness.jsx';
 import ReviewResponse from './ReviewResponse.jsx';
+import ReviewPhotos from './ReviewPhotos.jsx';
 
 
 const IndvReview = styled.div`
@@ -72,7 +73,11 @@ const ReviewSummary = styled.div`
   font-weight: 600;
   padding: 5px 0px;
 `
-
+const PhotoItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+`
 
 
 export default function ReviewListEntries ({review}) {
@@ -128,12 +133,12 @@ export default function ReviewListEntries ({review}) {
 
       <ReviewBody body={review.body} />
 
-
-      <div className="review-photos">
-        {review.photos.map((entry, index) => {
-          return <img key={index} src={entry.url} alt={entry.id} width="100" height="100"></img>
+      <PhotoItem>
+        {review.photos.map((photo, index) => {
+          return <ReviewPhotos key={index} photo={photo}/>
         })}
-      </div>
+      </PhotoItem>
+
     </IndvReview>
 
     </div>

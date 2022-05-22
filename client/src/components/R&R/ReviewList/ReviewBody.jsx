@@ -10,6 +10,7 @@ const ShowHide = styled.div`
   font-style: italic;
   color: grey;
   opacity: 0.6;
+  cursor: pointer;
 `
 
 export default function ReviewBody ({body}) {
@@ -18,7 +19,6 @@ export default function ReviewBody ({body}) {
   const [fullBodyReview, setFullBodyReview] = useState(false);
 
   const handleBody = () => {
-    event.preventDefault();
     setFullBodyReview(!fullBodyReview);
   }
 
