@@ -6,8 +6,11 @@ import styled from 'styled-components';
 import dummyReviewListData from '../../../dist/dummyReviewListData.js';
 import dummyMetaReviewData from '../../../dist/dummyMetaReviewData.js';
 //Child Components
-import NewReview from './AddReview/NewReview.jsx';
+
+import ReviewHeader from './ReviewHeaders/ReviewHeader.jsx';
 import ReviewsList from './ReviewList/ReviewsList.jsx';
+import FilterReview from './FilterReviews/FilterReview.jsx';
+
 // Create Context Globally
 export const AllReviews = createContext();
 
@@ -18,30 +21,18 @@ const ReviewWidgetContainer = styled.div`
   border-color: black;
   border-radius: 5px;
 `
-
-const ReviewFlexBoxTop = styled.div`
+const ReviewWidgetBody = styled.div`
   display: flex;
   flex-direction: row;
-  align-content: flex-start;
-
 `
-const Title = styled.h1`
-  font-size: 30px;
-  text-align: left;
-  color: black;
-  padding-right: 10px;
-  margin-left: 10px;
-
-`;
-
-
-
 
 export default function ReviewWidget () {
 
   //Using DummyData, need to refactor to use API Atelier
   const [reviewData, setReviewData] = useState(dummyReviewListData);
   const [metaData, setMetaData] = useState(dummyMetaReviewData);
+
+  const [reviewsShown, setReviewShown] = useState(2);
 
 
   // useEffect(() => {
@@ -60,16 +51,14 @@ export default function ReviewWidget () {
   return (
     <div className="review-widget">
     <ReviewWidgetContainer>
-      <ReviewFlexBoxTop>
-        <Title>
-          <div className="review-title">Reviews</div>
-        </Title>
-        <NewReview />
-      </ReviewFlexBoxTop>
+        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown}}>
+          <ReviewHeader />
 
-        <AllReviews.Provider value={{reviewData, setReviewData}}>
+          <ReviewWidgetBody>
+            <FilterReview />
+            <ReviewsList />
+          </ReviewWidgetBody>
 
-          <ReviewsList />
         </AllReviews.Provider>
     </ReviewWidgetContainer>
     </div>
