@@ -65,13 +65,16 @@ export default function ReviewHelpfulness({helpful}) {
     //update number
     setReviewHelpful(reviewHelpful + 1);
     setFeedback(true);
+
+    // logic would be to check if setFeedback is true, if so, do not set axios post request to update number
+    // Q is there a way to send post request to reduce the number? if so we can incorp that logic
     setThumbsUp(!thumbsUp);
   }
 
   const handleThumbsDown = () => {
     console.log('You gave this a thumbs up!');
     //send axios post request to update helfulness
-    //update number
+    // There's no data for handling thumbs down...
 
     setFeedback(true);
     setThumbsDown(!thumbsDown);
