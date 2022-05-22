@@ -1,8 +1,12 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import {format, parseISO} from 'date-fns';
-import Star from '../../Overview/ProductInformation/Star.jsx';
 import styled from 'styled-components';
 import {FaUserCircle, FaCheck} from 'react-icons/fa';
+
+import Star from '../../Overview/ProductInformation/Star.jsx';
+import ReviewBody from './ReviewBody.jsx';
+import ReviewHelpfulness from './ReviewHelpfulness.jsx';
+import ReviewResponse from './ReviewResponse.jsx';
 
 
 const IndvReview = styled.div`
@@ -68,29 +72,14 @@ const ReviewSummary = styled.div`
   font-weight: 600;
   padding: 5px 0px;
 `
-const ReviewBody = styled.div`
-  font-size: 12px;
-  padding: 5px;
-`
 
-const ShowHide = styled.div`
-  font-style: italic;
-  color: grey;
-  opacity: 0.6;
-`
+
+
 export default function ReviewListEntries ({review}) {
 
-
-  const [bodyReviewlength, setBodyReviewlength] = useState(review.body.length);
-  const [fullBodyReview, setFullBodyReview] = useState(false);
   const [helpful, setHelpful] = useState(false);
 
 
-
-  const handleBody = () => {
-    event.preventDefault();
-    setFullBodyReview(!fullBodyReview);
-  }
 
 
   return (
@@ -137,24 +126,7 @@ export default function ReviewListEntries ({review}) {
         <div className="review-summary">{review.summary}</div>
       </ReviewSummary>
 
-      <ReviewBody>
-        {(bodyReviewlength < 250) ? <div className="review-body">{review.body}</div> :
-          (fullBodyReview ?
-            <>
-              <div className="review-body">{review.body}</div>
-              <ShowHide>
-                <div onClick={handleBody}>hide...</div>
-              </ShowHide>
-            </> :
-            <>
-              <div className="review-body">{review.body.slice(0, 250)}...</div>
-              <ShowHide>
-                <div onClick={handleBody}>Show more...</div>
-              </ShowHide>
-            </>
-          )
-        }
-      </ReviewBody>
+      <ReviewBody body={review.body} />
 
 
       <div className="review-photos">
