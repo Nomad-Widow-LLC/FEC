@@ -7,7 +7,8 @@ class Carousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productList: []
+      productList: [],
+      page: 4
     }
   }
 
@@ -32,7 +33,8 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    let endpoint = this.getEndPoint(3, 10);
+    // getEndPoints accepts 'page' and 'count': page = the page number you want (default 10 per page), count = the numger of items you want to retrieve.
+    let endpoint = this.getEndPoint(this.state.page);
 
     axios.get(endpoint)
       .then((product) => {

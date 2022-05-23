@@ -11,9 +11,10 @@ var Card = (props) => {
       <div className="category">{props.item.category}</div>
       <div className="title">{props.item.name}</div>
       <div className="pricez">{props.item.default_price}</div>
-      <StarRating product_id={props.item.id}/>
     </div>
   )
 }
+
+//<StarRating product_id={props.item.id}/>
 
 export default Card = Card;
