@@ -4,3 +4,23 @@ fonts
 buttons/ icons
 color scheme
  */
+
+ .ProductInfo {
+   display:inline-block;
+   border-style: solid;
+   border-color: black;
+   font-size: 5px;
+ }
+
+ .ProductCategory, .ProductTitle, .Price, .ProductOverview, .SocialMedia {
+   margin:0px 5px 3px 0px
+ }
+
+ .readAllRatingsButton {
+   padding: 0;
+   border: none;
+   background: none;
+   font-size: 2px;
+   resize:inline;
+   height: 1px;
+ }

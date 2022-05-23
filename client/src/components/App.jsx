@@ -1,7 +1,9 @@
 import React from "react";
-// import { hot } from 'react-hot-loader/root';
 import StarRating from "./Overview/ProductInformation/StarRating.jsx"
+// import { hot } from 'react-hot-loader/root';
+import ProductInfo from "./Overview/ProductInformation/ProductInfo.jsx"
 import ReviewWidget from './R&R/ReviewWidget.jsx';
+import Carousel from './Related/Carousel.jsx';
 
 
 
@@ -18,4 +20,3 @@ class App extends React.Component {
 }
 
 export default App = App;
-// export default hot(App);
