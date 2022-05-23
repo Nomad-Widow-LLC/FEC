@@ -1,5 +1,5 @@
 require('dotenv').config();
-const config = require('../client/dist/config.js');
+// const config = require('../client/dist/config.js');
 const axios = require('axios');
 
 const path = require("path")
@@ -16,7 +16,7 @@ app.listen(3001);
 app.get('/product', (req, res) => {
   let product = req.query.product_id;
   console.log('PRODUCT', product);
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${product}`,{headers:{Authorization: `${config.TOKEN}`}})
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${product}`,{headers:{Authorization: `${process.env.TOKEN}`}})
     .then ((response) => {
       res.status(200).send(response.data);
     })
@@ -29,12 +29,15 @@ app.get('/product', (req, res) => {
 // get reviews of a specific product
 app.get('/review', (req, res) => {
   let product = req.query.product_id;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?sort=newest&&product_id=${product}`,{headers:{Authorization: `${config.TOKEN}`}})
+  // console.log('WHAT IS THE DIFFERENce', config.TOKEN)
+  // console.log('HERE IS YOUR TOKEN', process.env.TOKEN)
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?sort=newest&&product_id=${product}`,{headers:{Authorization: `${process.env.TOKEN}`}})
     .then ((response) => {
+      // console.log('RESPONSE', response.data)
       res.status(200).send(response.data);
     })
     .catch((err) => {
-      console.log('ERROR', err)
+      // console.log('ERROR', err)
       res.status(500).send('did not obtain data')
     })
 })
