@@ -1,0 +1,31 @@
+.carousel {
+  width: 40%;
+  height: 100px;
+  background-color: black;
+}
+
+.carouselInner {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+
+.carouselInner, .left {
+  flex: 5%;
+  height: 100%;
+  background-color: rgb(0,0,0,.6);
+}
+
+.carouselInner, .center {
+  flex: 90%;
+  height: 100%;
+}
+
+.carouselInner, .right {
+  flex: 5%;
+  height: 100%;
+  background-color: rgb(0,0,0,.6);
+}
