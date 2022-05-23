@@ -20,7 +20,7 @@ const Star = ({index, rating}) => {
         widthClass = 'ratingStar75'
       }
     }
-  }, [index, rating]);
+  }, []);
 
   return (
     <div className='star'>
