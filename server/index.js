@@ -1,9 +1,10 @@
 require('dotenv').config();
-<<<<<<< HEAD
-=======
+
 // const config = require('../client/dist/config.js');
->>>>>>> main
+
 const axios = require('axios');
+
+// const config = require('../client/dist/config.js');
 
 const path = require("path")
 const express = require("express"); // npm installed

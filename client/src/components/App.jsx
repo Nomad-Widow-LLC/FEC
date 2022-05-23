@@ -12,11 +12,8 @@ class App extends React.Component {
    // const { name } = 'Robert';
     return (
       <>
-        <StarRating />
-        <Carousel />
-        < ProductInfo />
-        {/* <ReviewWidget /> */}
-
+        {/* <StarRating /> */}
+        <ReviewWidget />
      </>
     );
   }
