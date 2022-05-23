@@ -103,9 +103,14 @@ client/dist/bundle.js
 # TernJS port file
 .tern-port
 
+./src/components/Related/config.js
 
 #client config
 client/dist/config.js
 
 # R&R Branch ignores
+client/dist/dummyReviewListData.js
+client/dist/dummyMetaReviewData.js
+
+# client/dist/dummyReviews.js
 client/dist/dummyReviews.js
