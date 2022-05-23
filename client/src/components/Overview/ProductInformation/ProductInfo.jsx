@@ -13,30 +13,26 @@ const ProductInfo = () => {
       .then((response) => {
         setProduct(response.data);
       })
+      .then (() => {
+        return axios.get('/review?product_id=' + product_id)
+      })
+      .then( (response) => {
+        let sumRating = 0;
+        let results = response.data.results
+        for (let i = 0; i < results.length; i++) {
+          sumRating += results[i].rating;
+        }
+        let avgRating = sumRating/results.length;
+        setReviewNum(results.length);
+        return avgRating;
+      })
+      .then((avgRating) => {
+        setRating(avgRating);
+      })
       .catch((err) => {
         console.log('could not access data');
         return;
       })
-
-    axios.get('/review?product_id=' + product_id)
-    .then( (response) => {
-      let sumRating = 0;
-      let results = response.data.results
-      for (let i = 0; i < results.length; i++) {
-        sumRating += results[i].rating;
-      }
-      let avgRating = sumRating/results.length;
-      setReviewNum(results.length);
-      return avgRating;
-    })
-    .then((avgRating) => {
-      console.log(avgRating);
-      setRating(avgRating);
-    })
-    .catch((err) => {
-      console.log('could not access data');
-      return;
-    })
   }, [])
 
   return (
