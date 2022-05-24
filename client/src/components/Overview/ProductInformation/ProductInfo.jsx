@@ -9,6 +9,7 @@ const ProductInfo = () => {
   const [reviewNum, setReviewNum] = useState(0);
   const [product, setProduct] = useState({});
   const [style, setStyle] = useState([]);
+  const [styleSelector, setStyleSelector] = useState([]);
 
   const handleOnClickStyle = (thumbnail) => {
     setStyle(thumbnail);
@@ -40,7 +41,8 @@ const ProductInfo = () => {
          return axios.get('/styles?product_id=' + product_id)
       })
       .then((response) => {
-        setStyle(response.data.results[0])
+        setStyle(response.data.results[0]);
+        setStyleSelector(response.data.results);
       })
       .catch((err) => {
         console.log('could not access data');
@@ -58,7 +60,7 @@ const ProductInfo = () => {
         <h6 className='Price'>${product.default_price}</h6>
         <h6 className='ProductOverview'>{product.description}</h6>
         <h6 className='SocialMedia'>Share on Social Media</h6>
-        <StyleSelector handleOnClickStyle={handleOnClickStyle}/>
+        <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
       </div>
     </div>
   )
