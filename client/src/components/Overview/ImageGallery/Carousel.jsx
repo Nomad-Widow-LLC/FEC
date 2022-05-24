@@ -21,30 +21,66 @@ const Carousel = () => {
   }, [])
 
   return (
-    <div className="carousel">
-      <div
-        className="carouselInner" style = {{ backgroundImage: `url(${style.photos?.[0].url})`}}
-      >
+    <div className='main-image'>
+      <div className='carousel'>
+        <img className='inner-image' src={style.photos?.[image].url} />
         <div
-          className="left"
+          className='left'
           onClick={() => {
             if (image === 0) {
-              console.log('length', style.length);
-              setImage(style.photos?.length);
+              setImage(style.photos?.length - 1);
             } else {
               setImage(image-1);
-            }
-          }}
+            }}}
           >
-          <FaArrowLeft/>
-        </div>
-        <div className="center"></div>
-        <div className="right">
-          <FaArrowRight/>
-        </div>
+            <FaArrowLeft/>
+          </div>
+        <div
+          className='right'
+          onClick={() => {
+            if (image === style.photos?.length - 1) {
+              setImage(0);
+            } else {
+              setImage(image+1);
+            }}}>
+              <FaArrowRight/>
+            </div>
       </div>
     </div>
   )
 }
 
 export default Carousel;
+
+  // <div className="carousel">
+    //   <div
+    //     className="carouselInner" style = {{ backgroundImage: `url(${style.photos?.[image].url})`}}
+    //   >
+        // <div
+        //   className="left"
+        //   onClick={() => {
+        //     if (image === 0) {
+        //       console.log('length', style.photos?.length);
+        //       setImage(style.photos?.length - 1);
+        //     } else {
+        //       setImage(image-1);
+        //     }
+        //   }}
+    //       >
+    //       <FaArrowLeft/>
+    //     </div>
+    //     <div className="center"></div>
+    //     <div
+    //       className="right"
+    //       onClick={() => {
+    //         if (image === style.photos?.length - 1) {
+    //           setImage(0);
+    //         } else {
+    //           setImage(image+1);
+    //         }
+    //       }}
+    //       >
+    //       <FaArrowRight/>
+    //     </div>
+    //   </div>
+    // </div>

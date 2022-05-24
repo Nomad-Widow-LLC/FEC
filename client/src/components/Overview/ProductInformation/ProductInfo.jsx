@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import StarRating from './StarRating.jsx'
+import Carousel from "../ImageGallery/Carousel.jsx"
 import axios from 'axios';
 
 const ProductInfo = () => {
@@ -36,13 +37,16 @@ const ProductInfo = () => {
   }, [])
 
   return (
-    <div className='ProductInfo'>
-      <StarRating rating={rating} reviewNum={reviewNum}/>
-      <h6 className='ProductCategory'>{product.category}</h6>
-      <h3 className='ProductTitle'>{product.name}</h3>
-      <h6 className='Price'>${product.default_price}</h6>
-      <h6 className='ProductOverview'>{product.description}</h6>
-      <h6 className='SocialMedia'>Share on Social Media</h6>
+    <div className='productAndImage'>
+        <Carousel/>
+        <div className='ProductInfo'>
+        <StarRating rating={rating} reviewNum={reviewNum}/>
+        <h6 className='ProductCategory'>{product.category}</h6>
+        <h3 className='ProductTitle'>{product.name}</h3>
+        <h6 className='Price'>${product.default_price}</h6>
+        <h6 className='ProductOverview'>{product.description}</h6>
+        <h6 className='SocialMedia'>Share on Social Media</h6>
+      </div>
     </div>
   )
 }

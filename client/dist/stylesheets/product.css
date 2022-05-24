@@ -1,0 +1,40 @@
+.productAndImage {
+  width: 90vw;
+  height: 90vh;
+  border-style: solid;
+  border-color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.main-image {
+  width: 100px;
+  height: 110px;
+  background-color: black;
+  margin-right: 15px;
+}
+
+.carousel {
+  width: 100px;
+  height: 110px;
+  position: relative;
+}
+
+.inner-image {
+  width: 100px;
+  height: 110px;
+  object-fit: cover;
+}
+
+.left {
+  position:absolute;
+  top: 50px;
+  color: white;
+}
+
+.right {
+  position:absolute;
+  top: 50px;
+  right:0;
+  color: white;
+}
