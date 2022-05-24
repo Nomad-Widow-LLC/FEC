@@ -8,12 +8,17 @@ const ProductInfo = () => {
   const [rating, setRating] = useState(0);
   const [reviewNum, setReviewNum] = useState(0);
   const [product, setProduct] = useState({});
+  const [style, setStyle] = useState([]);
+
+  const handleOnClickStyle = (thumbnail) => {
+    setStyle(thumbnail);
+  }
 
   useEffect(() => {
-    let product_id = '40344';
+    let product_id = '40344'
     axios.get('/product?product_id=' + product_id)
       .then((response) => {
-        setProduct(response.data);
+        setProduct(response.data)
       })
       .then (() => {
         return axios.get('/review?product_id=' + product_id)
@@ -31,6 +36,12 @@ const ProductInfo = () => {
       .then((avgRating) => {
         setRating(avgRating);
       })
+      .then(() => {
+         return axios.get('/styles?product_id=' + product_id)
+      })
+      .then((response) => {
+        setStyle(response.data.results[0])
+      })
       .catch((err) => {
         console.log('could not access data');
         return;
@@ -39,7 +50,7 @@ const ProductInfo = () => {
 
   return (
     <div className='productAndImage'>
-        <Carousel/>
+        <Carousel style={style}/>
         <div className='ProductInfo'>
         <StarRating rating={rating} reviewNum={reviewNum}/>
         <h6 className='ProductCategory'>{product.category}</h6>
@@ -47,7 +58,7 @@ const ProductInfo = () => {
         <h6 className='Price'>${product.default_price}</h6>
         <h6 className='ProductOverview'>{product.description}</h6>
         <h6 className='SocialMedia'>Share on Social Media</h6>
-        <StyleSelector />
+        <StyleSelector handleOnClickStyle={handleOnClickStyle}/>
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
 .productAndImage {
   width: 90vw;
   height: 90vh;
-  border-style: solid;
-  border-color: green;
+  /* border-style: solid; */
+  /* border-color: green; */
   display: flex;
   justify-content: center;
 }
@@ -29,6 +29,7 @@
   position:absolute;
   top: 50px;
   color: white;
+  cursor: pointer;
 }
 
 .right {
@@ -36,6 +37,7 @@
   top: 50px;
   right:0;
   color: white;
+  cursor: pointer;
 }
 
 .style-selector {
@@ -48,4 +50,5 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  cursor: pointer;
 }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-const StyleSelector = () => {
+const StyleSelector = ({handleOnClickStyle}) => {
   const [image, setImage] = useState(0);
   const [style, setStyle] = useState([]);
 
@@ -20,8 +20,12 @@ const StyleSelector = () => {
   return (
     <div className='style-selector'>
       {style.map(thumbnail =>
-      // console.log('thumbnail', thumbnail)
-        <img className='style-thumbnail' src={thumbnail.photos?.[0].thumbnail_url} key={thumbnail.photos?.[0].thumbnail_url} />
+        <img
+          className='style-thumbnail'
+          src={thumbnail.photos?.[0].thumbnail_url}
+          key={thumbnail.photos?.[0].thumbnail_url}
+          onClick={()=>{handleOnClickStyle(thumbnail)}}
+        />
       )}
     </div>
   )

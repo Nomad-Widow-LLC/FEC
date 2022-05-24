@@ -3,24 +3,22 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const Star = ({index, rating}) => {
 
-  let widthClass = '';
-
-  const fill = useMemo(() => {
+  const widthClass = useMemo(() => {
     if (rating >= index) {
-      widthClass = 'ratingStar100'
+      return 'ratingStar100';
     } else if ((index > rating) && ((index - rating) > 0)) {
       let difference = 1 - (index - rating);
       if (difference < .25) {
-        widthClass = 'ratingStar0'
+        return 'ratingStar0';
       } else if (difference < 0.50) {
-        widthClass = 'ratingStar25'
+        return 'ratingStar25';
       } else if (difference < 0.75) {
-        widthClass = 'ratingStar50'
+        return 'ratingStar50';
       } else if (difference < 1) {
-        widthClass = 'ratingStar75'
+        return 'ratingStar75';
       }
     }
-  }, []);
+  }, [rating]);
 
   return (
     <div className='star'>
