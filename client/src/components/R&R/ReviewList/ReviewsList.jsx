@@ -58,7 +58,7 @@ export default function ReviewsList () {
             return <div key={index}></div>
           }
         })}
-        {(reviewData.results.length < reviewsShown ?
+        {(reviewData.results.length <= reviewsShown ?
           <></> :
           <ShowMore onClick={() => {setReviewShown(reviewData.results.length)}}>Show more reviews</ShowMore>)}
       </Scroll>
