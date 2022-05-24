@@ -31,7 +31,6 @@ export default function ReviewWidget () {
   //Using DummyData, need to refactor to use API Atelier
   const [reviewData, setReviewData] = useState(dummyReviewListData);
   const [metaData, setMetaData] = useState(dummyMetaReviewData);
-
   const [reviewsShown, setReviewShown] = useState(2);
 
 
