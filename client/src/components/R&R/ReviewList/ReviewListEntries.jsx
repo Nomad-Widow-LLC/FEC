@@ -22,6 +22,7 @@ const IndvReview = styled.div`
   font-size: 12px;
   margin: 2.5px;
   padding-left: 1.5em;
+  margin-right: 1em;
 `
 
 const HeaderReviews = styled.div`

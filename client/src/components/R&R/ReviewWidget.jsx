@@ -22,6 +22,7 @@ const ReviewWidgetContainer = styled.div`
   border-width: 1px;
   border-color: black;
   border-radius: 5px;
+  margin: 0px 125px;
 `
 const ReviewWidgetBody = styled.div`
   display: flex;
