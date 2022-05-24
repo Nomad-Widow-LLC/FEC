@@ -18,7 +18,7 @@ export default function ShowingReviews () {
 
   return (
     <ShowingResults>
-      <div className="sort-by">{`Showing ${reviewsShown} of ${numberReviews} reviews`}</div>
+      <div className="sort-by">{`Showing ${Math.min(numberReviews, reviewsShown)} of ${numberReviews} reviews`}</div>
     </ShowingResults>
   );
 

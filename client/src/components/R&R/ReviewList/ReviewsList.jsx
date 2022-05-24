@@ -19,12 +19,25 @@ const ListHeaders = styled.div`
   margin-left: 0.5em;
 `
 
-
+const ShowMore = styled.button`
+  font-size: 14px;
+  font-family: "Courier New", Monaco, "Lucida Console";
+  color: white;
+  margin: 1em;
+  padding: 5px 20px;
+  border-radius: 3px;
+  background-color: black;
+`
+const Scroll = styled.div`
+  overflow: auto;
+  max-height: 100vh;
+`
 
 export default function ReviewsList () {
 
 
   const {reviewData, setReviewData} = useContext(AllReviews);
+  const {reviewsShown, setReviewShown} = useContext(AllReviews);
 
 
 
@@ -32,15 +45,26 @@ export default function ReviewsList () {
 
     <List>
     <div className="review-list">
-    <ListHeaders>
-      <ShowingReviews/>
-      <SortBy />
-    </ListHeaders>
+      <ListHeaders>
+        <ShowingReviews/>
+        <SortBy />
+      </ListHeaders>
 
-      {reviewData.results.map((review, index) => {
-        return <ReviewListEntries key={index} review={review}/>
-      })}
-      </div>
+      <Scroll>
+        {reviewData.results.map((review, index) => {
+          if(index < reviewsShown) {
+            return <ReviewListEntries key={index} review={review}/>
+          } else {
+            return <div key={index}></div>
+          }
+        })}
+        {(reviewData.results.length <= reviewsShown ?
+          <></> :
+          <ShowMore onClick={() => {setReviewShown(reviewData.results.length)}}>Show more reviews</ShowMore>)}
+      </Scroll>
+
+
+    </div>
     </List>
   );
 }

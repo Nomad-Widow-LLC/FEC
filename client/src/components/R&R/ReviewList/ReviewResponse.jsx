@@ -11,9 +11,9 @@ const ResponseBox = styled.div`
   border-color: black;
   border-radius: 1px;
   box-shadow: 1px 1px grey;
-  margin: 1em 0em 0.5em 2em;
+  margin: 1em 1em 0.5em 2em;
   padding: 0px;
-  width: 500px;
+  width: auto;
 `
 
 const ResHeader = styled.div`

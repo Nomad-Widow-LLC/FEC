@@ -10,6 +10,8 @@ import dummyMetaReviewData from '../../../dist/dummyMetaReviewData.js';
 import ReviewHeader from './ReviewHeaders/ReviewHeader.jsx';
 import ReviewsList from './ReviewList/ReviewsList.jsx';
 import FilterReview from './FilterReviews/FilterReview.jsx';
+import OverallRating from './OverallRating/OverallRating.jsx';
+
 
 // Create Context Globally
 export const AllReviews = createContext();
@@ -20,18 +22,23 @@ const ReviewWidgetContainer = styled.div`
   border-width: 1px;
   border-color: black;
   border-radius: 5px;
+  margin: 0px 125px;
 `
 const ReviewWidgetBody = styled.div`
   display: flex;
   flex-direction: row;
 `
+const SideBar = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 
 export default function ReviewWidget () {
 
   //Using DummyData, need to refactor to use API Atelier
   const [reviewData, setReviewData] = useState(dummyReviewListData);
   const [metaData, setMetaData] = useState(dummyMetaReviewData);
-
   const [reviewsShown, setReviewShown] = useState(2);
 
 
@@ -55,7 +62,10 @@ export default function ReviewWidget () {
           <ReviewHeader />
 
           <ReviewWidgetBody>
-            <FilterReview />
+            <SideBar>
+              <OverallRating />
+              <FilterReview />
+            </SideBar>
             <ReviewsList />
           </ReviewWidgetBody>
 
