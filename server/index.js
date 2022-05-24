@@ -63,25 +63,25 @@ app.get('/review', (req, res) => {
 })
 
 // GET for Related Items
-app.get('/products', (req, res) => {
-  let numOfProducts = req.query.count;
-  let pageNum = req.query.page;
-  let api_endpoint = ``;
+// app.get('/products', (req, res) => {
+//   let numOfProducts = req.query.count;
+//   let pageNum = req.query.page;
+//   let api_endpoint = ``;
 
-  if (req.query.count === undefined && req.query.page === undefined) {
-    api_endpoint = `${process.env.API_URL}/products`;
-  } else if (req.query.count !== undefined && req.query.page === undefined) {
-    api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}`;
-  } else if (req.query.count === undefined && req.query.page !== undefined) {
-    api_endpoint = `${process.env.API_URL}/products?page=${pageNum}`;
-  } else if (req.query.count !== undefined && req.query.page !== undefined) {
-    api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}&page=${pageNum}`;
-  }
+//   if (req.query.count === undefined && req.query.page === undefined) {
+//     api_endpoint = `${process.env.API_URL}/products`;
+//   } else if (req.query.count !== undefined && req.query.page === undefined) {
+//     api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}`;
+//   } else if (req.query.count === undefined && req.query.page !== undefined) {
+//     api_endpoint = `${process.env.API_URL}/products?page=${pageNum}`;
+//   } else if (req.query.count !== undefined && req.query.page !== undefined) {
+//     api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}&page=${pageNum}`;
+//   }
 
-  axios.get(api_endpoint, api_header)
-      .then((results) => {
-        // console.log("Results:");
-        // console.log(results.data);
-        res.status(200).send(results.data);
-      })
-});
+//   axios.get(api_endpoint, api_header)
+//       .then((results) => {
+//         // console.log("Results:");
+//         // console.log(results.data);
+//         res.status(200).send(results.data);
+//       })
+// });
