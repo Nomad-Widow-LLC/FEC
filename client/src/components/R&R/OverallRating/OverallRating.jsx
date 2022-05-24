@@ -2,7 +2,7 @@ import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-import Star from '../../Overview/ProductInformation/Star.jsx';
+import StarRating from '../../Overview/ProductInformation/StarRating.jsx';
 import useGetAvgRatings from '../GetData/useGetAvgRatings.js';
 import {AllReviews} from '../ReviewWidget.jsx';
 
@@ -38,13 +38,7 @@ export default function OverallRating () {
         <OverallRatingNumber>
           <div>{sumRating.toFixed(1)}</div>
         </OverallRatingNumber>
-        <span className='starRating'>
-            {[1,2,3,4,5].map((index) => {
-              return (
-                <Star index={index} rating={sumRating} key={index}/>
-              )
-            })}
-        </span>
+          <StarRating rating={sumRating} reviewNum={null}/>
       </OverallRatingContainer>
     </>
   );

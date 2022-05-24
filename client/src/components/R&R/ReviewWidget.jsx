@@ -10,7 +10,7 @@ import dummyMetaReviewData from '../../../dist/dummyMetaReviewData.js';
 import ReviewHeader from './ReviewHeaders/ReviewHeader.jsx';
 import ReviewsList from './ReviewList/ReviewsList.jsx';
 import FilterReview from './FilterReviews/FilterReview.jsx';
-import OverallRating from './RatingBreakdown/OverallRating.jsx';
+import OverallRating from './OverallRating/OverallRating.jsx';
 
 
 // Create Context Globally
