@@ -7,8 +7,6 @@ color scheme
 
  .ProductInfo {
    display:inline-block;
-   border-style: solid;
-   border-color: black;
    font-size: 5px;
    width: 40%;
  }

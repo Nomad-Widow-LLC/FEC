@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import CarouselItem from './CarouselItem';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 

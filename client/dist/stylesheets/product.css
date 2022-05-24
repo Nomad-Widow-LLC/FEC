@@ -2,7 +2,7 @@
   width: 90vw;
   height: 90vh;
   border-style: solid;
-  border-color: red;
+  border-color: green;
   display: flex;
   justify-content: center;
 }
@@ -10,7 +10,6 @@
 .main-image {
   width: 100px;
   height: 110px;
-  background-color: black;
   margin-right: 15px;
 }
 
@@ -37,4 +36,14 @@
   top: 50px;
   right:0;
   color: white;
+}
+
+.style-selector {
+  border-style: solid;
+  border-color: red;
+}
+
+.style-thumbnail {
+  width:10px;
+  height:10px;
 }
