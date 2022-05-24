@@ -7,10 +7,12 @@ var Card = (props) => {
 
 
   return (
-    <div id="card">
+    <div className="card">
       <div className="category">{props.item.category}</div>
       <div className="title">{props.item.name}</div>
-      <div className="pricez">{props.item.default_price}</div>
+      <div className="slogan">{props.item.slogan}</div>
+      <div className="description">{props.item.description}</div>
+      <div className="price">{props.item.default_price}</div>
     </div>
   )
 }

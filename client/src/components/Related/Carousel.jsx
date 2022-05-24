@@ -33,8 +33,8 @@ class Carousel extends React.Component {
   }
 
   componentDidMount() {
-    // getEndPoints accepts 'page' and 'count': page = the page number you want (default 10 per page), count = the numger of items you want to retrieve.
-    let endpoint = this.getEndPoint(this.state.page);
+    // getEndPoints accepts 'page' and 'count': page = the page number you want (default 5 per page), count = the numger of items you want to retrieve.
+    let endpoint = this.getEndPoint(null, 1);
 
     axios.get(endpoint)
       .then((product) => {
@@ -49,9 +49,11 @@ class Carousel extends React.Component {
   render () {
     return (
       <div className="carousel">
+        <button className="leftBtn">Left</button>
         {this.state.productList.map((item) =>
           <Card item={item} key={item.id} />
         )}
+        <button className="rightBtn">Right</button>
       </div>
     )
   }

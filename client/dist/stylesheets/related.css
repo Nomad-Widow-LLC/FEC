@@ -1,0 +1,17 @@
+.carousel {
+  overflow: hidden;
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 210px;
+  position: relative;
+}
+
+.card {
+  position: absolute;
+  border-style: solid;
+  border-color: black;
+  margin: 5px;
+  width: 300px;
+}

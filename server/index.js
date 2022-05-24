@@ -1,8 +1,4 @@
 require('dotenv').config();
-<<<<<<< HEAD
-=======
-// const config = require('../client/dist/config.js');
->>>>>>> main
 const axios = require('axios');
 
 const path = require("path")
@@ -20,7 +16,7 @@ let api_header = {headers:{Authorization: `${process.env.TOKEN}`}};
 // get detail of a specific product
 app.get('/product', (req, res) => {
   let product = req.query.product_id;
-  console.log('PRODUCT', product);
+  //console.log('PRODUCT', product);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${product}`, api_header)
     .then ((response) => {
       res.status(200).send(response.data);
@@ -53,13 +49,13 @@ app.get('/products', (req, res) => {
   let pageNum = req.query.page;
   let api_endpoint = ``;
 
-  if (req.query.count === undefined && req.query.page === undefined) {
+  if (numOfProducts === undefined && pageNum === undefined) {
     api_endpoint = `${process.env.API_URL}/products`;
-  } else if (req.query.count !== undefined && req.query.page === undefined) {
+  } else if (numOfProducts !== undefined && pageNum === undefined) {
     api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}`;
-  } else if (req.query.count === undefined && req.query.page !== undefined) {
+  } else if (numOfProducts === undefined && pageNum !== undefined) {
     api_endpoint = `${process.env.API_URL}/products?page=${pageNum}`;
-  } else if (req.query.count !== undefined && req.query.page !== undefined) {
+  } else if (numOfProducts !== undefined && pageNum !== undefined) {
     api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}&page=${pageNum}`;
   }
 
