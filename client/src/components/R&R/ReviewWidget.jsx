@@ -10,6 +10,8 @@ import dummyMetaReviewData from '../../../dist/dummyMetaReviewData.js';
 import ReviewHeader from './ReviewHeaders/ReviewHeader.jsx';
 import ReviewsList from './ReviewList/ReviewsList.jsx';
 import FilterReview from './FilterReviews/FilterReview.jsx';
+import OverallRating from './RatingBreakdown/OverallRating.jsx';
+
 
 // Create Context Globally
 export const AllReviews = createContext();
@@ -25,6 +27,11 @@ const ReviewWidgetBody = styled.div`
   display: flex;
   flex-direction: row;
 `
+const SideBar = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 
 export default function ReviewWidget () {
 
@@ -54,7 +61,10 @@ export default function ReviewWidget () {
           <ReviewHeader />
 
           <ReviewWidgetBody>
-            <FilterReview />
+            <SideBar>
+              <OverallRating />
+              <FilterReview />
+            </SideBar>
             <ReviewsList />
           </ReviewWidgetBody>
 
