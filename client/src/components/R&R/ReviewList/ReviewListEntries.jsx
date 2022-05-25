@@ -3,7 +3,7 @@ import {format, parseISO} from 'date-fns';
 import styled from 'styled-components';
 import {FaUserCircle, FaCheck} from 'react-icons/fa';
 
-import Star from '../../Overview/ProductInformation/Star.jsx';
+import StarRating from '../../Overview/ProductInformation/StarRating.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import ReviewPhotos from './ReviewPhotos.jsx';
 import ReviewHelpfulness from './ReviewHelpfulness.jsx';
@@ -22,6 +22,7 @@ const IndvReview = styled.div`
   font-size: 12px;
   margin: 2.5px;
   padding-left: 1.5em;
+  margin-right: 1em;
 `
 
 const HeaderReviews = styled.div`
@@ -118,13 +119,7 @@ export default function ReviewListEntries ({review}) {
       </DateReviewed>
 
       <IndvStarRating>
-        <span className='starRating'>
-          {[1,2,3,4,5].map((index) => {
-            return (
-              <Star index={index} rating={review.rating} key={index}/>
-            )
-          })}
-        </span>
+        <StarRating rating={review.rating} reviewNum={null}/>
       </IndvStarRating>
 
       <ReviewSummary>

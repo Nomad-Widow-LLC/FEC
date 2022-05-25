@@ -8,12 +8,13 @@ const StarRating = ({rating, reviewNum}) => {
   }
   return (
     <span className='starRating'>
-      {[1,2,3,4,5].map((index) => {
+      {[1,2,3,4,5].map((idx) => {
         return (
-          <Star index={index} rating={rating} key={index}/>
+          <Star idx={idx} rating={rating} key={idx}/>
         )
       })}
-      <button className='readAllRatingsButton'> Read all {reviewNum} reviews </button>
+      {reviewNum ? <button className='readAllRatingsButton'> Read all {reviewNum} reviews </button> : <></>}
+
     </span>
   )
 }
