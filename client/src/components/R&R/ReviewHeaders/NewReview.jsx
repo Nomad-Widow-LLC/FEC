@@ -11,7 +11,9 @@ const ReviewButtonItem = styled.button`
   border-radius: 3px;
   background-color: black;
 `
+const Style = styled.div`
 
+`
 
 export default function NewReview () {
 

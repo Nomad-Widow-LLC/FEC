@@ -15,6 +15,11 @@ class App extends React.Component {
         < ProductInfo />
         {/* < Carousel /> */}
         {/* <ReviewWidget /> */}
+        {/* <StarRating /> */}
+        {/* <ProductInfo /> */}
+        <Carousel />
+        {/* <ReviewWidget /> */}
+
      </>
     );
   }

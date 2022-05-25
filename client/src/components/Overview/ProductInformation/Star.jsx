@@ -1,21 +1,23 @@
-import React, {useState, useMemo} from 'react'
+import React, {useState, useMemo, useCallback} from 'react'
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
-const Star = ({index, rating}) => {
+const Star = ({idx, rating}) => {
+
+  // let widthClass = '';
 
   const widthClass = useMemo(() => {
-    if (rating >= index) {
-      return 'ratingStar100';
-    } else if ((index > rating) && ((index - rating) > 0)) {
-      let difference = 1 - (index - rating);
+    if (rating >= idx) {
+      return 'ratingStar100'
+    } else if ((idx > rating) && ((idx - rating) > 0)) {
+      let difference = 1 - (idx - rating);
       if (difference < .25) {
-        return 'ratingStar0';
+        return 'ratingStar0'
       } else if (difference < 0.50) {
-        return 'ratingStar25';
+        return 'ratingStar25'
       } else if (difference < 0.75) {
-        return 'ratingStar50';
+        return 'ratingStar50'
       } else if (difference < 1) {
-        return 'ratingStar75';
+        return 'ratingStar75'
       }
     }
   }, [rating]);
