@@ -82,7 +82,13 @@ export default function AddToCart({handleChoosingSize, style, size, quantity}) {
 
   const quantityArray = useMemo(() => {
     let quantities = [];
-    for (let i = 1; i < quantity + 1; i++) {
+    let length = 0;
+    if (quantity > 15) {
+      length = 15;
+    } else {
+      length = quantity;
+    }
+    for (let i = 1; i < length + 1; i++) {
       quantities.push(i);
     }
     return quantities
