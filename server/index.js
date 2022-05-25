@@ -1,10 +1,5 @@
 require('dotenv').config();
-
-// const config = require('../client/dist/config.js');
-
 const axios = require('axios');
-
-// const config = require('../client/dist/config.js');
 
 const path = require("path")
 const express = require("express"); // npm installed
@@ -21,7 +16,7 @@ let api_header = {headers:{Authorization: `${process.env.TOKEN}`}};
 // get detail of a specific product
 app.get('/product', (req, res) => {
   let product = req.query.product_id;
-  console.log('PRODUCT', product);
+  //console.log('PRODUCT', product);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${product}`, api_header)
     .then ((response) => {
       res.status(200).send(response.data);
@@ -52,16 +47,29 @@ app.get('/review', (req, res) => {
 app.get('/products', (req, res) => {
   let numOfProducts = req.query.count;
   let pageNum = req.query.page;
+  let productID = req.query.id;
+  let related = req.query.related;
+  let styles = req.query.styles;
   let api_endpoint = ``;
+  console.log(`Query Parameters: `);
+  console.log(req.query);
 
-  if (req.query.count === undefined && req.query.page === undefined) {
+  if (numOfProducts === undefined && pageNum === undefined && productID === undefined) {
     api_endpoint = `${process.env.API_URL}/products`;
-  } else if (req.query.count !== undefined && req.query.page === undefined) {
+  } else if (numOfProducts !== undefined && pageNum === undefined && productID === undefined) {
     api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}`;
-  } else if (req.query.count === undefined && req.query.page !== undefined) {
+  } else if (numOfProducts === undefined && pageNum !== undefined && productID === undefined) {
     api_endpoint = `${process.env.API_URL}/products?page=${pageNum}`;
-  } else if (req.query.count !== undefined && req.query.page !== undefined) {
+  } else if (numOfProducts !== undefined && pageNum !== undefined && productID === undefined) {
     api_endpoint = `${process.env.API_URL}/products?count=${numOfProducts}&page=${pageNum}`;
+  }
+
+  if (productID && related && !styles) {
+    api_endpoint = `${process.env.API_URL}/products/${productID}/related`
+  } else if (productID && !related && styles) {
+    api_endpoint = `${process.env.API_URL}/products/${productID}/styles`
+  } else if (productID && !related && !styles) {
+    api_endpoint = `${process.env.API_URL}/products/${productID}`
   }
 
   axios.get(api_endpoint, api_header)

@@ -1,60 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import useToGetProducts from './lib/hooks.js';
 import Card from './Card.jsx';
 import axios from 'axios';
+import Qs from 'qs';
+import getEndPoint from './lib/hooks.js';
+// import styled from 'styled-components';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import Promise from 'bluebird';
 
-class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      productList: [],
-      page: 4
-    }
-  }
+let Carousel = () => {
+  let [productList, setProductList] = useState([]);
+  let overviewId = 40359;
+  let [styleList, setStyleList] = useState([]);
+  let[test, setTest] = useState([])
 
-  getEndPoint(page, count) {
-    let endpoint = '';
-
-    if (page === undefined && count === undefined) {
-      // Default with no arguments will retrieve 5 items
-      endpoint = `/products`;
-    } else if (page !== undefined && count === undefined) {
-      // This will return a single page which contains 5 items
-      endpoint = `/products?page=${page}`;
-    } else if (page === undefined && count !== undefined) {
-      // This will retrieve n number of items
-      endpoint = `/products?count=${count}`;
-    } else if (page !== undefined && count !== undefined) {
-      // This will navigate to the desired page and retrieve the first n items
-      endpoint = `/products?page=${page}&count=${count}`
-    }
-
-    return endpoint;
-  }
-
-  componentDidMount() {
-    // getEndPoints accepts 'page' and 'count': page = the page number you want (default 10 per page), count = the numger of items you want to retrieve.
-    let endpoint = this.getEndPoint(this.state.page);
-
-    axios.get(endpoint)
-      .then((product) => {
-        console.log('Have data back from API, mapping it now...')
-        this.setState({productList: product.data})
-        console.log(product.data)
+  useEffect(() => {
+    axios.get(`/products?id=${overviewId}&related=true`)
+      .then((results) => {
+        let idList = results.data;
+        return idList;
       })
-      .catch((err) => console.log(`Error in hooks /product get request: ${err}`))
-  }
+      .then((idList) => {
+        Promise.all(idList.map((id) => axios.get(`/products?id=${id}&styles=true`)))
+          .then((values) => {
+            let allValues = values.map((item) => {return item.data});
+            setStyleList(allValues)
+            return allValues;
+          })
+        return idList;
+      })
+      .then((idList) => {
+        Promise.all(idList.map((id) => axios.get(`/products?id=${id}`)))
+          .then((values) => {
+            let allValues = values.map((item) => {return item.data});
+            setProductList(allValues);
+            return allValues;
+          })
+      })
+      .catch((err) => console.log(`Error in carousel GET: ${err}`))
+  }, [])
 
+  return (
+    <div className="carousel">
+      <FaAngleLeft className="leftBtn" onClick={() => {console.log(productList)}} />
+      {productList.map((item, i) =>
+        <Card item={item} pic={styleList[i].results[0].photos[0].thumbnail_url} key={item.id} />
+      )}
+      <FaAngleRight className="rightBtn" onClick={() => console.log(productList)} />
+    </div>
+  )
 
-  render () {
-    return (
-      <div className="carousel">
-        {this.state.productList.map((item) =>
-          <Card item={item} key={item.id} />
-        )}
-      </div>
-    )
-  }
 }
 
 export default Carousel = Carousel;

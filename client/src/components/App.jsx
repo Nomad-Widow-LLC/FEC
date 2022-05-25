@@ -13,7 +13,10 @@ class App extends React.Component {
     return (
       <>
         {/* <StarRating /> */}
-        <ReviewWidget />
+        {/* <ProductInfo /> */}
+        <Carousel />
+        {/* <ReviewWidget /> */}
+
      </>
     );
   }
