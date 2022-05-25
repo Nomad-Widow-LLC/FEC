@@ -7,9 +7,10 @@ import getEndPoint from './lib/hooks.js';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import Promise from 'bluebird';
 
-let Carousel = () => {
+let Carousel = (props) => {
+
+  let overviewId = props.id || 40359;
   let [productList, setProductList] = useState([]);
-  let overviewId = 40359;
   let [styleList, setStyleList] = useState([]);
   let[test, setTest] = useState([])
 
