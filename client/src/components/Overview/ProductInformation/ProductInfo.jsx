@@ -69,14 +69,14 @@ const ProductInfo = () => {
     <div className='productAndImage'>
         <Carousel style={style}/>
         <div className='ProductInfo'>
-        <StarRating rating={rating} reviewNum={reviewNum}/>
-        <h6 className='ProductCategory'>{product.category}</h6>
-        <h3 className='ProductTitle'>{product.name}</h3>
-        <h6 className='Price'>${product.default_price}</h6>
-        <h6 className='ProductOverview'>{product.description}</h6>
-        <h6 className='SocialMedia'>Share on Social Media</h6>
-        <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
-        <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity}/>
+          <StarRating rating={rating} reviewNum={reviewNum}/>
+          <h6 className='ProductCategory'>{product.category}</h6>
+          <h3 className='ProductTitle'>{product.name}</h3>
+          <h6 className='Price'>${product.default_price}</h6>
+          <h6 className='ProductOverview'>{product.description}</h6>
+          <h6 className='SocialMedia'>Share on Social Media</h6>
+          <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
+          <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity}/>
       </div>
     </div>
   )

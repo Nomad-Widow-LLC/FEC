@@ -6,6 +6,7 @@ export const DropdownWrapper = styled.form`
   font-size: 3px;
   width: 30px;
   height: 10px;
+  justify-content: center;
 `;
 
 export const StyledSelect = styled.select`
@@ -21,10 +22,7 @@ export const StyledSelect = styled.select`
 `;
 
 export const StyledOption = styled.option`
-`;
-
-export const StyledLabel = styled.label`
-  margin-bottom: 5px;
+  justify-content: center;
 `;
 
 export const StyledButton = styled.input`
@@ -37,9 +35,6 @@ export const StyledButton = styled.input`
 export function Dropdown(props) {
   return (
     <DropdownWrapper action={props.action}>
-      <StyledLabel htmlFor="services">
-        {props.formLabel}
-      </StyledLabel>
       <StyledSelect id="services" name="services" onChange={(event)=>{props.handleChoosingSize(event.target.value)}}>
         {props.children}
       </StyledSelect>
@@ -50,9 +45,6 @@ export function Dropdown(props) {
 export function DropdownQuantity(props) {
   return (
     <DropdownWrapper action={props.action}>
-      <StyledLabel htmlFor="services">
-        {props.formLabel}
-      </StyledLabel>
       <StyledSelect id="services" name="services" >
         {props.children}
       </StyledSelect>
@@ -95,8 +87,7 @@ export default function AddToCart({handleChoosingSize, style, size, quantity}) {
   }, [size])
 
   return (
-    <div>
-      {/* <h1>Which service are you interested in?</h1> */}
+    <div className='add-to-cart'>
       <Dropdown
         buttonText="Add to Cart"
         action="/"
@@ -112,7 +103,7 @@ export default function AddToCart({handleChoosingSize, style, size, quantity}) {
         buttonText="Add to Cart"
         action="/"
       >
-        <Option selected value="--" />
+        <Option selected value="-" />
         {quantityArray.map(quantity => {
           return (
             <Option value={quantity} key={quantity}/>
