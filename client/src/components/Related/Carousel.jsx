@@ -41,12 +41,12 @@ let Carousel = (props) => {
   }, [])
 
   return (
-    <div className="carousel">
-      <FaAngleLeft className="leftBtn" onClick={() => {console.log(productList)}} />
+    <div className="relatedCarousel">
+      <FaAngleLeft className="leftBtn" onClick={() => {console.log('Style List: '); console.log(styleList); console.log('Product List: '); console.log(productList)}} />
       {productList.map((item, i) =>
-        <Card item={item} pic={styleList[i].results[0].photos[0].thumbnail_url} key={item.id} />
+        <Card item={item} pic={styleList[i].results[0].photos[0].url} salePrice={styleList[i].results[3].sale_price} key={item.id} />
       )}
-      <FaAngleRight className="rightBtn" onClick={() => console.log(productList)} />
+      <FaAngleRight className="rightBtn" />
     </div>
   )
 

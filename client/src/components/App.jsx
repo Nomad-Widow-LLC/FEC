@@ -2,8 +2,8 @@ import React from "react";
 import StarRating from "./Overview/ProductInformation/StarRating.jsx"
 // import { hot } from 'react-hot-loader/root';
 import ProductInfo from "./Overview/ProductInformation/ProductInfo.jsx"
-// import ReviewWidget from './R&R/ReviewWidget.jsx';
-// import Carousel from './Related/Carousel.jsx';
+import ReviewWidget from './R&R/ReviewWidget.jsx';
+import Carousel from './Related/Carousel.jsx';
 
 
 
@@ -12,9 +12,10 @@ class App extends React.Component {
    // const { name } = 'Robert';
     return (
       <>
-        < ProductInfo />
-        {/* < Carousel /> */}
-        {/* <ReviewWidget /> */}
+        <ProductInfo />
+        <Carousel />
+        <div className="componentGap" />
+        <ReviewWidget />
         {/* <StarRating /> */}
         {/* <Carousel /> */}
         {/* <ReviewWidget /> */}
