@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo, useState} from 'react';
 import styled from 'styled-components';
 
 export const DropdownWrapper = styled.form`
@@ -13,6 +13,11 @@ export const StyledSelect = styled.select`
   font-size: 3px;
   width: 30px;
   height: 10px;
+  appearance: none;
+  outline: none;
+  border:none;
+  border-style: solid;
+  border-radius: 2px;
 `;
 
 export const StyledOption = styled.option`
@@ -35,7 +40,20 @@ export function Dropdown(props) {
       <StyledLabel htmlFor="services">
         {props.formLabel}
       </StyledLabel>
-      <StyledSelect id="services" name="services">
+      <StyledSelect id="services" name="services" onChange={(event)=>{props.handleChoosingSize(event.target.value)}}>
+        {props.children}
+      </StyledSelect>
+    </DropdownWrapper>
+  );
+}
+
+export function DropdownQuantity(props) {
+  return (
+    <DropdownWrapper action={props.action}>
+      <StyledLabel htmlFor="services">
+        {props.formLabel}
+      </StyledLabel>
+      <StyledSelect id="services" name="services" >
         {props.children}
       </StyledSelect>
       <StyledButton type="submit" value={props.buttonText} />
@@ -51,28 +69,50 @@ export function Option(props) {
   );
 }
 
-export default function AddToCart() {
+export default function AddToCart({handleChoosingSize, style, size, quantity}) {
+
+  const sizeAndQuantity = useMemo(() => {
+    console.log('STYLE CHANGED', style.skus)
+    let array = [];
+    for (let key in style.skus) {
+      array.push(style.skus[key])
+    }
+    return array;
+  }, [style])
+
+  const quantityArray = useMemo(() => {
+    let quantities = [];
+    for (let i = 1; i < quantity + 1; i++) {
+      quantities.push(i);
+    }
+    return quantities
+  }, [size])
+
   return (
     <div>
       {/* <h1>Which service are you interested in?</h1> */}
       <Dropdown
-        formLabel="Select Size"
+        buttonText="Add to Cart"
+        action="/"
+        handleChoosingSize={handleChoosingSize}
+      >
+        <Option selected value="Select Size" />
+        {sizeAndQuantity.map(set => {
+          return (
+            <Option value={set.size} key={set.size}/>
+          )})}
+      </Dropdown>
+      <DropdownQuantity
         buttonText="Add to Cart"
         action="/"
       >
         <Option selected value="--" />
-        <Option value="xs" />
-        <Option value="s" />
-        <Option value="m" />
-      </Dropdown>
-      <Dropdown
-        formLabel="Select Quantity"
-      >
-        <Option selected value="--" />
-        <Option value="1" />
-        <Option value="2" />
-        <Option value="3" />
-      </Dropdown>
+        {quantityArray.map(quantity => {
+          return (
+            <Option value={quantity} key={quantity}/>
+          )}
+        )}
+      </DropdownQuantity>
     </div>
   );
 }
