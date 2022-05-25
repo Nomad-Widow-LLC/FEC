@@ -10,6 +10,7 @@ import {AllReviews} from '../ReviewWidget.jsx';
 
 
 const OverallRatingContainer = styled.div`
+  width: 120px;
   margin: 10px 10px;
   align-items: flex-end;
   border-style: groove;
