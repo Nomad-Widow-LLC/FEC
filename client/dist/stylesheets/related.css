@@ -1,17 +1,54 @@
 .carousel {
   overflow: hidden;
-  background-color: lightgrey;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 210px;
+  height: 300px;
+  align-self: center;
   position: relative;
+  margin: auto;
 }
 
 .card {
-  position: absolute;
-  border-style: solid;
-  border-color: black;
-  margin: 5px;
+  vertical-align: middle;
+  display: inline-block;
+  position: relative;
+  margin: auto;
+  margin-left: 55px;
+  height: 275px;
   width: 300px;
+  margin-top: 10px;
+}
+
+.leftBtn {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  margin-right: 95%;
+  height: 100%;
+}
+
+.rightBtn {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 100%;
+}
+
+.selected {
+  background-color: grey;
+}
+
+.carouselImage {
+  height: 75%;
+  width: 299px;
+}
+
+.category {
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.title {
+  font-weight: bolder;
+}
+.price {
+  margin-top: 5px;
 }
