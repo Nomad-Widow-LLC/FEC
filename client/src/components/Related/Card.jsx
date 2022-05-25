@@ -7,15 +7,29 @@ import StarRating from "../Overview/ProductInformation/StarRating.jsx"
 
 var Card = (props) => {
 
-
-  return (
-    <div className="card">
-      <img className="carouselImage" src={props.pic}></img>
-      <div className="title">{props.item.name}</div>
-      <div className="category">{props.item.category}</div>
-      <div className="price">{props.item.default_price}</div>
-    </div>
-  )
+  if (props.salePrice === null) {
+    return (
+      <div className="card">
+        <img className="carouselImage" src={props.pic}></img>
+        <div className="title">{props.item.name}</div>
+        <div className="category">{props.item.category}</div>
+        <div className="price">{props.item.default_price}</div>
+      </div>
+    )
+  } else if (props.salePrice !== null) {
+    return (
+      <div className="card">
+        <img className="carouselImage" src={props.pic}></img>
+        <div className="title">{props.item.name}</div>
+        <div className="category">{props.item.category}</div>
+        <span className="priceContainer">
+          <span className="price redSale">${props.salePrice}</span>
+          <span className="spacer">&nbsp;</span>
+          <span className="price lineThrough">${props.item.default_price}</span>
+        </span>
+      </div>
+    )
+  }
 }
 
 //<StarRating product_id={props.item.id}/>
