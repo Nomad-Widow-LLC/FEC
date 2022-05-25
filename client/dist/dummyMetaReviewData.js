@@ -1,9 +1,11 @@
 let dummyMetaReviewData = {
   "product_id": "2",
   "ratings": {
+    1: 2,
     2: 1,
     3: 1,
     4: 2,
+    5: 20
     // ...
   },
   "recommended": {

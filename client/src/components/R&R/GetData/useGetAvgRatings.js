@@ -1,12 +1,10 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 
-import {AllReviews} from '../ReviewWidget.jsx';
+
 
 export default function useGetAvgRatings (ratingsBreakdown) {
 
-
-  // const [averageRatings, setAverageRatings] = useState(null)
 
 
   let sumStars = 0;
@@ -17,10 +15,5 @@ export default function useGetAvgRatings (ratingsBreakdown) {
     sumStars += parseInt(key) * ratingsBreakdown[key];
   }
   return(sumStars / count);
-
-
-
-
-  // return averageRatings;
-
 };
+
