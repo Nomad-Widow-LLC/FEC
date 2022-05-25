@@ -52,3 +52,21 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.add-to-cart {
+  border-style: round;
+  margin-top: 5px;
+  width: 25px;
+  height: 10px;
+  font-size: 3px;
+  justify-content: center;
+}
+
+.choose-size, .choose-quantity {
+  border-style: round;
+  margin-top: 5px;
+  width: 15px;
+  height: 10px;
+  font-size: 3px;
+  justify-content: center;
+}

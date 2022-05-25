@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import StarRating from './StarRating.jsx'
-import Carousel from "../ImageGallery/Carousel.jsx"
-import StyleSelector from "./StyleSelector.jsx"
+import StarRating from './StarRating.jsx';
+import Carousel from "../ImageGallery/Carousel.jsx";
+import StyleSelector from "./StyleSelector.jsx";
+import AddToCart from "./AddToCart.jsx";
 import axios from 'axios';
 
 const ProductInfo = () => {
@@ -61,6 +62,7 @@ const ProductInfo = () => {
         <h6 className='ProductOverview'>{product.description}</h6>
         <h6 className='SocialMedia'>Share on Social Media</h6>
         <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
+        <AddToCart />
       </div>
     </div>
   )
