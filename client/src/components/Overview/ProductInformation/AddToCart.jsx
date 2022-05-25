@@ -3,22 +3,16 @@ import styled from 'styled-components';
 
 export const DropdownWrapper = styled.form`
   margin-top: 5px;
-  font-size: 3px;
-  width: 30px;
-  height: 10px;
-  justify-content: center;
+  font-size: 20px;
+  // width: 30px;
+  // height: 10px;
 `;
 
 export const StyledSelect = styled.select`
   margin-bottom: 5px;
-  font-size: 3px;
-  width: 30px;
-  height: 10px;
-  appearance: none;
-  outline: none;
-  border:none;
-  border-style: solid;
-  border-radius: 2px;
+  font-size: 20px;
+  // width: 30px;
+  // height: 10px;
 `;
 
 export const StyledOption = styled.option`
@@ -27,9 +21,9 @@ export const StyledOption = styled.option`
 
 export const StyledButton = styled.input`
   justify-content: center;
-  width: 30px;
-  height: 10px;
-  font-size: 3px;
+  // width: 100px;
+  // height: 10px;
+  font-size: 20px;
 `;
 
 export function Dropdown(props) {

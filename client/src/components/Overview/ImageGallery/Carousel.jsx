@@ -26,7 +26,7 @@ const Carousel = ({ style }) => {
           >
             <FaArrowLeft
             display={showLeftArrow}
-            size='10px'/>
+            size='50px'/>
           </div>
         <div
           className='right'
@@ -41,7 +41,7 @@ const Carousel = ({ style }) => {
             }}}>
               <FaArrowRight
               display={showRightArrow}
-              size='10px'/>
+              size='50px'/>
             </div>
       </div>
     </div>
