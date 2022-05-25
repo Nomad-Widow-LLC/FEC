@@ -16,6 +16,7 @@ const OverallRatingContainer = styled.div`
   border-width: 1px;
   border-color: grey;
   box-shadow: 1px 1px grey;
+  padding: 10px;
 `
 
 const OverallHeader = styled.div`
@@ -32,6 +33,9 @@ const BreakdownStyles = styled.div`
   display: flex;
   flex-direction: column;
 `
+const StarRatingItem = styled.div`
+  vertical-align: bottom;
+`
 
 export default function OverallRating () {
 
@@ -46,7 +50,9 @@ export default function OverallRating () {
         <OverallRatingNumber>
           <div>{sumRating.toFixed(1)}</div>
         </OverallRatingNumber>
-        <StarRating rating={sumRating} reviewNum={null}/>
+        <StarRatingItem>
+          <StarRating rating={sumRating} reviewNum={null}/>
+        </StarRatingItem>
       </OverallHeader>
         {/* {['5 Star', '4 Star', '3 Star', '2 Star', '1 Star'].map((text, index) => {
           return <div>{text}</div>

@@ -22,9 +22,13 @@ import styled from 'styled-components';
 const StarTextStyles = styled.div`
   font-size: 0.75em;
   fontWeight: bold;
-  width: 40px;
+  width: 50px;
   vertical-align: middle;
   padding-top: 2.5px;
+  cursor: pointer;
+  &:hover {
+    color: blue;
+  }
 `
 
 const BarPercentageItem = styled.div`
