@@ -1,11 +1,11 @@
 let dummyMetaReviewData = {
-  "product_id": "2",
+  "product_id": "40344",
   "ratings": {
-    1: 2,
-    2: 1,
-    3: 1,
-    4: 2,
-    5: 20
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0
     // ...
   },
   "recommended": {
