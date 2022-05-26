@@ -9,17 +9,13 @@ import Carousel from './Related/Carousel.jsx';
 
 class App extends React.Component {
   render() {
-   // const { name } = 'Robert';
     return (
       <>
         <ProductInfo />
+        <div className="componentGap" />
         <Carousel />
         <div className="componentGap" />
         <ReviewWidget />
-        {/* <StarRating /> */}
-        {/* <Carousel /> */}
-        {/* <ReviewWidget /> */}
-
      </>
     );
   }

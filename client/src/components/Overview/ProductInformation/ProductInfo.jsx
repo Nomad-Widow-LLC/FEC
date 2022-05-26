@@ -11,9 +11,23 @@ const ProductInfo = () => {
   const [product, setProduct] = useState({});
   const [style, setStyle] = useState([]);
   const [styleSelector, setStyleSelector] = useState([]);
+  const [size, setSize] = useState('');
+  const [quantity, setQuantity] = useState(0);
 
   const handleOnClickStyle = (thumbnail) => {
     setStyle(thumbnail);
+  }
+
+  const handleChoosingSize = (size) => {
+    console.log('SIZE', size);
+    console.log('STYLE', style.skus)
+    for (let key in style.skus) {
+      if (style.skus[key].size === size) {
+        console.log(style.skus[key].quantity);
+        setQuantity(style.skus[key].quantity);
+      }
+    }
+    setSize(size);
   }
 
   useEffect(() => {
@@ -55,14 +69,14 @@ const ProductInfo = () => {
     <div className='productAndImage'>
         <Carousel style={style}/>
         <div className='ProductInfo'>
-        <StarRating rating={rating} reviewNum={reviewNum}/>
-        <h6 className='ProductCategory'>{product.category}</h6>
-        <h3 className='ProductTitle'>{product.name}</h3>
-        <h6 className='Price'>${product.default_price}</h6>
-        <h6 className='ProductOverview'>{product.description}</h6>
-        <h6 className='SocialMedia'>Share on Social Media</h6>
-        <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
-        <AddToCart />
+          <StarRating rating={rating} reviewNum={reviewNum}/>
+          <h6 className='ProductCategory'>{product.category}</h6>
+          <h3 className='ProductTitle'>{product.name}</h3>
+          <h6 className='Price'>${product.default_price}</h6>
+          <h6 className='ProductOverview'>{product.description}</h6>
+          <h6 className='SocialMedia'>Share on Social Media</h6>
+          <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
+          <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity}/>
       </div>
     </div>
   )
