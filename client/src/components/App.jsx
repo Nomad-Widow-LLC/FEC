@@ -12,6 +12,7 @@ class App extends React.Component {
     return (
       <>
         <ProductInfo />
+        <div className="componentGap" />
         <Carousel />
         <div className="componentGap" />
         <ReviewWidget />
