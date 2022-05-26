@@ -7,18 +7,14 @@ import Carousel from './Related/Carousel.jsx';
 
 
 
-class App extends React.Component {
-  render() {
-    return (
-      <>
-        <ProductInfo />
-        <div className="componentGap" />
-        <Carousel />
-        <div className="componentGap" />
-        <ReviewWidget />
-     </>
-    );
-  }
+export default function App () {
+  return (
+    <>
+      <ProductInfo />
+      <div className="componentGap" />
+      <Carousel />
+      <div className="componentGap" />
+      <ReviewWidget />
+    </>
+  );
 }
-
-export default App = App;

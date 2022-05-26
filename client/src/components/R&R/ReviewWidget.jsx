@@ -42,6 +42,13 @@ export default function ReviewWidget () {
   const [reviewsShown, setReviewShown] = useState(2);
 
 
+
+  // useEffect(() => {
+  //   axios.get('/review')
+
+  // }, [])
+
+
   // useEffect(() => {
   //   axios.get('/review', {headers: {Authorization: `${config.GITHUB_API}` }})
   //     .then((data) => {
