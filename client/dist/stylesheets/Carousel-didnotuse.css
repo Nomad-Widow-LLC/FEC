@@ -23,9 +23,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  object-fit: contain;
+  /* object-fit: contain; */
   /* display: flex; */
-  position: absolute;
+  /* position: absolute; */
   /* padding: 50px; */
 }
 

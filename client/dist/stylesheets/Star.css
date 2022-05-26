@@ -1,6 +1,7 @@
 .star {
   position: relative;
-  display: inline-block
+  display: inline-block;
+  margin-bottom: 5%;
 }
 
 .ratingStar {
