@@ -13,7 +13,7 @@ const StarRating = ({rating, reviewNum}) => {
           <Star idx={idx} rating={rating} key={idx}/>
         )
       })}
-      {reviewNum ? <button className='readAllRatingsButton'> Read all {reviewNum} reviews </button> : <></>}
+      {reviewNum ? <a className='readAllRatingsButton' href="#review-widget"> Read all {reviewNum} reviews </a> : <></>}
 
     </span>
   )

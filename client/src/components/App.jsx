@@ -15,6 +15,7 @@ class App extends React.Component {
         <div className="componentGap" />
         <Carousel />
         <div className="componentGap" />
+        <a className='readAllRatingsButton' id="review-widget"></a>
         <ReviewWidget />
      </>
     );
