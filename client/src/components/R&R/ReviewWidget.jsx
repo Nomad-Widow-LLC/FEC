@@ -56,18 +56,26 @@ export default function ReviewWidget () {
       .then(() => {
         axios.get(`/review/meta?product_id=${productIDN}`)
         .then((data) => {
-          console.log(data.data);
+          // console.log(data.data);
           setMetaData(data.data);
         })
         .catch((err) => {console.log('Could not reach API')})
       })
   },[productIDN])
 
+  useEffect(() => {
+    axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}`)
+      .then((data) => {
+        console.log(data.data);
+        setReviewData(data.data)})
+      .catch((err) => {console.log('Could not reach API')})
+  },[sortBy])
+
 
   return (
     <div className="review-widget">
     <ReviewWidgetContainer>
-        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown}}>
+        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy}}>
           <ReviewHeader />
 
           <ReviewWidgetBody>
