@@ -7,9 +7,8 @@ color scheme
 
  .ProductInfo {
    display:inline-block;
-   border-style: solid;
-   border-color: black;
-   font-size: 5px;
+   font-size: 2em;
+   width: 50%;
  }
 
  .ProductCategory, .ProductTitle, .Price, .ProductOverview, .SocialMedia {
