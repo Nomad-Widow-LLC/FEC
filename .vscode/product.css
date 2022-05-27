@@ -44,37 +44,17 @@
 
 .style-selector {
   display: grid;
-  grid-template-columns: repeat(4, 85px);
+  grid-template-columns: repeat(4, 110px);
   row-gap: 10px;
   margin-top: 5%;
   margin-bottom: 5%;
 }
 
-.thumbnail-container {
-  position:relative;
-  width: 80px;
-  height: 80px;
-  /* height: 50%; */
-}
-
 .style-thumbnail {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   cursor: pointer;
-  position: relative;
-}
-
-.overlay {
-  text-align: center;
-  font-size: 50px;
-  position: relative;
-  bottom:85%;
-  opacity: 70%;
-}
-
-.display-overlay {
-  display:none;
 }
 
 .add-to-cart {

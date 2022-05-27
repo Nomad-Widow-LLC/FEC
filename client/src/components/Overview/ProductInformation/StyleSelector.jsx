@@ -1,8 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
+import {FaCheck} from 'react-icons/fa';
 
-const StyleSelector = ({handleOnClickStyle, styleSelector}) => {
+const StyleSelector = ({handleOnClickStyle, styleSelector, style}) => {
   const [image, setImage] = useState(0);
+
+  const hideCheckmark = (thumbnail)=>{
+    console.log('WHAT DOES THIS PRODUCE', styleSelector);
+    // console.log('thumbnail', thumbnail);
+    console.log('style', style);
+    if (thumbnail !== style) {
+      return 'display-overlay'
+    }
+  }
 
   return (
     <div className='style-selector'>
@@ -14,6 +24,9 @@ const StyleSelector = ({handleOnClickStyle, styleSelector}) => {
             key={thumbnail.photos?.[0].thumbnail_url}
             onClick={()=>{handleOnClickStyle(thumbnail)}}
           />
+          <div className={`overlay ${hideCheckmark(thumbnail)}`}>
+            <FaCheck/>
+          </div>
         </div>
       )}
     </div>
