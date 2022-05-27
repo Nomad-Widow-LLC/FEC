@@ -85,6 +85,7 @@ const ProductInfo = () => {
             <a className='social-icon' href="https://www.twitter.com"><FaTwitter/></a>
             <a className='social-icon' href="https://www.instagram.com"><FaInstagram/></a>
           </span>
+          <h6 className='style-name'>{style.name}</h6>
           <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
           <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity}/>
       </div>

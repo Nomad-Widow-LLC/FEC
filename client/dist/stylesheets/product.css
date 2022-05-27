@@ -81,7 +81,12 @@
   color: red;
 }
 
+.social-media-icons {
+  margin:0% 3% 3% 0%;
+}
+
 .social-icon {
   padding-right: 30px;
   display: inline-block;
+  color: black;
 }

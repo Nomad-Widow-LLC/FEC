@@ -7,12 +7,14 @@ const StyleSelector = ({handleOnClickStyle, styleSelector}) => {
   return (
     <div className='style-selector'>
       {styleSelector.map(thumbnail =>
-        <img
-          className='style-thumbnail'
-          src={thumbnail.photos?.[0].thumbnail_url}
-          key={thumbnail.photos?.[0].thumbnail_url}
-          onClick={()=>{handleOnClickStyle(thumbnail)}}
-        />
+        <div className='thumbnail-container'>
+          <img
+            className='style-thumbnail'
+            src={thumbnail.photos?.[0].thumbnail_url}
+            key={thumbnail.photos?.[0].thumbnail_url}
+            onClick={()=>{handleOnClickStyle(thumbnail)}}
+          />
+        </div>
       )}
     </div>
   )

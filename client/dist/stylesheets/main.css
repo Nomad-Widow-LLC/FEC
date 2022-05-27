@@ -15,11 +15,21 @@ color scheme
    width: 50%;
    right: 10%;
    position: relative;
-   margin-top: 3%;
+   margin-top: 1%;
  }
 
- .ProductCategory, .ProductTitle, .Price, .SocialMedia, .ProductOverview  {
+ .ProductCategory, .ProductTitle, .Price, .ProductOverview  {
    margin:0% 3% 3% 0%;
+ }
+
+ .SocialMedia{
+  font-size: 20px;
+  margin:0% 3% 3% 0%;
+ }
+
+ .style-name{
+  font-size: 15px;
+  padding: 0%;
  }
 
  .readAllRatingsButton {
