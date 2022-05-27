@@ -4,6 +4,7 @@ import Carousel from "../ImageGallery/Carousel.jsx";
 import StyleSelector from "./StyleSelector.jsx";
 import AddToCart from "./AddToCart.jsx";
 import axios from 'axios';
+import { faYoutube, faFacebook, faTwitter, faInstagram } from 'react-icons/fa';
 
 const ProductInfo = () => {
   const [rating, setRating] = useState(0);
@@ -15,12 +16,11 @@ const ProductInfo = () => {
   const [quantity, setQuantity] = useState(0);
 
   const handleOnClickStyle = (thumbnail) => {
+    console.log('cyrrent style', thumbnail);
     setStyle(thumbnail);
   }
 
   const handleChoosingSize = (size) => {
-    console.log('SIZE', size);
-    console.log('STYLE', style.skus)
     for (let key in style.skus) {
       if (style.skus[key].size === size) {
         console.log(style.skus[key].quantity);
@@ -72,9 +72,17 @@ const ProductInfo = () => {
           <StarRating rating={rating} reviewNum={reviewNum}/>
           <h6 className='ProductCategory'>{product.category}</h6>
           <h3 className='ProductTitle'>{product.name}</h3>
-          <h6 className='Price'>${product.default_price}</h6>
+          { style.sale_price ? <span className="priceContainer">
+            <span className="sale-price">${style.sale_price}</span>
+            <span className="spacer">&nbsp;</span>
+            <span className="price">${style.original_price}</span>
+          </span>  : <span className="original-price">${style.original_price}</span> }
           <h6 className='ProductOverview'>{product.description}</h6>
           <h6 className='SocialMedia'>Share on Social Media</h6>
+          <faYoutube/>
+          <faFacebook/>
+          <faTwitter/>
+          <faInstagram/>
           <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
           <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity}/>
       </div>

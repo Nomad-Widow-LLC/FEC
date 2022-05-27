@@ -72,3 +72,11 @@
   font-size: 3px;
   justify-content: center;
 }
+
+.price {
+  text-decoration: line-through;
+}
+
+.sale-price {
+  color: red;
+}

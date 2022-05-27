@@ -4,15 +4,12 @@ import styled from 'styled-components';
 export const DropdownWrapper = styled.form`
   margin-top: 5px;
   font-size: 20px;
-  // width: 30px;
-  // height: 10px;
 `;
 
 export const StyledSelect = styled.select`
   margin-bottom: 5px;
   font-size: 20px;
-  // width: 30px;
-  // height: 10px;
+
 `;
 
 export const StyledOption = styled.option`
@@ -21,8 +18,6 @@ export const StyledOption = styled.option`
 
 export const StyledButton = styled.input`
   justify-content: center;
-  // width: 100px;
-  // height: 10px;
   font-size: 20px;
 `;
 
