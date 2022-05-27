@@ -92,7 +92,7 @@ export default function AddToCart({handleChoosingSize, style, size, quantity}) {
         buttonText="Add to Cart"
         action="/"
       >
-        <Option selected value="-" />
+        {size ? <></> : <Option selected value="-" />}
         {quantityArray.map(quantity => {
           return (
             <Option value={quantity} key={quantity}/>
