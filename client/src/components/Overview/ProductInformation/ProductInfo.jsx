@@ -4,7 +4,7 @@ import Carousel from "../ImageGallery/Carousel.jsx";
 import StyleSelector from "./StyleSelector.jsx";
 import AddToCart from "./AddToCart.jsx";
 import axios from 'axios';
-import { faYoutube, faFacebook, faTwitter, faInstagram } from 'react-icons/fa';
+import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 
 const ProductInfo = () => {
   const [rating, setRating] = useState(0);
@@ -79,10 +79,12 @@ const ProductInfo = () => {
           </span>  : <span className="original-price">${style.original_price}</span> }
           <h6 className='ProductOverview'>{product.description}</h6>
           <h6 className='SocialMedia'>Share on Social Media</h6>
-          <faYoutube/>
-          <faFacebook/>
-          <faTwitter/>
-          <faInstagram/>
+          <span className='social-media-icons'>
+            <a className='social-icon' href="https://www.youtube.com"><FaYoutube/></a>
+            <a className='social-icon' href="https://www.facebook.com"><FaFacebook/></a>
+            <a className='social-icon' href="https://www.twitter.com"><FaTwitter/></a>
+            <a className='social-icon' href="https://www.instagram.com"><FaInstagram/></a>
+          </span>
           <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector}/>
           <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity}/>
       </div>

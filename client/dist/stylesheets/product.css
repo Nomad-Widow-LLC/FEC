@@ -80,3 +80,8 @@
 .sale-price {
   color: red;
 }
+
+.social-icon {
+  padding-right: 30px;
+  display: inline-block;
+}
