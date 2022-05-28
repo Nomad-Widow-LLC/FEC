@@ -7,6 +7,7 @@ import BarPercentage from './BarPercentage.jsx';
 import useGetAvgRatings from '../GetData/useGetAvgRatings.js';
 import useGetRatingBreakdown from '../GetData/useGetRatingBreakdown.js';
 import {AllReviews} from '../ReviewWidget.jsx';
+import {AllProductInfo} from '../../App.jsx';
 
 
 const OverallRatingContainer = styled.div`
@@ -44,12 +45,17 @@ export default function OverallRating () {
   const [sumRating, setSumRating] = useState(useGetAvgRatings(metaData.ratings));
   const [breakdown, setBreakdown] = useState(useGetRatingBreakdown(metaData.ratings));
 
+  useEffect(() => {
+    setSumRating(useGetAvgRatings(metaData.ratings));
+    setBreakdown(useGetRatingBreakdown(metaData.ratings));
+  }, [metaData])
+
   return (
     <>
       <OverallRatingContainer>
       <OverallHeader>
         <OverallRatingNumber>
-          <div>{sumRating.toFixed(1)}</div>
+          {sumRating ? <div>{sumRating.toFixed(1)}</div> : <div>N/A</div>}
         </OverallRatingNumber>
         <StarRatingItem>
           <StarRating rating={sumRating} reviewNum={null}/>
@@ -59,9 +65,12 @@ export default function OverallRating () {
           return <div>{text}</div>
         })} */}
         <BreakdownStyles>
-          {breakdown.map((ratio, index) => {
+          {sumRating ? (breakdown.map((ratio, index) => {
             return (<BarPercentage key={index} ratio={ratio} star={5- index}/>)
-          })}
+          })) : (breakdown.map((ratio, index) => {
+            return (<BarPercentage key={index} ratio={0} star={5- index}/>)
+          }))}
+          {}
         </BreakdownStyles>
       </OverallRatingContainer>
     </>

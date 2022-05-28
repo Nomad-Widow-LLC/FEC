@@ -9,7 +9,7 @@ export default function useGetRatingBreakdown (ratingsBreakdown) {
   let breakdownArr = [];
 
   for (let key in ratingsBreakdown) {
-    sum += ratingsBreakdown[key];
+    sum += parseInt(ratingsBreakdown[key]);
   }
 
   for (let i = 5; i > 0; i--) {

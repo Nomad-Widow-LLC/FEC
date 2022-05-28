@@ -2,6 +2,7 @@ import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import {AllReviews} from '../ReviewWidget.jsx';
+import {AllProductInfo} from '../../App.jsx';
 
 const ShowingResults = styled.div`
   font-size: 12px;
@@ -11,10 +12,13 @@ const ShowingResults = styled.div`
 `
 export default function ShowingReviews () {
 
-  const {reviewData, setReviewData, reviewsShown, setReviewShown} = useContext(AllReviews);
+  const {reviewData, setReviewData} = useContext(AllReviews);
+  const {reviewsShown, setReviewShown} = useContext(AllReviews);
   const [numberReviews, setNumberReviews] = useState(reviewData.results.length);
 
-
+  useEffect(() => {
+    setNumberReviews(reviewData.results.length);
+  },[reviewData])
 
   return (
     <ShowingResults>
