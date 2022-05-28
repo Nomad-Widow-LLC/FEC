@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 export const DropdownWrapper = styled.form`
@@ -50,13 +50,15 @@ export function Option(props) {
   );
 }
 
-export default function AddToCart({handleChoosingSize, style, size, quantity}) {
+export default function AddToCart({handleChoosingSize, style, size, quantity, allQuantity}) {
 
   const sizeAndQuantity = useMemo(() => {
     console.log('STYLE CHANGED', style.skus)
     let array = [];
     for (let key in style.skus) {
-      array.push(style.skus[key])
+      if (style.skus[key].quantity !== 0) {
+        array.push(style.skus[key])
+      }
     }
     return array;
   }, [style])
@@ -77,28 +79,29 @@ export default function AddToCart({handleChoosingSize, style, size, quantity}) {
 
   return (
     <div className='add-to-cart'>
-      <Dropdown
-        buttonText="Add to Cart"
-        action="/"
-        handleChoosingSize={handleChoosingSize}
-      >
-        <Option selected value="Select Size" />
-        {sizeAndQuantity.map(set => {
-          return (
-            <Option value={set.size} key={set.size}/>
-          )})}
-      </Dropdown>
-      <DropdownQuantity
-        buttonText="Add to Cart"
-        action="/"
-      >
-        {size ? <></> : <Option selected value="-" />}
-        {quantityArray.map(quantity => {
-          return (
-            <Option value={quantity} key={quantity}/>
+      {allQuantity ?
+        <Dropdown
+          buttonText="Add to Cart"
+          action="/"
+          handleChoosingSize={handleChoosingSize}
+        >
+          <Option selected value="Select Size" />
+          {sizeAndQuantity.map(set => {
+            return (
+              <Option value={set.size} key={set.size}/>
+            )})}
+        </Dropdown> : <div className="out-of-stock">OUT OF STOCK</div>}
+        <DropdownQuantity
+          buttonText="Add to Cart"
+          action="/"
+        >
+          {size ? <></> : <Option selected value="-" />}
+          {quantityArray.map(quantity => {
+            return (
+              <Option value={quantity} key={quantity}/>
+            )}
           )}
-        )}
-      </DropdownQuantity>
+        </DropdownQuantity>
     </div>
   );
 }

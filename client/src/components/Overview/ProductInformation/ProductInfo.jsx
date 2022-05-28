@@ -14,6 +14,7 @@ const ProductInfo = () => {
   const [styleSelector, setStyleSelector] = useState([]);
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(0);
+  const [allQuantity, setAllQuantity] = useState(false);
 
   const handleOnClickStyle = (thumbnail) => {
     console.log('cyrrent style', thumbnail);
@@ -23,7 +24,7 @@ const ProductInfo = () => {
   const handleChoosingSize = (size) => {
     for (let key in style.skus) {
       if (style.skus[key].size === size) {
-        console.log(style.skus[key].quantity);
+        console.log('quantity',style.skus);
         setQuantity(style.skus[key].quantity);
       }
     }
@@ -56,6 +57,17 @@ const ProductInfo = () => {
          return axios.get('/styles?product_id=' + product_id)
       })
       .then((response) => {
+        console.log('results',response.data.results[0].skus)
+        let quantity = 0;
+        let skus = response.data.results[0].skus;
+        console.log('skus', skus);
+        for(let sku in skus) {
+          quantity += skus[sku].quantity;
+        }
+        console.log('quantity', quantity);
+        if(quantity > 0) {
+          setAllQuantity(true);
+        }
         setStyle(response.data.results[0]);
         setStyleSelector(response.data.results);
       })
@@ -87,7 +99,7 @@ const ProductInfo = () => {
           </span>
           <h6 className='style-name'>{style.name}</h6>
           <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector} style={style}/>
-          <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity}/>
+          <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity} allQuantity={allQuantity}/>
       </div>
     </div>
   )

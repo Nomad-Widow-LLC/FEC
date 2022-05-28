@@ -110,3 +110,8 @@
   display: inline-block;
   color: black;
 }
+
+.out-of-stock {
+  font-size: 20px;
+  width: 300px;
+}
