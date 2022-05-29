@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styled from 'styled-components';
-import Modal from '../../R&R/ReviewList/Modal.jsx';
+import Modal from './Modal.jsx';
 
 
 const Carousel = ({ style }) => {
@@ -17,7 +17,7 @@ const Carousel = ({ style }) => {
     <div className='main-image'>
       <div className='carousel'>
         <img className='inner-image' src={style.photos?.[image].url} onClick={() => setIsOpen(true)} />
-        <Modal open={isOpen} photo={style.photos?.[image]} onClose={() => setIsOpen(false)} />
+        <Modal open={isOpen} photo={style.photos?.[image]} onClose={() => setIsOpen(false)} image={image} showLeftArrow={showLeftArrow} showRightArrow={showRightArrow} style={style} setImage={setImage} setShowLeftArrow={setShowLeftArrow} setShowRightArrow={setShowRightArrow}/>
         <div
           className='left'
           onClick={() => {
