@@ -12,16 +12,19 @@ const ProductInfo = () => {
   const [product, setProduct] = useState({});
   const [style, setStyle] = useState([]);
   const [styleSelector, setStyleSelector] = useState([]);
-  const [size, setSize] = useState('');
+  const [size, setSize] = useState('Select Size');
   const [quantity, setQuantity] = useState(0);
-  const [allQuantity, setAllQuantity] = useState(false);
+  const [allQuantity, setAllQuantity] = useState(true);
+  const [sizeSelected, setSizeSelected] = useState(false);
 
   const handleOnClickStyle = (thumbnail) => {
-    console.log('cyrrent style', thumbnail);
+    console.log('current style', thumbnail);
+    setSize('Select Size');
     setStyle(thumbnail);
   }
 
   const handleChoosingSize = (size) => {
+    setSizeSelected(true);
     for (let key in style.skus) {
       if (style.skus[key].size === size) {
         console.log('quantity',style.skus);
@@ -65,8 +68,8 @@ const ProductInfo = () => {
           quantity += skus[sku].quantity;
         }
         console.log('quantity', quantity);
-        if(quantity > 0) {
-          setAllQuantity(true);
+        if(quantity <= 0) {
+          setAllQuantity(false);
         }
         setStyle(response.data.results[0]);
         setStyleSelector(response.data.results);
@@ -98,8 +101,8 @@ const ProductInfo = () => {
             <a className='social-icon' href="https://www.instagram.com"><FaInstagram/></a>
           </span>
           <h6 className='style-name'>{style.name}</h6>
-          <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector} style={style}/>
-          <AddToCart style={style} size={size} handleChoosingSize={handleChoosingSize} quantity={quantity} allQuantity={allQuantity}/>
+          <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector} style={style} setSize={setSize}/>
+          <AddToCart style={style} size={size} setSize={setSize} handleChoosingSize={handleChoosingSize} quantity={quantity} allQuantity={allQuantity} sizeSelected={sizeSelected}/>
       </div>
     </div>
   )

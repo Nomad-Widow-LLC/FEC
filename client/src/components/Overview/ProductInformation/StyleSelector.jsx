@@ -2,7 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
 import {FaCheck} from 'react-icons/fa';
 
-const StyleSelector = ({handleOnClickStyle, styleSelector, style}) => {
+const StyleSelector = ({handleOnClickStyle, styleSelector, style, setSize}) => {
   const [image, setImage] = useState(0);
 
   const hideCheckmark = (thumbnail)=>{

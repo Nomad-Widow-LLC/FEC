@@ -22,11 +22,43 @@ export const StyledButton = styled.input`
 `;
 
 export function Dropdown(props) {
+  const quantityArray = useMemo(() => {
+    let quantities = [];
+    let length = 0;
+    if (props.quantity > 15) {
+      length = 15;
+    } else {
+      length = props.quantity;
+    }
+    for (let i = 1; i < length + 1; i++) {
+      quantities.push(i);
+    }
+    return quantities
+  }, [props.size])
+
+  const handleAddToCart = (event) => {
+    event.preventDefault();
+    alert('Added item to the cart');
+  }
+
   return (
-    <DropdownWrapper action={props.action}>
-      <StyledSelect id="services" name="services" onChange={(event)=>{props.handleChoosingSize(event.target.value)}}>
+    <DropdownWrapper action={props.action} onSubmit={handleAddToCart} >
+      <StyledSelect id="sizes" name="sizes" onChange={(event)=>{props.handleChoosingSize(event.target.value)}} onInvalid={(event) => event.target.setCustomValidity('Please select size')} required>
         {props.children}
       </StyledSelect>
+      {props.allQuantity ? <DropdownQuantity
+          buttonText="Add to Cart"
+          action="/"
+          size={props.size}
+        >
+          {props.sizeSelected ? <></> : <option selected value="" >-</option>}
+          {quantityArray.map(quantity => {
+            return (
+              <Option value={quantity} key={quantity}/>
+            )}
+          )}
+        </DropdownQuantity> : <></>}
+      <StyledButton type="submit" value={props.buttonText}/>
     </DropdownWrapper>
   );
 }
@@ -34,10 +66,9 @@ export function Dropdown(props) {
 export function DropdownQuantity(props) {
   return (
     <DropdownWrapper action={props.action}>
-      <StyledSelect id="services" name="services" >
+      <StyledSelect id="quantity" name="quantity" required>
         {props.children}
       </StyledSelect>
-      <StyledButton type="submit" value={props.buttonText} />
     </DropdownWrapper>
   );
 }
@@ -50,7 +81,7 @@ export function Option(props) {
   );
 }
 
-export default function AddToCart({handleChoosingSize, style, size, quantity, allQuantity}) {
+export default function AddToCart({handleChoosingSize, style, size, quantity, allQuantity, setSize, sizeSelected}) {
 
   const sizeAndQuantity = useMemo(() => {
     console.log('STYLE CHANGED', style.skus)
@@ -84,24 +115,17 @@ export default function AddToCart({handleChoosingSize, style, size, quantity, al
           buttonText="Add to Cart"
           action="/"
           handleChoosingSize={handleChoosingSize}
+          allQuantity={allQuantity}
+          sizeSelected={sizeSelected}
+          size={size}
+          quantity={quantity}
         >
-          <Option selected value="Select Size" />
+          {sizeSelected ? <></> : <option selected value="" >Select Size</option> }
           {sizeAndQuantity.map(set => {
             return (
               <Option value={set.size} key={set.size}/>
             )})}
         </Dropdown> : <div className="out-of-stock">OUT OF STOCK</div>}
-        <DropdownQuantity
-          buttonText="Add to Cart"
-          action="/"
-        >
-          {size ? <></> : <Option selected value="-" />}
-          {quantityArray.map(quantity => {
-            return (
-              <Option value={quantity} key={quantity}/>
-            )}
-          )}
-        </DropdownQuantity>
     </div>
   );
 }
