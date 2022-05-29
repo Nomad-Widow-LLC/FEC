@@ -1,16 +1,23 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import styled from 'styled-components';
+import Modal from '../../R&R/ReviewList/Modal.jsx';
+
 
 const Carousel = ({ style }) => {
   const [image, setImage] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState('none')
   const [showRightArrow, setShowRightArrow] = useState('inline')
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  console.log('image', style.photos?.[image]);
   return (
     <div className='main-image'>
       <div className='carousel'>
-        <img className='inner-image' src={style.photos?.[image].url} />
+        <img className='inner-image' src={style.photos?.[image].url} onClick={() => setIsOpen(true)} />
+        <Modal open={isOpen} photo={style.photos?.[image]} onClose={() => setIsOpen(false)} />
         <div
           className='left'
           onClick={() => {
