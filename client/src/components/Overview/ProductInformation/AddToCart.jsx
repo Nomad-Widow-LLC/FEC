@@ -43,7 +43,7 @@ export function Dropdown(props) {
 
   return (
     <DropdownWrapper action={props.action} onSubmit={handleAddToCart} >
-      <StyledSelect id="sizes" name="sizes" onChange={(event)=>{props.handleChoosingSize(event.target.value)}} onInvalid={(event) => event.target.setCustomValidity('Please select size')} required>
+      <StyledSelect id="sizes" name="sizes" onChange={(event)=>{props.handleChoosingSize(event.target.value), event.target.setCustomValidity('')}} onInvalid={(event) => event.target.setCustomValidity('Please select size')} required>
         {props.children}
       </StyledSelect>
       {props.allQuantity ? <DropdownQuantity
