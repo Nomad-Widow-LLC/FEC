@@ -12,6 +12,7 @@ import ReviewsList from './ReviewList/ReviewsList.jsx';
 import FilterReview from './FilterReviews/FilterReview.jsx';
 import OverallRating from './OverallRating/OverallRating.jsx';
 
+
 import {AllProductInfo} from '../App.jsx';
 // Create Context Globally
 export const AllReviews = createContext();
@@ -44,29 +45,26 @@ export default function ReviewWidget () {
 
   const [sortBy, setSortBy] = useState('relevant');
   const [reviewsShown, setReviewShown] = useState(2);
+  const [totalReviews, setTotalReviews] = useState();
 
 
   // Component did Mount, get review data to render, will also rerender on a productIDN change
   useEffect(() => {
-    axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}`)
-      .then((data) => {
-        // console.log(data.data);
-        setReviewData(data.data)})
-      .catch((err) => {console.log('Could not reach API')})
+
+    axios.get(`/review/meta?product_id=${productIDN}`)
+      .then((data) => {setMetaData(data.data)})
+      .catch((err) => {console.log('Could not reach Metadata Atelier API')})
       .then(() => {
-        axios.get(`/review/meta?product_id=${productIDN}`)
-        .then((data) => {
-          // console.log(data.data);
-          setMetaData(data.data);
-        })
-        .catch((err) => {console.log('Could not reach API')})
+        axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${5}`)
+          .then((data) => {setReviewData(data.data)})
+          .catch((err) => {console.log('Could not reach review Atelier API')})
       })
   },[productIDN])
 
   useEffect(() => {
     axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}`)
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         setReviewData(data.data)})
       .catch((err) => {console.log('Could not reach API')})
   },[sortBy])
@@ -75,7 +73,7 @@ export default function ReviewWidget () {
   return (
     <div className="review-widget">
     <ReviewWidgetContainer>
-        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy}}>
+        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy, totalReviews, setTotalReviews}}>
           <ReviewHeader />
 
           <ReviewWidgetBody>

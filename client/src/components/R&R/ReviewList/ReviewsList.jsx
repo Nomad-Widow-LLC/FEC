@@ -1,4 +1,5 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
+import axios from 'axios';
 import ReviewListEntries from './ReviewListEntries.jsx';
 import SortBy from './SortBy.jsx';
 import ShowingReviews from './ShowingReviews.jsx';
@@ -36,11 +37,20 @@ const Scroll = styled.div`
 
 export default function ReviewsList () {
 
-
+  const {productIDN, setProductIDN} = useContext(AllProductInfo);
   const {reviewData, setReviewData} = useContext(AllReviews);
   const {reviewsShown, setReviewShown} = useContext(AllReviews);
+  const {totalReviews, setTotalReviews} = useContext(AllReviews);
+  const {sortBy, setSortBy} = useContext(AllReviews);
+  const [showAll, setShowAll] = useState(false);
 
+  useEffect(() => {
+    axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
+      .then((data) => {setReviewData(data.data)})
+      .catch((err) => {console.log('Could not retrieve from Atelier API')})
+      .then(() => {setReviewShown(totalReviews)})
 
+  }, [showAll])
 
   return (
 
@@ -53,15 +63,15 @@ export default function ReviewsList () {
 
       <Scroll>
         {reviewData.results.map((review, index) => {
-          if(index < reviewsShown) {
+          if(index < (reviewsShown ? reviewsShown : 2)) {
             return <ReviewListEntries key={index} review={review}/>
           } else {
             return <div key={index}></div>
           }
         })}
-        {(reviewData.results.length <= reviewsShown ?
+        {(showAll ?
           <></> :
-          <ShowMore onClick={() => {setReviewShown(reviewData.results.length)}}>Show more reviews</ShowMore>)}
+          <ShowMore onClick={() => {setShowAll(true)}}>Show more reviews</ShowMore>)}
       </Scroll>
 
 

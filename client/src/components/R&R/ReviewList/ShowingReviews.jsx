@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import {AllReviews} from '../ReviewWidget.jsx';
 import {AllProductInfo} from '../../App.jsx';
 
+import useGetNumberRatings from '../GetData/useGetNumberRatings.js';
+
+
 const ShowingResults = styled.div`
   font-size: 12px;
   flex-grow: 2;
@@ -13,16 +16,19 @@ const ShowingResults = styled.div`
 export default function ShowingReviews () {
 
   const {reviewData, setReviewData} = useContext(AllReviews);
+  const {metaData, setMetaData} = useContext(AllReviews)
+  const {totalReviews, setTotalReviews} = useContext(AllReviews);
   const {reviewsShown, setReviewShown} = useContext(AllReviews);
-  const [numberReviews, setNumberReviews] = useState(reviewData.results.length);
+  const [numberReviews, setNumberReviews] = useState(useGetNumberRatings(metaData.ratings));
 
   useEffect(() => {
-    setNumberReviews(reviewData.results.length);
+    setNumberReviews(useGetNumberRatings(metaData.ratings));
+    setTotalReviews(useGetNumberRatings(metaData.ratings));
   },[reviewData])
 
   return (
     <ShowingResults>
-      <div className="sort-by">{`Showing ${Math.min(numberReviews, reviewsShown)} of ${numberReviews} reviews`}</div>
+      <div className="sort-by">{`Showing ${reviewsShown ? reviewsShown : 2} of ${numberReviews} reviews`}</div>
     </ShowingResults>
   );
 
