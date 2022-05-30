@@ -111,7 +111,7 @@ export default function ReviewWidget () {
   return (
     <div className="review-widget">
     <ReviewWidgetContainer>
-        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy, totalReviews, setTotalReviews, breakdownReviews, setBreakdownReviews, selectedStars, setSelectedStars, breakdownReviews, setBreakdownReviews}}>
+        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy, totalReviews, setTotalReviews, breakdownReviews, setBreakdownReviews, selectedStars, setSelectedStars, breakdownReviews, setBreakdownReviews, didSelect, setDidSelect}}>
           <ReviewHeader />
 
           <ReviewWidgetBody>

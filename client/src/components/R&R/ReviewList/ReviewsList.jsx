@@ -42,6 +42,7 @@ export default function ReviewsList () {
   const {productIDN, setProductIDN} = useContext(AllProductInfo);
   const {reviewData, setReviewData} = useContext(AllReviews);
   const {breakdownReviews, setBreakdownReviews} = useContext(AllReviews);
+  const {didSelect, setDidSelect} = useContext(AllReviews);
   const {reviewsShown, setReviewShown} = useContext(AllReviews);
   const {totalReviews, setTotalReviews} = useContext(AllReviews);
   const {sortBy, setSortBy} = useContext(AllReviews);
@@ -68,13 +69,21 @@ export default function ReviewsList () {
       </ListHeaders>
 
       <Scroll>
-        {reviewData.results.map((review, index) => {
+        {didSelect ?
+          (breakdownReviews.results.map((review, index) => {
           if(index < (reviewsShown ? reviewsShown : 2)) {
             return <ReviewListEntries key={index} review={review}/>
           } else {
             return <div key={index}></div>
           }
-        })}
+          })) :
+          (reviewData.results.map((review, index) => {
+          if(index < (reviewsShown ? reviewsShown : 2)) {
+            return <ReviewListEntries key={index} review={review}/>
+          } else {
+            return <div key={index}></div>
+          }
+        }))}
         {(showAll ?
           <></> :
           <ShowMore onClick={() => {setShowAll(true)}}>Show more reviews</ShowMore>)}
