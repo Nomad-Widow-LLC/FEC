@@ -66,9 +66,9 @@ export default function OverallRating () {
         })} */}
         <BreakdownStyles>
           {sumRating ? (breakdown.map((ratio, index) => {
-            return (<BarPercentage key={index} ratio={ratio} star={5- index}/>)
+            return (<BarPercentage key={index} ratio={ratio} star={5- index} num={metaData.ratings[''+(5-index)]}/>)
           })) : (breakdown.map((ratio, index) => {
-            return (<BarPercentage key={index} ratio={0} star={5- index}/>)
+            return (<BarPercentage key={index} ratio={0} star={5- index} num={metaData.ratings[''+(5-index)]}/>)
           }))}
           {}
         </BreakdownStyles>

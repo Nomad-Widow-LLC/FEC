@@ -36,7 +36,7 @@ const BarPercentageItem = styled.div`
   flex-direction: row;
 `
 
-export default function BarPercentage ({ratio, star}) {
+export default function BarPercentage ({ratio, star, num}) {
 
   const containerStyles = {
     height: 10,
@@ -59,7 +59,8 @@ export default function BarPercentage ({ratio, star}) {
     color: 'black',
     fontWeight: 'bold',
     fontSize: 10,
-    verticalAlign: 'top'
+    verticalAlign: 'top',
+    whiteSpace: 'nowrap'
   }
 
   return (
@@ -70,7 +71,7 @@ export default function BarPercentage ({ratio, star}) {
     </StarTextStyles>
       <div style={containerStyles}>
         <div style={fillerStyles}>
-          <span style={labelStyles}>{`${ratio}%`}</span>
+          <span style={labelStyles}>{`${num} ratings`}</span>
         </div>
       </div>
     </BarPercentageItem>

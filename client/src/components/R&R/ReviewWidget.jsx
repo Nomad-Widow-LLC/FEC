@@ -69,7 +69,6 @@ export default function ReviewWidget () {
       .catch((err) => {console.log('Could not reach API')})
   },[sortBy])
 
-
   return (
     <div className="review-widget">
     <ReviewWidgetContainer>
