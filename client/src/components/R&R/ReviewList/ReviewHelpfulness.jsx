@@ -1,7 +1,7 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import styled from 'styled-components';
 import {FaRegThumbsUp, FaRegThumbsDown} from 'react-icons/fa';
-
+// import {AllReviews} from '../ReviewWidget.jsx';
 const HelpfulStyle = styled.div`
   display: flex;
   flex-direction: row;
@@ -52,7 +52,6 @@ const ThumbsDownClicked = styled.div`
 
 export default function ReviewHelpfulness({helpful}) {
 
-  const [reviewHelpful, setReviewHelpful] = useState(helpful);
   const [feedback, setFeedback] = useState(false);
   const [thumbsUp, setThumbsUp] = useState(false);
   const [thumbsDown, setThumbsDown] = useState(false);
@@ -63,7 +62,7 @@ export default function ReviewHelpfulness({helpful}) {
     console.log('You gave this a thumbs up!');
     //send axios post request to update helfulness
     //update number
-    setReviewHelpful(reviewHelpful + 1);
+    setReviewHelpful(helpful + 1);
     setFeedback(true);
 
     // logic would be to check if setFeedback is true, if so, do not set axios post request to update number
@@ -72,7 +71,7 @@ export default function ReviewHelpfulness({helpful}) {
   }
 
   const handleThumbsDown = () => {
-    console.log('You gave this a thumbs up!');
+    console.log('You gave this a thumbs down!');
     //send axios post request to update helfulness
     // There's no data for handling thumbs down...
 
@@ -112,7 +111,7 @@ export default function ReviewHelpfulness({helpful}) {
         <ThumbsUpNotClicked>
               <FaRegThumbsUp onClick={handleThumbsUp}/>
         </ThumbsUpNotClicked>
-        <div className="number-helpful">{reviewHelpful}</div>
+        <div className="number-helpful">{helpful}</div>
         <ThumbsDownNotClicked>
           <FaRegThumbsDown onClick={handleThumbsDown}/>
         </ThumbsDownNotClicked>
