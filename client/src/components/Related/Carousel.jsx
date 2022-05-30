@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card.jsx';
 import axios from 'axios';
-import Qs from 'qs';
-import getEndPoint from './lib/hooks.js';
-// import styled from 'styled-components';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Promise from 'bluebird';
 
@@ -17,6 +14,7 @@ let Carousel = ({ id }) => {
   let [carouselWidth, setCarouselWidth] = useState(0);
   let [nCardsDisplayed, setNCardsDisplayed] = useState(0);
   let [indexOffset, setIndexOffset] = useState(0);
+  let [starsList, setStarsList] = useState([]);
   const cardWidth = 259;
 
   const logAll = (array) => {
@@ -25,6 +23,58 @@ let Carousel = ({ id }) => {
     })
   }
 
+  const clicker = (mode) => {
+    if (mode === 'prev') {
+      // This makes sure not to croll past the first item
+      if (sectionIndex !== -1) {
+        setSectionIndex(sectionIndex -= 1)
+      }
+      setJump(jump = sectionIndex * cardWidth);
+
+      //logAll([`Carousel Width: ${carouselWidth}`, `Number Of Cards Displayed: ${nCardsDisplayed}`, `Idex Offset: ${indexOffset}`, `Section Index: ${sectionIndex}`, `Jump: ${jump}`, `===============`]);
+
+      // Finding the track on the DOM
+      let track = document.querySelector(`.track`);
+      // Transforming the carousel according to how far it needs to jump
+      track.style.transform = `translateX(-${jump}px)`;
+
+    } else if (mode === 'next') {
+      setCarouselWidth(carouselWidth = document.querySelector(`.carousel-container`).clientWidth);
+      setNCardsDisplayed(nCardsDisplayed = Math.ceil(carouselWidth / cardWidth));
+
+      if (nCardsDisplayed + sectionIndex !== productList.length) {
+        setSectionIndex(sectionIndex += 1);
+      }
+
+      setJump(jump = sectionIndex * cardWidth);
+
+      //logAll([`Carousel Width: ${carouselWidth}`, `Number Of Cards Displayed: ${nCardsDisplayed}`, `Idex Offset: ${indexOffset}`, `Section Index: ${sectionIndex}`, `Jump: ${jump}`, `# of Products: ${productList.length}`, `===============`]);
+
+      let track = document.querySelector(`.track`);
+      track.style.transform = `translateX(-${jump}px)`;
+    } else {
+      console.log(`Danger in clicker Will Robinson!`)
+    }
+  }
+
+  const calculateStarAvg = (ratingsObj) => {
+
+    let totalReviews = 0;
+    let totalStars = 0;
+
+    for (let key in ratingsObj) {
+      if (ratingsObj[key] !== NaN) {
+        totalReviews += parseInt(ratingsObj[key]);
+        totalStars += (parseInt(key) * ratingsObj[key]);
+      }
+    }
+
+    let avg = totalStars / totalReviews;
+
+    return avg;
+  }
+
+  // Responsible for getting the data for the carousel
   useEffect(() => {
     axios.get(`/products?id=${overviewId}&related=true`)
       .then((results) => {
@@ -47,13 +97,34 @@ let Carousel = ({ id }) => {
             setProductList(allValues);
             return allValues;
           })
+        return idList;
+      })
+      .then((idList) => {
+        Promise.all(idList.map((id) => axios.get(`/review/meta?product_id=${id}`)))
+          .then((values) => {
+            setStarsList(starsList = values.map((item) => {
+              return {
+                id: item.data.product_id,
+                ratings: item.data.ratings
+              }
+            }));
+            return starsList;
+          })
+          .then((starsList) => {
+            starsList.forEach((product, index) => {
+              let average = calculateStarAvg(product.ratings);
+              starsList[index]['avg'] = average;
+            })
+          })
       })
       .catch((err) => console.log(`Error in carousel GET: ${err}`))
   }, [])
 
+  // Controls the hiding and showing of the previous and next buttons at the appropriate time
   useEffect(() => {
     let prev = document.querySelector(`.prev`);
     let next = document.querySelector(`.next`);
+
     if (sectionIndex === 0){
       prev.style.display = 'none';
     } else {
@@ -68,41 +139,16 @@ let Carousel = ({ id }) => {
   })
 
   return (
-    <div className="carousel-container">
-      <div className="nav">
-        <button className="prev" onClick={() => {
-          if (sectionIndex !== -1) {
-            setSectionIndex(sectionIndex -= 1)
-          }
-
-          setJump(jump = sectionIndex * cardWidth);
-
-          //logAll([`Carousel Width: ${carouselWidth}`, `Number Of Cards Displayed: ${nCardsDisplayed}`, `Idex Offset: ${indexOffset}`, `Section Index: ${sectionIndex}`, `Jump: ${jump}`, `===============`]);
-
-          let track = document.querySelector(`.track`);
-          track.style.transform = `translateX(-${jump}px)`;
-          }}>Prev</button>
-        <button className="next" onClick={() => {
-          setCarouselWidth(carouselWidth = document.querySelector(`.carousel-container`).clientWidth);
-          setNCardsDisplayed(nCardsDisplayed = Math.ceil(carouselWidth / cardWidth));
-
-          if (nCardsDisplayed + sectionIndex !== productList.length) {
-            setSectionIndex(sectionIndex += 1);
-          }
-
-          setJump(jump = sectionIndex * cardWidth);
-
-          //logAll([`Carousel Width: ${carouselWidth}`, `Number Of Cards Displayed: ${nCardsDisplayed}`, `Idex Offset: ${indexOffset}`, `Section Index: ${sectionIndex}`, `Jump: ${jump}`, `# of Products: ${productList.length}`, `===============`]);
-
-          let track = document.querySelector(`.track`);
-          track.style.transform = `translateX(-${jump}px)`;
-        }}>Next</button>
+    <div className="carousel-container" key="outer" >
+      <div className="nav" key="nav">
+        <FaArrowLeft className="prev button" onClick={() => {clicker('prev')}} />
+        <FaArrowRight className="next button" onClick={() => {clicker('next'); console.log('Star List: ', starsList)}} />
       </div>
-      <div className="inner-carousel">
-        <div className="track">
+      <div className="inner-carousel" key="inner">
+        <div className="track" key="track">
           {
             productList.map((product, index) =>
-              <Card pic={styleList[index].results[0].photos[0].url} item={product} salePrice={styleList[index].results[3].sale_price} key={product.product_id} />
+              <Card stars={starsList[index]} pic={styleList[index].results[0].photos[0].url} item={product} salePrice={styleList[index].results[3].sale_price} key={product.product_id} />
             )
           }
         </div>

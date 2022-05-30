@@ -30,9 +30,9 @@
   flex-direction: column;
 }
 
-.nav button {
-  width: 60px;
-  height: 60px;
+.nav .button {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   z-index: 1;
   position: absolute;
@@ -42,11 +42,11 @@
 }
 
 .nav .prev {
-  left: -30px;
+  left: -40px;
 }
 
 .nav .next {
-  right: -30px
+  right: -40px
 }
 
 .card > * {
@@ -63,8 +63,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75%;
-  width: auto;
+  height: 60%;
+  width: 100%;
 }
 
 .card .info .name {
@@ -77,12 +77,9 @@
 
 .card .info .lineThrough {
   text-decoration: line-through;
+  margin-left: 10px;
 }
 
 .card .info .redSale {
   color: red;
-}
-
-.spacer {
-  width: 50px;
 }
