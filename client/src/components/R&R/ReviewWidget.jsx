@@ -86,23 +86,13 @@ export default function ReviewWidget () {
 
 
   useEffect(() => {
-    if(!totalReviews) {
-
+    let tempArr = reviewData.results.filter((review) => selectedStars['' + review.rating] === review.rating)
+    setBreakdownReviews({results: tempArr});
+    if (Object.keys(selectedStars).length) {
+      setDidSelect(true);
     } else {
-      axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
-        .then((data) => {setReviewData(data.data)})
-        .catch((err) => {console.log('Could not reach review Atelier API')})
-        .then(() => {
-          let tempArr = reviewData.results.filter((review) => selectedStars['' + review.rating] === review.rating)
-          setBreakdownReviews({results: tempArr});
-          if (Object.keys(selectedStars).length) {
-            setDidSelect(true);
-          } else {
-            setDidSelect(false);
-          }
-        })
+      setDidSelect(false);
     }
-
   }, [selectedStars])
 
 

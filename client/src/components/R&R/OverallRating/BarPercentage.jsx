@@ -14,10 +14,6 @@ const StarTextStyles = styled.div`
   &:hover {
     color: blue;
   }
-
-
-
-
 `
 
 const BarPercentageItem = styled.div`
