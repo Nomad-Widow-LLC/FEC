@@ -6,9 +6,6 @@ const StyleSelector = ({handleOnClickStyle, styleSelector, style, setSize}) => {
   const [image, setImage] = useState(0);
 
   const hideCheckmark = (thumbnail)=>{
-    console.log('WHAT DOES THIS PRODUCE', styleSelector);
-    // console.log('thumbnail', thumbnail);
-    console.log('style', style);
     if (thumbnail !== style) {
       return 'display-overlay'
     }

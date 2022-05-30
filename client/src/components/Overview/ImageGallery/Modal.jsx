@@ -38,7 +38,7 @@ const Icon = styled.div`
   }
 `
 
-export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftArrow, showRightArrow, setShowRightArrow, image, style, setImage, photos, handleChoosingPic, currPic, currZoomed}) {
+export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftArrow, showRightArrow, setShowRightArrow, image, style, setImage, photos, handleChoosingPic, hideCheckmark}) {
 
   if (!open) return null
 
@@ -85,7 +85,8 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
             </div>
             <Thumbnails
             photos={photos}
-            handleChoosingPic={handleChoosingPic}/>
+            handleChoosingPic={handleChoosingPic}
+            hideCheckmark={hideCheckmark}/>
           </div>
         </ModalStyles>
       </OverlayStyles>

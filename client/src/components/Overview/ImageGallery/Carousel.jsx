@@ -10,12 +10,18 @@ const Carousel = ({ style, handleOnClickStyle}) => {
   const [showLeftArrow, setShowLeftArrow] = useState('none')
   const [showRightArrow, setShowRightArrow] = useState('inline')
   const [isOpen, setIsOpen] = useState(false);
-  const [currZoomed, setCurrZoomed] = useState(false);
-  const [currPic, setCurrPic] = useState({});
+  const [currPic, setCurrPic] = useState('none')
+
+  const hideCheckmark = (photo)=>{
+    if (photo !== style.photos?.[image]) {
+      return 'display-overlay'
+    }
+  }
 
   const handleChoosingPic = (photo) => {
     let chosenIndex = style?.photos.indexOf(photo)
     setImage(chosenIndex);
+
     if (chosenIndex !== style.photos?.length - 1) {
       setShowLeftArrow('inline');
     }
@@ -48,9 +54,8 @@ const Carousel = ({ style, handleOnClickStyle}) => {
         setShowLeftArrow={setShowLeftArrow}
         setShowRightArrow={setShowRightArrow}
         photos={style?.photos}
+        hideCheckmark={hideCheckmark}
         handleChoosingPic={handleChoosingPic}
-        currPic={currPic}
-        currZoomed={currZoomed}
         />
         <div
           className='left'

@@ -88,6 +88,15 @@
   opacity: 70%;
 }
 
+.overlay-thumbnail {
+  text-align: center;
+  font-size: 50px;
+  position: relative;
+  bottom:70%;
+  right:10%;
+  opacity: 70%;
+}
+
 .display-overlay {
   display:none;
 }

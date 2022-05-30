@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {FaCheck} from 'react-icons/fa';
 
-const Thumbnails = ({photos, handleChoosingPic}) => {
-  console.log('does it hit here?', photos)
+const Thumbnails = ({photos, handleChoosingPic,hideCheckmark}) => {
+
   return (
     <div className='thumbnails'>
     {photos?.map(photo =>
@@ -13,6 +14,8 @@ const Thumbnails = ({photos, handleChoosingPic}) => {
           key={photo.thumbnail_url}
           onClick={()=>{handleChoosingPic(photo)}}
         />
+        <div className={`overlay-thumbnail ${hideCheckmark(photo)}`}>
+          <FaCheck/> </div>
       </div>
     )}
   </div>
