@@ -84,7 +84,6 @@ export function Option(props) {
 export default function AddToCart({handleChoosingSize, style, size, quantity, allQuantity, setSize, sizeSelected}) {
 
   const sizeAndQuantity = useMemo(() => {
-    console.log('STYLE CHANGED', style.skus)
     let array = [];
     for (let key in style.skus) {
       if (style.skus[key].quantity !== 0) {

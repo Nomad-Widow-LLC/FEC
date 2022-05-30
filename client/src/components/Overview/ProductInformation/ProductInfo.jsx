@@ -18,7 +18,6 @@ const ProductInfo = () => {
   const [sizeSelected, setSizeSelected] = useState(false);
 
   const handleOnClickStyle = (thumbnail) => {
-    console.log('current style', thumbnail);
     setSize('Select Size');
     setStyle(thumbnail);
   }
@@ -27,7 +26,6 @@ const ProductInfo = () => {
     setSizeSelected(true);
     for (let key in style.skus) {
       if (style.skus[key].size === size) {
-        console.log('quantity',style.skus);
         setQuantity(style.skus[key].quantity);
       }
     }
@@ -68,8 +66,6 @@ const ProductInfo = () => {
         if(quantity <= 0) {
           setAllQuantity(false);
         }
-        console.log('results', response.data.results[0].photos);
-        console.log('style that goes into Carousel', response.data.results[0])
         setStyle(response.data.results[0]);
         setStyleSelector(response.data.results);
       })
