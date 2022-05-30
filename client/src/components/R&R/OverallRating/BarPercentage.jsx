@@ -2,22 +2,7 @@ import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-
-
-// const ContainerStyles = styled.div`
-//   height: 20;
-//   width: '100%';
-//   background-color: "#e0e0de";
-//   border-radius: 50;
-//   margin: 10;
-// `
-// const FillerStyles = styled.div`
-//   height: '100%';
-//   width: {ratio}%;
-//   background-color: green;
-//   border-radius: 50;
-//   text-align: right
-// `
+import {AllReviews} from '../ReviewWidget.jsx';
 
 const StarTextStyles = styled.div`
   font-size: 0.75em;
@@ -29,6 +14,10 @@ const StarTextStyles = styled.div`
   &:hover {
     color: blue;
   }
+
+
+
+
 `
 
 const BarPercentageItem = styled.div`
@@ -37,6 +26,8 @@ const BarPercentageItem = styled.div`
 `
 
 export default function BarPercentage ({ratio, star, num}) {
+
+  const {breakdownReviews, setBreakdownReviews, selectedStars, setSelectedStars} = useContext(AllReviews);
 
   const containerStyles = {
     height: 10,
@@ -56,18 +47,30 @@ export default function BarPercentage ({ratio, star, num}) {
 
   const labelStyles = {
     padding: 5,
-    color: 'black',
+    color: `${selectedStars['' + star] ? 'blue' : 'black'}`,
     fontWeight: 'bold',
     fontSize: 10,
     verticalAlign: 'top',
     whiteSpace: 'nowrap'
   }
 
+  const handleSelect = () => {
+
+    let tempObj = {...selectedStars};
+    if (tempObj['' + star]) {
+      delete tempObj['' + star];
+    } else {
+      tempObj['' + star] = star;
+    }
+
+    setSelectedStars(tempObj);
+  }
+
   return (
     <>
     <BarPercentageItem>
     <StarTextStyles>
-      <div>{star} Star</div>
+      <div onClick={() => {handleSelect()}}>{star} Star</div>
     </StarTextStyles>
       <div style={containerStyles}>
         <div style={fillerStyles}>
@@ -78,16 +81,5 @@ export default function BarPercentage ({ratio, star, num}) {
     </>
   );
 
-// return (
-//   <ContainerStyles>
-//   <div>
-//     <FillerStyles>
-//     <div>
-//       <LabelStyles>{ratio}%</LabelStyles>
-//     </div>
-//     </FillerStyles>
-//   </div>
-//   </ContainerStyles>
-// );
-
 };
+

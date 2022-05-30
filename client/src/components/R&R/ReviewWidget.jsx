@@ -19,10 +19,7 @@ export const AllReviews = createContext();
 
 //Styled Components go here
 const ReviewWidgetContainer = styled.div`
-  border-style: groove;
-  border-width: 1px;
-  border-color: black;
-  border-radius: 5px;
+
   margin: 0px 125px;
 `
 const ReviewWidgetBody = styled.div`
@@ -43,6 +40,10 @@ export default function ReviewWidget () {
   const [reviewData, setReviewData] = useState(dummyReviewListData);
   const [metaData, setMetaData] = useState(dummyMetaReviewData);
 
+  const [breakdownReviews, setBreakdownReviews] = useState({results: []});
+  const [selectedStars, setSelectedStars] = useState({});
+  const [didSelect, setDidSelect] = useState(false);
+
   const [sortBy, setSortBy] = useState('relevant');
   const [reviewsShown, setReviewShown] = useState(2);
   const [totalReviews, setTotalReviews] = useState();
@@ -62,17 +63,55 @@ export default function ReviewWidget () {
   },[productIDN])
 
   useEffect(() => {
-    axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}`)
-      .then((data) => {
-        // console.log(data.data);
-        setReviewData(data.data)})
-      .catch((err) => {console.log('Could not reach API')})
-  },[sortBy])
+    if(!totalReviews) {
+
+    } else {
+      axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
+        .then((data) => {setReviewData(data.data)})
+        .catch((err) => {console.log('Could not reach review Atelier API')})
+    }
+  },[totalReviews])
+
+  useEffect(() => {
+    if(!totalReviews) {
+
+    } else {
+      axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
+        .then((data) => {
+          // console.log(data.data);
+          setReviewData(data.data)})
+        .catch((err) => {console.log('Could not reach API')})
+    }
+  }, [sortBy])
+
+
+  useEffect(() => {
+    if(!totalReviews) {
+
+    } else {
+      axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
+        .then((data) => {setReviewData(data.data)})
+        .catch((err) => {console.log('Could not reach review Atelier API')})
+        .then(() => {
+          let tempArr = reviewData.results.filter((review) => selectedStars['' + review.rating] === review.rating)
+          setBreakdownReviews({results: tempArr});
+          if (Object.keys(selectedStars).length) {
+            setDidSelect(true);
+          } else {
+            setDidSelect(false);
+          }
+        })
+    }
+
+  }, [selectedStars])
+
+
+
 
   return (
     <div className="review-widget">
     <ReviewWidgetContainer>
-        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy, totalReviews, setTotalReviews}}>
+        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy, totalReviews, setTotalReviews, breakdownReviews, setBreakdownReviews, selectedStars, setSelectedStars, breakdownReviews, setBreakdownReviews}}>
           <ReviewHeader />
 
           <ReviewWidgetBody>

@@ -14,6 +14,7 @@ const List = styled.div`
   flex-direction: column;
   padding-left: 10px;
   flex-grow: 4;
+  max-width: 90%;
 `
 const ListHeaders = styled.div`
   display: flex;
@@ -32,24 +33,29 @@ const ShowMore = styled.button`
 `
 const Scroll = styled.div`
   overflow: auto;
-  max-height: 100vh;
+  max-height: auto;
+  max-width: 100%;
 `
 
 export default function ReviewsList () {
 
   const {productIDN, setProductIDN} = useContext(AllProductInfo);
   const {reviewData, setReviewData} = useContext(AllReviews);
+  const {breakdownReviews, setBreakdownReviews} = useContext(AllReviews);
   const {reviewsShown, setReviewShown} = useContext(AllReviews);
   const {totalReviews, setTotalReviews} = useContext(AllReviews);
   const {sortBy, setSortBy} = useContext(AllReviews);
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
-      .then((data) => {setReviewData(data.data)})
-      .catch((err) => {console.log('Could not retrieve from Atelier API')})
-      .then(() => {setReviewShown(totalReviews)})
+    if(!totalReviews) {
 
+    } else {
+      axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
+        .then((data) => {setReviewData(data.data)})
+        .catch((err) => {console.log('Could not retrieve from Atelier API')})
+        .then(() => {setReviewShown(totalReviews)})
+    }
   }, [showAll])
 
   return (

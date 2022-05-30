@@ -23,6 +23,8 @@ const IndvReview = styled.div`
   margin: 2.5px;
   padding-left: 1.5em;
   margin-right: 1em;
+  max-width: 90%;
+  max-height: auto;
 `
 
 const HeaderReviews = styled.div`
@@ -89,8 +91,8 @@ export default function ReviewListEntries ({review}) {
 
 
   return (
-    <div className="review-list-entry">
     <IndvReview>
+    <div className="review-list-entry">
       <HeaderReviews>
 
         <UserCircleIcon>
@@ -139,9 +141,9 @@ export default function ReviewListEntries ({review}) {
 
       <ReviewHelpfulness helpful={review.helpfulness} />
 
-    </IndvReview>
 
     </div>
+    </IndvReview>
   );
 }
 
