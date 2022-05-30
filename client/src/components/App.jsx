@@ -12,7 +12,9 @@ class App extends React.Component {
    // const { name } = 'Robert';
     return (
       <>
+        <div className="componentGap" />
         <ProductInfo />
+        <div className="componentGap" />
         <Carousel />
         <div className="componentGap" />
         <ReviewWidget />

@@ -9,25 +9,33 @@ var Card = (props) => {
 
   if (props.salePrice === null) {
     return (
+      <div className="card-container">
       <div className="card">
-        <img className="carouselImage" src={props.pic}></img>
-        <div className="title">{props.item.name}</div>
-        <div className="category">{props.item.category}</div>
-        <div className="price">{props.item.default_price}</div>
+        <img className="img" src={props.pic} />
+        <div className="info">
+          <div className="name">{props.item.name}</div>
+          <div className="category">{props.item.category}</div>
+          <span className="price">${props.item.default_price}</span>
+        </div>
       </div>
+    </div>
     )
   } else if (props.salePrice !== null) {
     return (
+      <div className="card-container">
       <div className="card">
-        <img className="carouselImage" src={props.pic}></img>
-        <div className="title">{props.item.name}</div>
-        <div className="category">{props.item.category}</div>
-        <span className="priceContainer">
-          <span className="price redSale">${props.salePrice}</span>
-          <span className="spacer">&nbsp;</span>
+        <img className="img" src={props.pic} />
+        <div className="info">
+          <div className="name">{props.item.name}</div>
+          <div className="category">{props.item.category}</div>
+          <span className="priceContainer">
+            <span className="price redSale">${props.salePrice}</span>
+            <span className="spacer">&nbsp;</span>
           <span className="price lineThrough">${props.item.default_price}</span>
         </span>
+        </div>
       </div>
+    </div>
     )
   }
 }
@@ -35,3 +43,16 @@ var Card = (props) => {
 //<StarRating product_id={props.item.id}/>
 
 export default Card = Card;
+
+/*
+    <div className="card-container">
+      <div className="card">
+        <img className="img" src={props.pic} />
+        <div className="info">
+          <div className="name">{props.item.name}</div>
+          <div className="category">{props.item.category}</div>
+          <span className="price">${props.item.default_price}</span>
+        </div>
+      </div>
+    </div>
+ */
