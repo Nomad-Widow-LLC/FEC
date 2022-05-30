@@ -55,7 +55,7 @@ export default function ReviewsList () {
       axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
         .then((data) => {setReviewData(data.data)})
         .catch((err) => {console.log('Could not retrieve from Atelier API')})
-        .then(() => {setReviewShown(totalReviews)})
+        .then(() => {setReviewShown(reviewData.results.length)})
     }
   }, [showAll])
 

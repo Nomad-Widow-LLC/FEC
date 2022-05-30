@@ -19,16 +19,18 @@ export default function ShowingReviews () {
   const {metaData, setMetaData} = useContext(AllReviews)
   const {totalReviews, setTotalReviews} = useContext(AllReviews);
   const {reviewsShown, setReviewShown} = useContext(AllReviews);
+  const {breakdownReviews, setBreakdownReviews} = useContext(AllReviews);
+  const {didSelect, setDidSelect} = useContext(AllReviews);
   const [numberReviews, setNumberReviews] = useState(useGetNumberRatings(metaData.ratings));
 
   useEffect(() => {
-    setNumberReviews(useGetNumberRatings(metaData.ratings));
+    setNumberReviews(reviewData.results.length);
     setTotalReviews(useGetNumberRatings(metaData.ratings));
   },[reviewData])
 
   return (
     <ShowingResults>
-      <div className="sort-by">{`Showing ${reviewsShown ? reviewsShown : 2} of ${numberReviews} reviews`}</div>
+      <div className="sort-by">{`Showing ${didSelect ? breakdownReviews.results.length : (reviewsShown ? reviewsShown : 2)} of ${numberReviews} reviews`}</div>
     </ShowingResults>
   );
 
