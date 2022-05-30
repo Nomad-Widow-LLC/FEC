@@ -60,17 +60,16 @@ const ProductInfo = () => {
          return axios.get('/styles?product_id=' + product_id)
       })
       .then((response) => {
-        console.log('results',response.data.results[0].skus)
         let quantity = 0;
         let skus = response.data.results[0].skus;
-        console.log('skus', skus);
         for(let sku in skus) {
           quantity += skus[sku].quantity;
         }
-        console.log('quantity', quantity);
         if(quantity <= 0) {
           setAllQuantity(false);
         }
+        console.log('results', response.data.results[0].photos);
+        console.log('style that goes into Carousel', response.data.results[0])
         setStyle(response.data.results[0]);
         setStyleSelector(response.data.results);
       })
@@ -82,7 +81,7 @@ const ProductInfo = () => {
 
   return (
     <div className='productAndImage'>
-        <Carousel style={style}/>
+        <Carousel style={style} handleOnClickStyle={handleOnClickStyle}/>
         <div className='ProductInfo'>
           <StarRating rating={rating} reviewNum={reviewNum}/>
           <h6 className='ProductCategory'>{product.category}</h6>

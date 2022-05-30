@@ -1,8 +1,8 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import {FaTimes} from 'react-icons/fa';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import {FaTimes, FaArrowLeft, FaArrowRight} from 'react-icons/fa';
+import Thumbnails from './Thumbnails.jsx'
 
 
 const ModalStyles = styled.div`
@@ -24,7 +24,7 @@ const OverlayStyles = styled.div`
   zIndex: 1000;
 `
 const ExpandedImg = styled.img`
-  width: 200px;
+  width: 500px;
   height: auto;
 `
 const Icon = styled.div`
@@ -38,7 +38,7 @@ const Icon = styled.div`
   }
 `
 
-export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftArrow, showRightArrow, setShowRightArrow, image, style, setImage}) {
+export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftArrow, showRightArrow, setShowRightArrow, image, style, setImage, photos, handleChoosingPic, currPic, currZoomed}) {
 
   if (!open) return null
 
@@ -47,7 +47,7 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
       <OverlayStyles>
         <ModalStyles>
           <div>
-            <ExpandedImg src={photo.url} alt={photo.id}></ExpandedImg>
+            <ExpandedImg src={photo?.url} alt={photo?.id}></ExpandedImg>
             <Icon>
               <FaTimes onClick={onClose}/>
             </Icon>
@@ -83,6 +83,9 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
               display={showRightArrow}
               size='50px'/>
             </div>
+            <Thumbnails
+            photos={photos}
+            handleChoosingPic={handleChoosingPic}/>
           </div>
         </ModalStyles>
       </OverlayStyles>

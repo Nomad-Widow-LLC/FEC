@@ -50,11 +50,26 @@
   margin-bottom: 5%;
 }
 
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(7, 85px);
+  row-gap: 10px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
 .thumbnail-container {
   position:relative;
   width: 80px;
   height: 80px;
   /* height: 50%; */
+}
+
+.style-thumbnail-zoom {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  position: relative;
 }
 
 .style-thumbnail {
