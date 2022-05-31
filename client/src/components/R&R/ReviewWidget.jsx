@@ -1,6 +1,6 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
-import config from '../../../dist/config.js';
+// import config from '../../../dist/config.js';
 import styled from 'styled-components';
 // Import DummyData, until able to handle server api calls
 import dummyReviewListData from '../../../dist/dummyReviewListData.js';
