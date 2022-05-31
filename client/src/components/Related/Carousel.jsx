@@ -28,7 +28,8 @@ let Carousel = () => {
 
   const clicker = (mode) => {
     if (mode === 'prev') {
-      // This makes sure not to croll past the first item
+
+      // This makes sure not to scroll past the first item
       if (sectionIndex !== -1) {
         setSectionIndex(sectionIndex -= 1)
       }
@@ -42,6 +43,7 @@ let Carousel = () => {
       track.style.transform = `translateX(-${jump}px)`;
 
     } else if (mode === 'next') {
+
       setCarouselWidth(carouselWidth = document.querySelector(`.carousel-container`).clientWidth);
       setNCardsDisplayed(nCardsDisplayed = Math.ceil(carouselWidth / cardWidth));
 
