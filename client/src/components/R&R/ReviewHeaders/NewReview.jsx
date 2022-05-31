@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import NewReviewForm from './NewReviewForm.jsx';
 
 
+
 const ReviewButtonItem = styled.button`
   font-size: 14px;
   font-family: "Courier New", Monaco, "Lucida Console";
@@ -27,7 +28,7 @@ export default function NewReview () {
   return(
     <div className="new-review">
       <ReviewButtonItem onClick={() => {setOpenReviewForm(!openReviewForm)}}>Write A Review</ReviewButtonItem>
-      <NewReviewForm open={openReviewForm}/>
+      <NewReviewForm open={openReviewForm} onClose={() => setOpenReviewForm(false)}/>
     </div>
   );
 
