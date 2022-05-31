@@ -60,7 +60,7 @@ export default function ReviewHelpfulness({helpful}) {
 
   const handleThumbsUp = () => {
     console.log('You gave this a thumbs up!');
-    //send axios post request to update helfulness
+    //send axios post request to update helpfulness
     //update number
     setReviewHelpful(helpful + 1);
     setFeedback(true);
