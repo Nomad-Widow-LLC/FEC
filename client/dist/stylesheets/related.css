@@ -1,8 +1,19 @@
-.carousel-container {
+.module-container {
+  width: 100%;
+  background-color: #fafafa;
+}
+.module-container .carousel-container {
   width: 1280px;
   margin: 50px auto;
-  min-height: 200px; /* was 200 */
+  min-height: 200px;
   position: relative;
+}
+
+.carousel-container .title {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-left: 50%;
+  margin-bottom: 30px;
 }
 
 .carousel-container .inner-carousel {
@@ -54,7 +65,7 @@
 }
 
 .card .info {
-  flex-basis: 40px;
+  flex-basis: 30px;
   flex-grow: 0;
   padding: 5px;
 }
@@ -82,4 +93,14 @@
 
 .card .info .redSale {
   color: red;
+}
+
+.card .info .stars {
+  display: flex;
+  position: absolute;
+  transform: translateX(50%);
+}
+
+.spacer {
+  height: 30px;
 }

@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Card from './Card.jsx';
 import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Promise from 'bluebird';
+import { AllProductInfo } from '../App.jsx';
 
-let Carousel = ({ id }) => {
+let Carousel = () => {
 
-  let overviewId = id || 40359;
+  const {productIDN, setProductIDN} = useContext(AllProductInfo)
+  let overviewId = productIDN;
   let [productList, setProductList] = useState([]);
   let [styleList, setStyleList] = useState([]);
   let [sectionIndex, setSectionIndex] = useState(0);
@@ -16,6 +18,7 @@ let Carousel = ({ id }) => {
   let [indexOffset, setIndexOffset] = useState(0);
   let [starsList, setStarsList] = useState([]);
   const cardWidth = 259;
+
 
   const logAll = (array) => {
     array.forEach((value) => {
@@ -139,10 +142,13 @@ let Carousel = ({ id }) => {
   })
 
   return (
+    <div className="module-container">
     <div className="carousel-container" key="outer" >
+      <div className="spacer"></div>
+      <div className="title">You May Also Like</div>
       <div className="nav" key="nav">
         <FaArrowLeft className="prev button" onClick={() => {clicker('prev')}} />
-        <FaArrowRight className="next button" onClick={() => {clicker('next'); console.log('Star List: ', starsList)}} />
+        <FaArrowRight className="next button" onClick={() => {clicker('next')}} />
       </div>
       <div className="inner-carousel" key="inner">
         <div className="track" key="track">
@@ -153,6 +159,7 @@ let Carousel = ({ id }) => {
           }
         </div>
       </div>
+    </div>
     </div>
   )
 }
