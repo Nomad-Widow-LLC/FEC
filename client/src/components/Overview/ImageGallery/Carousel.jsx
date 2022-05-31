@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import styled from 'styled-components';
 import Modal from './Modal.jsx';
+import MainThumbnails from './MainThumbnails.jsx'
 
 
 const Carousel = ({ style, handleOnClickStyle}) => {
@@ -40,6 +41,10 @@ const Carousel = ({ style, handleOnClickStyle}) => {
 
   return (
     <div className='main-image'>
+      <MainThumbnails
+          photos={style?.photos}
+          handleChoosingPic={handleChoosingPic}
+          hideCheckmark={hideCheckmark}/>
       <div className='carousel'>
         <img className='inner-image' src={style.photos?.[image].url} onClick={() => setIsOpen(true)} />
         <Modal

@@ -5,16 +5,16 @@ import {FaCheck} from 'react-icons/fa';
 const Thumbnails = ({photos, handleChoosingPic,hideCheckmark}) => {
 
   return (
-    <div className='thumbnails'>
+    <div className='thumbnails-outer'>
     {photos?.map(photo =>
-      <div className='thumbnail-container'>
+      <div className='thumbnail-container-outer'>
         <img
-          className='style-thumbnail-zoom'
+          className='style-thumbnail-zoom-outer'
           src={photo.thumbnail_url}
           key={photo.thumbnail_url}
           onClick={()=>{handleChoosingPic(photo)}}
         />
-        <div className={`overlay-thumbnail ${hideCheckmark(photo)}`} >
+        <div className={`overlay-thumbnail-outer ${hideCheckmark(photo)}`} >
           <FaCheck/> </div>
       </div>
     )}

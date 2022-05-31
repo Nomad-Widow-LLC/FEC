@@ -5,7 +5,7 @@
   justify-content: center;
   position: relative;
   margin-top: 1%;
-  cursor: zoom-in;
+  /* cursor: zoom-in; */
 }
 
 .main-image {
@@ -16,7 +16,8 @@
 .carousel {
   width: 30vw;
   height: 40vw;
-  left: 16%;
+  left: 24%;
+  bottom: 70%;
   position: relative;
 }
 
@@ -25,6 +26,7 @@
   height: 100%;
   object-fit: cover;
   position: relative;
+  cursor: zoom-in;
 }
 
 .left {
@@ -64,7 +66,6 @@
   position:relative;
   width: 80px;
   height: 80px;
-  /* height: 50%; */
 }
 
 .style-thumbnail-zoom {
@@ -101,6 +102,39 @@
 
 .display-overlay {
   display:none;
+}
+
+.thumbnails-outer {
+  display: grid;
+  grid-template-columns: repeat(1, 85px);
+  row-gap: 10px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  justify-content: center;
+  right: 30%;
+  position:relative;
+}
+
+.thumbnail-container-outer {
+  position:relative;
+  width: 80px;
+  height: 80px;
+}
+
+.style-thumbnail-zoom-outer {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  position: relative;
+}
+
+.overlay-thumbnail-outer {
+  text-align: center;
+  font-size: 50px;
+  position: relative;
+  bottom:70%;
+  right:10%;
+  opacity: 70%;
 }
 
 .add-to-cart {
