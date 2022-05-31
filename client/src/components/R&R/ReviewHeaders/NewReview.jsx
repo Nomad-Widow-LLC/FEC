@@ -1,6 +1,7 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import NewReviewForm from './NewReviewForm.jsx';
 
 
 const ReviewButtonItem = styled.button`
@@ -18,18 +19,15 @@ const Style = styled.div`
 
 export default function NewReview () {
 
-  const [writeReview, setWriteReview] = useState(false);
+  const [openReviewForm, setOpenReviewForm] = useState(false);
 
 
-  const handleClick = () => {
-
-    setWriteReview(!writeReview);
-  }
 
 
   return(
     <div className="new-review">
-      <ReviewButtonItem onClick={handleClick}>Write A Review</ReviewButtonItem>
+      <ReviewButtonItem onClick={() => {setOpenReviewForm(!openReviewForm)}}>Write A Review</ReviewButtonItem>
+      <NewReviewForm open={openReviewForm}/>
     </div>
   );
 

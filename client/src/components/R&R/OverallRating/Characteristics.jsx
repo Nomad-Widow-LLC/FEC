@@ -91,6 +91,7 @@ export default function Characteristics () {
         <TitleStyle>
           <div>Fit</div>
         </TitleStyle>
+        <input disabled type="range" min="0" max="5" value="3"/>
         <Bar>
           <TickData location={metaData.characteristics.Fit}/>
           <Tick1><Tick2><Tick3></Tick3></Tick2></Tick1>
