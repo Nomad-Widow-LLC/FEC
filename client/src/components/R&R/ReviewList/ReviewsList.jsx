@@ -5,6 +5,7 @@ import ShowingReviews from './ShowingReviews.jsx';
 
 import styled from 'styled-components';
 import {AllReviews} from '../ReviewWidget.jsx';
+import {AllProductInfo} from '../../App.jsx';
 
 // Styled Components
 const List = styled.div`

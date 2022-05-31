@@ -3,19 +3,27 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import StarRating from '../../Overview/ProductInformation/StarRating.jsx';
+import BarPercentage from './BarPercentage.jsx';
 import useGetAvgRatings from '../GetData/useGetAvgRatings.js';
+import useGetRatingBreakdown from '../GetData/useGetRatingBreakdown.js';
 import {AllReviews} from '../ReviewWidget.jsx';
+import {AllProductInfo} from '../../App.jsx';
 
 
 const OverallRatingContainer = styled.div`
+  width: 120px;
   margin: 10px 10px;
-  display: flex;
-  flex-direction: row;
   align-items: flex-end;
   border-style: groove;
   border-width: 1px;
   border-color: grey;
   box-shadow: 1px 1px grey;
+  padding: 10px;
+`
+
+const OverallHeader = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 const OverallRatingNumber = styled.div`
@@ -23,22 +31,47 @@ const OverallRatingNumber = styled.div`
   margin: 0px 5px;
 `
 
+const BreakdownStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const StarRatingItem = styled.div`
+  vertical-align: bottom;
+`
+
 export default function OverallRating () {
 
   const {metaData, setMetaData} = useContext(AllReviews);
   const [sumRating, setSumRating] = useState(useGetAvgRatings(metaData.ratings));
+  const [breakdown, setBreakdown] = useState(useGetRatingBreakdown(metaData.ratings));
 
-
-
-
+  useEffect(() => {
+    setSumRating(useGetAvgRatings(metaData.ratings));
+    setBreakdown(useGetRatingBreakdown(metaData.ratings));
+  }, [metaData])
 
   return (
     <>
       <OverallRatingContainer>
+      <OverallHeader>
         <OverallRatingNumber>
-          <div>{sumRating.toFixed(1)}</div>
+          {sumRating ? <div>{sumRating.toFixed(1)}</div> : <div>N/A</div>}
         </OverallRatingNumber>
+        <StarRatingItem>
           <StarRating rating={sumRating} reviewNum={null}/>
+        </StarRatingItem>
+      </OverallHeader>
+        {/* {['5 Star', '4 Star', '3 Star', '2 Star', '1 Star'].map((text, index) => {
+          return <div>{text}</div>
+        })} */}
+        <BreakdownStyles>
+          {sumRating ? (breakdown.map((ratio, index) => {
+            return (<BarPercentage key={index} ratio={ratio} star={5- index}/>)
+          })) : (breakdown.map((ratio, index) => {
+            return (<BarPercentage key={index} ratio={0} star={5- index}/>)
+          }))}
+          {}
+        </BreakdownStyles>
       </OverallRatingContainer>
     </>
   );

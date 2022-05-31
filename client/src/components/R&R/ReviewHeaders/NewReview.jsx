@@ -2,6 +2,7 @@ import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+
 const ReviewButtonItem = styled.button`
   font-size: 14px;
   font-family: "Courier New", Monaco, "Lucida Console";
@@ -21,6 +22,7 @@ export default function NewReview () {
 
 
   const handleClick = () => {
+
     setWriteReview(!writeReview);
   }
 

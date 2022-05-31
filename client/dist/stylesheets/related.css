@@ -1,72 +1,85 @@
-.relatedCarousel {
+.carousel-container {
+  width: 1280px;
+  margin: 50px auto;
+  min-height: 200px; /* was 200 */
+  position: relative;
+}
+
+.carousel-container .inner-carousel {
   overflow: hidden;
-  height: 300px;
-  align-self: center;
-  position: relative;
-  margin: auto;
 }
 
-.card {
-  vertical-align: middle;
-  display: inline-block;
-  position: relative;
-  margin: auto;
-  margin-left: 55px;
-  height: 300px;
-  width: 300px;
-  margin-top: 10px;
+.carousel-container .track {
+  display: flex;
+  transition: transform 0.3s;
 }
 
-.leftBtn {
+.carousel-container .card-container {
+  width: 259px;
+  height: 250px;
+  flex-shrink: 0;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
+
+.carousel-container .card-container .card {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav .button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 1;
   position: absolute;
-  display: inline-block;
-  width: 50px;
-  margin-right: 95%;
-  height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
-.rightBtn {
-  position: relative;
-  width: 50px;
-  height: 100%;
+.nav .prev {
+  left: -40px;
 }
 
-.selected {
-  background-color: grey;
+.nav .next {
+  right: -40px
 }
 
-.carouselImage {
-  height: 75%;
-  width: 299px;
+.card > * {
+  flex: 1;
 }
 
-.category {
+.card .info {
+  flex-basis: 40px;
+  flex-grow: 0;
+  padding: 5px;
+}
+
+.card .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60%;
+  width: 100%;
+}
+
+.card .info .name {
+  font-weight: bold;
+}
+
+.card .info .category {
   font-style: italic;
-  margin-top: 5px;
 }
 
-.title {
-  font-weight: bolder;
-}
-.price {
-  margin-top: 5px;
-}
-
-.lineThrough {
+.card .info .lineThrough {
   text-decoration: line-through;
-  position: absolute;
+  margin-left: 10px;
 }
 
-.redSale {
+.card .info .redSale {
   color: red;
-  position: absolute;
-  margin-left: 70px;
-}
-
-.priceContainer {
-  text-align: left;
-}
-
-.componentGap {
-  height: 100px;
 }
