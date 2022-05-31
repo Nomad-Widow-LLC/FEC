@@ -9,9 +9,8 @@ const ModalStyles = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #FFF;
   padding: 25px;
-  zIndex: 10;
+  zIndex: 1000;
 `
 
 const OverlayStyles = styled.div`
@@ -24,8 +23,9 @@ const OverlayStyles = styled.div`
   zIndex: 1000;
 `
 const ExpandedImg = styled.img`
-  width: 500px;
-  height: auto;
+  width: 600px;
+  height: 700px;
+  cursor: url("https://i.stack.imgur.com/bUGV0.png"), auto;
 `
 
 const ModalZoom = styled.div`
@@ -42,8 +42,8 @@ const ModalZoom = styled.div`
   display: flex;
 `
 const ExpandContainer = styled.div`
-  height: 1300px;
-  width: 900px;
+  height: 900px;
+  width: 800px;
   overflow:hidden;
 `
 const InnerExpandedImg = styled.img`
@@ -53,6 +53,7 @@ const InnerExpandedImg = styled.img`
   height: 100%;
   transform-origin: ${props=> `${props.xAxis}px ${props.yAxis}px`};
   transform: scale(2.5);
+  cursor: url("https://i.stack.imgur.com/bUGV0.png"), auto;
 `
 
 const Icon = styled.div`
