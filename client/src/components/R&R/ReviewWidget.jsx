@@ -9,8 +9,8 @@ import dummyMetaReviewData from '../../../dist/dummyMetaReviewData.js';
 
 import ReviewHeader from './ReviewHeaders/ReviewHeader.jsx';
 import ReviewsList from './ReviewList/ReviewsList.jsx';
-import FilterReview from './FilterReviews/FilterReview.jsx';
 import OverallRating from './OverallRating/OverallRating.jsx';
+import Characteristics from './OverallRating/Characteristics.jsx';
 
 
 import {AllProductInfo} from '../App.jsx';
@@ -107,7 +107,7 @@ export default function ReviewWidget () {
           <ReviewWidgetBody>
             <SideBar>
               <OverallRating />
-              <FilterReview />
+              <Characteristics/>
             </SideBar>
             <ReviewsList />
           </ReviewWidgetBody>

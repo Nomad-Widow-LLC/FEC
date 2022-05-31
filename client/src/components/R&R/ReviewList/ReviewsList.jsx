@@ -20,6 +20,7 @@ const ListHeaders = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: 0.5em;
+  width: 92%;
 `
 
 const ShowMore = styled.button`
