@@ -42,17 +42,15 @@ const ModalZoom = styled.div`
   display: flex;
 `
 const ExpandContainer = styled.div`
-  height: 1000px;
-  width: 1000px;
+  height: 1300px;
+  width: 900px;
   overflow:hidden;
-  // justify-content: center;
-  // align-items: center;
 `
 const InnerExpandedImg = styled.img`
-  object-fit: contain;
+  background-position: center;
+  background-size: cover;
   width: 100%;
   height: 100%;
-  // transform-origin: center;
   transform-origin: ${props=> `${props.xAxis}px ${props.yAxis}px`};
   transform: scale(2.5);
 `
@@ -75,22 +73,10 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
   const [yAxis, setYAxis] = useState(0);
 
   const handleZoomingPic = (event) => {
-    console.log(event);
-    console.log('event.clientX', event.clientX);
-    console.log('event.clientY',event.clientY);
-    console.log('event.target.offsetLeft', event.target.offsetLeft)
-    console.log('event.target.offsetTop', event.target.offsetTop)
-
-    const x = (event.clientX - event.target.offsetLeft);
-    const y = (event.clientY - event.target.offsetTop);
-
-    console.log('X,Y', x,y);
-    console.log('x-y', x-y)
-
-    if (x > 0) setXAxis(x);
-    if (y > 0) setYAxis(y);
-    // setXAxis(x)
-    // setYAxis(y)
+    const x = (event.clientX-event.target.offsetLeft);
+    const y = (event.clientY-event.target.offsetTop);
+    setXAxis(x)
+    setYAxis(y)
   }
 
   const handleZoomingOut = () => {
@@ -145,7 +131,7 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
             hideCheckmark={hideCheckmark}/> }
         </ModalStyles>
       </OverlayStyles>
-      {isExpanded ? <ModalZoom ><ExpandContainer ><InnerExpandedImg src={photo?.url} alt={photo?.id} xAxis={xAxis} yAxis={yAxis} onMouseUp={handleZoomingOut} onMouseMove={handleZoomingPic}></InnerExpandedImg></ExpandContainer></ModalZoom>: <></>}
+      {isExpanded ? <ModalZoom  ><ExpandContainer  ><InnerExpandedImg src={photo?.url} alt={photo?.id} xAxis={xAxis} yAxis={yAxis}  onMouseMove={handleZoomingPic} onMouseUp={handleZoomingOut}></InnerExpandedImg></ExpandContainer></ModalZoom>: <></>}
     </>,
     document. getElementById('portal')
   );
