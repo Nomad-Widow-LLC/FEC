@@ -42,6 +42,8 @@ const StarRatingItem = styled.div`
 export default function OverallRating () {
 
   const {metaData, setMetaData} = useContext(AllReviews);
+  const {didSelect, setDidSelect} = useContext(AllReviews);
+  const {selectedStars, setSelectedStars} = useContext(AllReviews);
   const [sumRating, setSumRating] = useState(useGetAvgRatings(metaData.ratings));
   const [breakdown, setBreakdown] = useState(useGetRatingBreakdown(metaData.ratings));
 
@@ -61,17 +63,15 @@ export default function OverallRating () {
           <StarRating rating={sumRating} reviewNum={null}/>
         </StarRatingItem>
       </OverallHeader>
-        {/* {['5 Star', '4 Star', '3 Star', '2 Star', '1 Star'].map((text, index) => {
-          return <div>{text}</div>
-        })} */}
         <BreakdownStyles>
           {sumRating ? (breakdown.map((ratio, index) => {
-            return (<BarPercentage key={index} ratio={ratio} star={5- index}/>)
+            return (<BarPercentage key={index} ratio={ratio} star={5- index} num={metaData.ratings[''+(5-index)]}/>)
           })) : (breakdown.map((ratio, index) => {
-            return (<BarPercentage key={index} ratio={0} star={5- index}/>)
+            return (<BarPercentage key={index} ratio={0} star={5- index} num={metaData.ratings[''+(5-index)]}/>)
           }))}
           {}
         </BreakdownStyles>
+        {didSelect ? <button onClick={() => {setSelectedStars({})}}>Clear Filters</button> : <></>}
       </OverallRatingContainer>
     </>
   );

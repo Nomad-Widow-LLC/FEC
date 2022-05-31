@@ -1,4 +1,5 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
+import axios from 'axios';
 import ReviewListEntries from './ReviewListEntries.jsx';
 import SortBy from './SortBy.jsx';
 import ShowingReviews from './ShowingReviews.jsx';
@@ -13,11 +14,13 @@ const List = styled.div`
   flex-direction: column;
   padding-left: 10px;
   flex-grow: 4;
+  max-width: 90%;
 `
 const ListHeaders = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: 0.5em;
+  width: 92%;
 `
 
 const ShowMore = styled.button`
@@ -31,16 +34,31 @@ const ShowMore = styled.button`
 `
 const Scroll = styled.div`
   overflow: auto;
-  max-height: 100vh;
+  max-height: auto;
+  max-width: 100%;
 `
 
 export default function ReviewsList () {
 
-
+  const {productIDN, setProductIDN} = useContext(AllProductInfo);
   const {reviewData, setReviewData} = useContext(AllReviews);
+  const {breakdownReviews, setBreakdownReviews} = useContext(AllReviews);
+  const {didSelect, setDidSelect} = useContext(AllReviews);
   const {reviewsShown, setReviewShown} = useContext(AllReviews);
+  const {totalReviews, setTotalReviews} = useContext(AllReviews);
+  const {sortBy, setSortBy} = useContext(AllReviews);
+  const [showAll, setShowAll] = useState(false);
 
+  useEffect(() => {
+    if(!totalReviews) {
 
+    } else {
+      axios.get(`/review?sort=${sortBy}&&product_id=${productIDN}&&count=${totalReviews}`)
+        .then((data) => {setReviewData(data.data)})
+        .catch((err) => {console.log('Could not retrieve from Atelier API')})
+        .then(() => {setReviewShown(reviewData.results.length)})
+    }
+  }, [showAll])
 
   return (
 
@@ -52,16 +70,24 @@ export default function ReviewsList () {
       </ListHeaders>
 
       <Scroll>
-        {reviewData.results.map((review, index) => {
-          if(index < reviewsShown) {
+        {didSelect ?
+          (breakdownReviews.results.map((review, index) => {
+          if(index < (reviewsShown ? reviewsShown : 2)) {
             return <ReviewListEntries key={index} review={review}/>
           } else {
             return <div key={index}></div>
           }
-        })}
-        {(reviewData.results.length <= reviewsShown ?
+          })) :
+          (reviewData.results.map((review, index) => {
+          if(index < (reviewsShown ? reviewsShown : 2)) {
+            return <ReviewListEntries key={index} review={review}/>
+          } else {
+            return <div key={index}></div>
+          }
+        }))}
+        {(showAll ?
           <></> :
-          <ShowMore onClick={() => {setReviewShown(reviewData.results.length)}}>Show more reviews</ShowMore>)}
+          <ShowMore onClick={() => {setShowAll(true)}}>Show more reviews</ShowMore>)}
       </Scroll>
 
 

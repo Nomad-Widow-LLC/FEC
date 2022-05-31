@@ -45,10 +45,11 @@ app.get('/styles', (req, res) => {
 app.get('/review', (req, res) => {
   let product = req.query.product_id;
   let sort = req.query.sort || 'relevant'
+  let count = req.query.count || 5;
   // console.log(product, sort);
   // console.log('WHAT IS THE DIFFERENce', config.TOKEN)
   // console.log('HERE IS YOUR TOKEN', process.env.TOKEN)
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?sort=${sort}&&product_id=${product}`, api_header)
+  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews?sort=${sort}&&product_id=${product}&&count=${count}`, api_header)
     .then ((response) => {
       // console.log('RESPONSE', response.data)
 
