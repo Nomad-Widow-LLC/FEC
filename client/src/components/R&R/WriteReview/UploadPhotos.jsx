@@ -11,8 +11,8 @@ export default function UploadPhotos () {
 
   return (
     <>
-      <UploadPhotoHeader>Upload Your Photos Here (Optional)</UploadPhotoHeader>
-
+      <UploadPhotoHeader>Upload Your Photos Here (Optional, 5 Max)</UploadPhotoHeader>
+      <input type="file" id="myFile" name="filename" accept="image/png, image/jpeg"/>
     </>
   );
 };

@@ -24,7 +24,9 @@ const IndvReview = styled.div`
   padding-left: 1.5em;
   margin-right: 1em;
   max-width: 90%;
+  min-width: 600px;
   max-height: auto;
+  min-height: 175px;
 `
 
 const HeaderReviews = styled.div`
@@ -75,6 +77,8 @@ const ReviewSummary = styled.div`
   font-size: 16px;
   font-weight: 600;
   padding: 5px 0px;
+  position: relative;
+  bottom: 2em;
 `
 const PhotoItem = styled.div`
   display: flex;
