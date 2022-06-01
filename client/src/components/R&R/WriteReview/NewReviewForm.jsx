@@ -27,6 +27,8 @@ const ModalStyles = styled.div`
   background-color: #FFF;
   padding: 25px;
   zIndex: 1000;
+  max-height: 90%;
+  overflow-y: auto;
 `
 const OverlayStyles = styled.div`
   position: fixed;
