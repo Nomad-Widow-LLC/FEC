@@ -1,18 +1,15 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 export const DropdownWrapper = styled.form`
   margin-top: 5px;
   font-size: 20px;
-  // width: 30px;
-  // height: 10px;
 `;
 
 export const StyledSelect = styled.select`
   margin-bottom: 5px;
   font-size: 20px;
-  // width: 30px;
-  // height: 10px;
+
 `;
 
 export const StyledOption = styled.option`
@@ -21,17 +18,47 @@ export const StyledOption = styled.option`
 
 export const StyledButton = styled.input`
   justify-content: center;
-  // width: 100px;
-  // height: 10px;
   font-size: 20px;
 `;
 
 export function Dropdown(props) {
+  const quantityArray = useMemo(() => {
+    let quantities = [];
+    let length = 0;
+    if (props.quantity > 15) {
+      length = 15;
+    } else {
+      length = props.quantity;
+    }
+    for (let i = 1; i < length + 1; i++) {
+      quantities.push(i);
+    }
+    return quantities
+  }, [props.size])
+
+  const handleAddToCart = (event) => {
+    event.preventDefault();
+    alert('Added item to the cart');
+  }
+
   return (
-    <DropdownWrapper action={props.action}>
-      <StyledSelect id="services" name="services" onChange={(event)=>{props.handleChoosingSize(event.target.value)}}>
+    <DropdownWrapper action={props.action} onSubmit={handleAddToCart} >
+      <StyledSelect id="sizes" name="sizes" onChange={(event)=>{props.handleChoosingSize(event.target.value), event.target.setCustomValidity('')}} onInvalid={(event) => event.target.setCustomValidity('Please select size')} required>
         {props.children}
       </StyledSelect>
+      {props.allQuantity ? <DropdownQuantity
+          buttonText="Add to Cart"
+          action="/"
+          size={props.size}
+        >
+          {props.sizeSelected ? <></> : <option selected value="" >-</option>}
+          {quantityArray.map(quantity => {
+            return (
+              <Option value={quantity} key={quantity}/>
+            )}
+          )}
+        </DropdownQuantity> : <></>}
+      <StyledButton type="submit" value={props.buttonText}/>
     </DropdownWrapper>
   );
 }
@@ -39,10 +66,9 @@ export function Dropdown(props) {
 export function DropdownQuantity(props) {
   return (
     <DropdownWrapper action={props.action}>
-      <StyledSelect id="services" name="services" >
+      <StyledSelect id="quantity" name="quantity" required>
         {props.children}
       </StyledSelect>
-      <StyledButton type="submit" value={props.buttonText} />
     </DropdownWrapper>
   );
 }
@@ -55,13 +81,14 @@ export function Option(props) {
   );
 }
 
-export default function AddToCart({handleChoosingSize, style, size, quantity}) {
+export default function AddToCart({handleChoosingSize, style, size, quantity, allQuantity, setSize, sizeSelected}) {
 
   const sizeAndQuantity = useMemo(() => {
-    console.log('STYLE CHANGED', style.skus)
     let array = [];
     for (let key in style.skus) {
-      array.push(style.skus[key])
+      if (style.skus[key].quantity !== 0) {
+        array.push(style.skus[key])
+      }
     }
     return array;
   }, [style])
@@ -82,28 +109,22 @@ export default function AddToCart({handleChoosingSize, style, size, quantity}) {
 
   return (
     <div className='add-to-cart'>
-      <Dropdown
-        buttonText="Add to Cart"
-        action="/"
-        handleChoosingSize={handleChoosingSize}
-      >
-        <Option selected value="Select Size" />
-        {sizeAndQuantity.map(set => {
-          return (
-            <Option value={set.size} key={set.size}/>
-          )})}
-      </Dropdown>
-      <DropdownQuantity
-        buttonText="Add to Cart"
-        action="/"
-      >
-        <Option selected value="-" />
-        {quantityArray.map(quantity => {
-          return (
-            <Option value={quantity} key={quantity}/>
-          )}
-        )}
-      </DropdownQuantity>
+      {allQuantity ?
+        <Dropdown
+          buttonText="Add to Cart"
+          action="/"
+          handleChoosingSize={handleChoosingSize}
+          allQuantity={allQuantity}
+          sizeSelected={sizeSelected}
+          size={size}
+          quantity={quantity}
+        >
+          {sizeSelected ? <></> : <option selected value="" >Select Size</option> }
+          {sizeAndQuantity.map(set => {
+            return (
+              <Option value={set.size} key={set.size}/>
+            )})}
+        </Dropdown> : <div className="out-of-stock">OUT OF STOCK</div>}
     </div>
   );
 }
