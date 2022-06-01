@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import StarRating from './StarRating.jsx';
 import Carousel from "../ImageGallery/Carousel.jsx";
 import StyleSelector from "./StyleSelector.jsx";
 import AddToCart from "./AddToCart.jsx";
 import axios from 'axios';
 import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import {AllProductInfo} from "../../App.jsx"
 
 const ProductInfo = () => {
   const [rating, setRating] = useState(0);
@@ -16,6 +17,8 @@ const ProductInfo = () => {
   const [quantity, setQuantity] = useState(0);
   const [allQuantity, setAllQuantity] = useState(true);
   const [sizeSelected, setSizeSelected] = useState(false);
+
+  const {productIDN, setProductIDN} = useContext(AllProductInfo)
 
   const handleOnClickStyle = (thumbnail) => {
     setSize('Select Size');
@@ -33,7 +36,7 @@ const ProductInfo = () => {
   }
 
   useEffect(() => {
-    let product_id = '40344'
+    let product_id = productIDN;
     axios.get('/product?product_id=' + product_id)
       .then((response) => {
         setProduct(response.data)

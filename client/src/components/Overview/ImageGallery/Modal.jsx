@@ -132,7 +132,7 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
             hideCheckmark={hideCheckmark}/> }
         </ModalStyles>
       </OverlayStyles>
-      {isExpanded ? <ModalZoom  ><ExpandContainer  ><InnerExpandedImg src={photo?.url} alt={photo?.id} xAxis={xAxis} yAxis={yAxis}  onMouseMove={handleZoomingPic} onMouseUp={handleZoomingOut}></InnerExpandedImg></ExpandContainer></ModalZoom>: <></>}
+      {isExpanded ? <ModalZoom  ><ExpandContainer  ><InnerExpandedImg src={photo?.url} alt={photo?.id} xAxis={xAxis} yAxis={yAxis} onMouseMove={handleZoomingPic} onMouseUp={handleZoomingOut}></InnerExpandedImg></ExpandContainer></ModalZoom>: <></>}
     </>,
     document. getElementById('portal')
   );
