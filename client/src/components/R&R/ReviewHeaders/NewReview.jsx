@@ -1,7 +1,7 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import NewReviewForm from './NewReviewForm.jsx';
+import NewReviewForm from '../WriteReview/NewReviewForm.jsx';
 
 
 
