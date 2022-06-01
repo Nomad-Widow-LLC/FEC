@@ -6,8 +6,9 @@ const StarRating = ({rating, reviewNum}) => {
   if (rating === 0) {
     return null;
   }
+  // add className='starRating' back into to span tag
   return (
-    <span className='starRating'>
+    <span>
       {[1, 2, 3, 4, 5].map((idx) => {
         return (
           <Star idx={idx} rating={rating} key={idx}/>

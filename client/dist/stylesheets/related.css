@@ -7,13 +7,14 @@
   margin: 50px auto;
   min-height: 200px;
   position: relative;
+  align-self: center;
 }
 
-.carousel-container .title {
+.module-container .title {
   font-size: 18pt;
   font-weight: bold;
-  margin-left: 50%;
-  margin-bottom: 30px;
+  display: flex;
+  padding-left: 50%;
 }
 
 .carousel-container .inner-carousel {
@@ -27,7 +28,7 @@
 
 .carousel-container .card-container {
   width: 259px;
-  height: 250px;
+  height: 300px;
   flex-shrink: 0;
   padding-right: 15px;
   box-sizing: border-box;
@@ -39,6 +40,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  /* add on next ticket === cursor: pointer; */
 }
 
 .nav .button {
@@ -73,9 +75,12 @@
 .card .img {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 60%;
-  width: 100%;
+  width: 280px;
+  height: 33%;
+}
+
+.card .notFound {
+  padding-bottom: 20px;
 }
 
 .card .info .name {
@@ -95,12 +100,24 @@
   color: red;
 }
 
-.card .info .stars {
+.card .info .relatedStars {
   display: flex;
-  position: absolute;
-  transform: translateX(50%);
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+.card .info .priceContainer {
+  position: relative;
 }
 
 .spacer {
   height: 30px;
+}
+
+.card .actionButton {
+  z-index: 1;
+  display: flex;
+  margin-right: 0px;
+  margin-left: auto;
+  cursor: pointer;
 }

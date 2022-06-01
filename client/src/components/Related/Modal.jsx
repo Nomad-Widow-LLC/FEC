@@ -2,6 +2,7 @@ import React, {useState, useContext, createContext, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import {FaTimes} from 'react-icons/fa';
+import { CardStates } from './Card.jsx';
 
 
 const ModalStyles = styled.div`
@@ -37,15 +38,17 @@ const Icon = styled.div`
   }
 `
 
-export default function Modal({open, photo, onClose}) {
+export default function Modal({open, onClose}) {
+
+  const {isOpen, setIsOpen} = useContext(CardStates);
 
   if (!open) return null
 
   return ReactDOM.createPortal(
     <>
-      <OverlayStyles>
+      <OverlayStyles >
         <ModalStyles>
-          <div>
+          <div onClick={() => {setIsOpen(false)}}>
             Hello World!
           </div>
         </ModalStyles>

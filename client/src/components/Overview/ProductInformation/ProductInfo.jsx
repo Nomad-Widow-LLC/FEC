@@ -69,7 +69,7 @@ const ProductInfo = () => {
     <div className='productAndImage'>
         <Carousel style={style}/>
         <div className='ProductInfo'>
-          <StarRating rating={rating} reviewNum={reviewNum}/>
+          <StarRating className='starRating' rating={rating} reviewNum={reviewNum}/>
           <h6 className='ProductCategory'>{product.category}</h6>
           <h3 className='ProductTitle'>{product.name}</h3>
           <h6 className='Price'>${product.default_price}</h6>
