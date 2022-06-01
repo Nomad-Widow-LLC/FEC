@@ -7,18 +7,29 @@ color scheme
 
  .ProductOverview {
   font-size: 15px;
+  padding-top: 20px;
 }
  .ProductInfo {
    display:inline-block;
    font-size: 30px;
    width: 50%;
-   right: 10%;
+   right: 15%;
    position: relative;
-   margin-top: 3%;
+   margin-top: 1%;
  }
 
- .ProductCategory, .ProductTitle, .Price, .SocialMedia, .ProductOverview  {
+ .ProductCategory, .ProductTitle, .Price, .ProductOverview  {
    margin:0% 3% 3% 0%;
+ }
+
+ .SocialMedia{
+  font-size: 20px;
+  margin:7% 0% 2% 0%;
+ }
+
+ .style-name{
+  font-size: 15px;
+  padding: 0%;
  }
 
  .readAllRatingsButton {
