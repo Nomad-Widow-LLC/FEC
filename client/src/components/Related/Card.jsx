@@ -8,7 +8,7 @@ var Card = ({pic, item, salePrice, stars}) => {
   let starBar;
 
   if (stars) {
-    starBar = <StarRating className="stars price" rating={stars.avg} />;
+    starBar = <StarRating className="stars" rating={stars.avg} />;
   }
 
   if (salePrice === null) {

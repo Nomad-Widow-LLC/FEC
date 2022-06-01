@@ -3,12 +3,14 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 import NewReview from './NewReview.jsx';
-
+import FilterReview from './FilterReview.jsx';
 
 const ReviewWidgetHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-content: flex-start;
+  justify-content: space-between;
+  width: 94%;
 
 `
 const Title = styled.h1`
@@ -17,7 +19,7 @@ const Title = styled.h1`
   color: black;
   padding-right: 10px;
   margin-left: 10px;
-  flex-grow: 2;
+  margin-right: 30px;
 `
 
 
@@ -30,6 +32,7 @@ export default function ReviewHeader() {
       <Title>
         <div className="review-title">Reviews</div>
       </Title>
+      {/* <Characteristics/> */}
       <NewReview />
     </ReviewWidgetHeader>
   );
