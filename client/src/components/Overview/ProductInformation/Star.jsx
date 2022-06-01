@@ -3,8 +3,6 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const Star = ({idx, rating}) => {
 
-  // let widthClass = '';
-
   const widthClass = useMemo(() => {
     if (rating >= idx) {
       return 'ratingStar100'

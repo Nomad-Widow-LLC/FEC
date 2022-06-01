@@ -20,10 +20,11 @@ export default function App () {
   return (
     <>
       <AllProductInfo.Provider value={{productIDN, setProductIDN}}>
-        {/* <ProductInfo />
+        <ProductInfo />
         <div className="componentGap" />
         <Carousel />
-        <div className="componentGap" /> */}
+        <div className="componentGap" />
+        <a id="review-widget"></a>
         <ReviewWidget />
       </AllProductInfo.Provider>
     </>

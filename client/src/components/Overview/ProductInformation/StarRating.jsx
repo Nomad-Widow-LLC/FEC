@@ -8,12 +8,12 @@ const StarRating = ({rating, reviewNum}) => {
   }
   return (
     <span className='starRating'>
-      {[1, 2, 3, 4, 5].map((idx) => {
+      {[1,2,3,4,5].map((idx) => {
         return (
           <Star idx={idx} rating={rating} key={idx}/>
         )
       })}
-      {reviewNum ? <button className='readAllRatingsButton'> Read all {reviewNum} reviews </button> : <></>}
+      {reviewNum ? <a className='readAllRatingsButton' href="#review-widget"> Read all {reviewNum} reviews </a> : <></>}
 
     </span>
   )
