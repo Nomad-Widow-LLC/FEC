@@ -7,8 +7,7 @@ import { AllProductInfo } from '../App.jsx';
 
 let Carousel = () => {
 
-  const {productIDN, setProductIDN} = useContext(AllProductInfo);
-  let overviewId = productIDN;
+  const {productIDN} = useContext(AllProductInfo);
   let [overviewProduct, setOverviewProduct] = useState({});
   let [productList, setProductList] = useState([]);
   let [styleList, setStyleList] = useState([]);
@@ -75,7 +74,7 @@ let Carousel = () => {
 
   // Responsible for getting the data for the carousel
   useEffect(() => {
-    axios.get(`/products?id=${overviewId}&related=true`)
+    axios.get(`/products?id=${productIDN}&related=true`)
       .then((results) => {
         let idList = results.data;
         return idList;
@@ -116,13 +115,13 @@ let Carousel = () => {
           })
       })
       .then (() => {
-        axios.get(`/products?id=${overviewId}`)
+        axios.get(`/products?id=${productIDN}`)
           .then((result) => {
             setOverviewProduct(overviewProduct = result.data);
           })
       })
       .catch((err) => console.log(`Error in carousel GET: ${err}`))
-  }, [])
+  }, [productIDN])
 
   // Controls the hiding and showing of the previous and next buttons at the appropriate time
   useEffect(() => {
@@ -166,7 +165,7 @@ let Carousel = () => {
                 stars={starsList[index]}
                 pic={styleList[index].results[0].photos[0].url}
                 item={product}
-                salePrice={styleList[index].results[3].sale_price}
+                salePrice={styleList[index].results[3]?.sale_price}
                 key={product.product_id}
                 mode="related"
                 />

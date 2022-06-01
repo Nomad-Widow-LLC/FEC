@@ -1,6 +1,7 @@
 .module-container {
   width: 100%;
   background-color: #fafafa;
+  min-height: 320px;
 }
 .module-container .carousel-container {
   width: 1280px;
@@ -22,6 +23,7 @@
 }
 
 .carousel-container .track {
+  position: relative;
   display: flex;
   transition: transform 0.3s;
 }
@@ -32,6 +34,7 @@
   flex-shrink: 0;
   padding-right: 15px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .carousel-container .card-container .card {
@@ -40,7 +43,6 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* add on next ticket === cursor: pointer; */
 }
 
 .nav .button {
@@ -75,8 +77,8 @@
 .card .img {
   display: flex;
   justify-content: center;
-  width: 280px;
-  height: 33%;
+  width: 100%;
+  min-height: 200px;
 }
 
 .card .notFound {
@@ -115,9 +117,13 @@
 }
 
 .card .actionButton {
-  z-index: 1;
   display: flex;
+  position: absolute;
   margin-right: 0px;
   margin-left: auto;
+  margin-bottom: 5px;
+  min-height: 10px;
+  min-width: auto;
   cursor: pointer;
+  z-index: 1;
 }

@@ -15,7 +15,7 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   let image;
   let [isOpen, setIsOpen] = useState(false);
 
-  const {productIDN, setProductIDN} = useContext(AllProductInfo);
+  let {productIDN, setProductIDN} = useContext(AllProductInfo);
 
   if (pic === null) {
     image = <img className="img" src="https://klizos.com/wp-content/uploads/funny-404-error-page-GIF.gif" />;
@@ -30,7 +30,7 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   }
 
   if (stars) {
-    starBar = <div className="relatedStars"><StarRating rating={stars.avg} /></div>;
+    starBar = <div className="relatedStars"><StarRating rating={stars?.avg} /></div>;
   }
 
   if (salePrice) {
@@ -47,7 +47,6 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   }
 
   let card = <div className="card">
-               {actionButton}
                {image}
                <div className="info">
                  <div className="name">{item.name}</div>
@@ -57,9 +56,12 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
              </div>;
 
   return (
-    <CardStates.Provider value={{isOpen, setIsOpen}} className="card-container">
-      {card}
-      <Modal open={isOpen} onClose={() => setIsOpen(false)} />
+    <CardStates.Provider value={{isOpen, setIsOpen, }}>
+      {actionButton}
+      <div className="card-container" onClick={() => {setProductIDN(item.id)}}>
+        {card}
+        <Modal open={isOpen} onClose={() => setIsOpen(false)} />
+      </div>
     </CardStates.Provider>
   )
 
