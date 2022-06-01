@@ -10,7 +10,11 @@ import {AllReviews} from '../ReviewWidget.jsx';
 import StarRatingInput from './StarRatingInput.jsx';
 import DoYouRecommend from './DoYouRecommend.jsx';
 import CharacteristicsInput from './CharacteristicsInput.jsx';
-
+import ReviewSummary from './ReviewSummary.jsx';
+import BodySummary from './BodySummary.jsx';
+import UploadPhotos from './UploadPhotos.jsx';
+import SetNickname from './SetNickname.jsx';
+import EmailInput from './EmailInput.jsx';
 
 
 export const AllReviewForm = createContext();
@@ -66,6 +70,15 @@ export default function NewReviewForm ({open, onClose}) {
   const [qualityRating, setQualityRating] = useState(null);
   const [charsObj, setCharsObj] = useState(null);
 
+  const [summary, setSummary] = useState('');
+  const [body, setBody] = useState('');
+
+  const [photos, setPhotos] = useState([]);
+
+  const [nickname, setNickname] = useState('');
+
+  const [email, setEmail] = useState('');
+
   useEffect(() => {
 
     let tempObj = {};
@@ -95,6 +108,11 @@ export default function NewReviewForm ({open, onClose}) {
       setQualityRating(null);
       setCharsObj(null);
       setRecommended(null);
+      setSummary('');
+      setBody('');
+      setNickname('');
+      setEmail('');
+      setPhotos([]);
     }
 
   }, [open])
@@ -110,7 +128,7 @@ export default function NewReviewForm ({open, onClose}) {
 
   return ReactDOM.createPortal(
     <>
-      <AllReviewForm.Provider value={{rating, setRating, recommended, setRecommended, fitRating, setFitRating, lengthRating, setLengthRating, comfortRating, setComfortRating, qualityRating, setQualityRating}}>
+      <AllReviewForm.Provider value={{rating, setRating, recommended, setRecommended, fitRating, setFitRating, lengthRating, setLengthRating, comfortRating, setComfortRating, qualityRating, setQualityRating, summary, setSummary, body, setBody, nickname, setNickname, email, setEmail}}>
         <OverlayStyles>
           <ModalStyles>
             <H1Styles>Write Your Review</H1Styles>
@@ -122,6 +140,11 @@ export default function NewReviewForm ({open, onClose}) {
               <StarRatingInput />
               <DoYouRecommend />
               <CharacteristicsInput />
+              <ReviewSummary />
+              <BodySummary />
+              <UploadPhotos />
+              <SetNickname />
+              <EmailInput />
               <input type="submit"/>
             </form>
           </ModalStyles>
