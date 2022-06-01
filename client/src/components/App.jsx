@@ -25,6 +25,7 @@ export default function App () {
         <div className="componentGap" />
         <Carousel />
         <div className="componentGap" />
+        <a id="review-widget"></a>
         <ReviewWidget />
       </AllProductInfo.Provider>
     </>
