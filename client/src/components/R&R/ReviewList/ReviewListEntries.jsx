@@ -24,7 +24,9 @@ const IndvReview = styled.div`
   padding-left: 1.5em;
   margin-right: 1em;
   max-width: 90%;
+  min-width: 600px;
   max-height: auto;
+  min-height: 175px;
 `
 
 const HeaderReviews = styled.div`
@@ -69,12 +71,15 @@ const IndvStarRating = styled.div`
   padding-top: 0.5em;
   font-size: 10px;
   opacity: 0.6;
+  max-height: 4.5em;
 `
 
 const ReviewSummary = styled.div`
   font-size: 16px;
   font-weight: 600;
   padding: 5px 0px;
+  position: relative;
+  bottom: 2em;
 `
 const PhotoItem = styled.div`
   display: flex;
@@ -139,7 +144,7 @@ export default function ReviewListEntries ({review}) {
       {review.response ? <ReviewResponse response={review.response}/> : <></>}
 
 
-      <ReviewHelpfulness helpful={review.helpfulness} />
+      <ReviewHelpfulness helpful={review.helpfulness} reviewID={review.review_id}/>
 
 
     </div>

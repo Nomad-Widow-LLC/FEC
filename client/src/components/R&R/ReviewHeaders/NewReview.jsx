@@ -1,7 +1,8 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import NewReviewForm from './NewReviewForm.jsx';
+import NewReviewForm from '../WriteReview/NewReviewForm.jsx';
+
 
 
 const ReviewButtonItem = styled.button`
@@ -27,7 +28,7 @@ export default function NewReview () {
   return(
     <div className="new-review">
       <ReviewButtonItem onClick={() => {setOpenReviewForm(!openReviewForm)}}>Write A Review</ReviewButtonItem>
-      <NewReviewForm open={openReviewForm}/>
+      <NewReviewForm open={openReviewForm} onClose={() => setOpenReviewForm(false)}/>
     </div>
   );
 
