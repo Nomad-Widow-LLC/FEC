@@ -19,16 +19,19 @@ export default function App () {
   const [productIDN, setProductIDN] = useState(40344);
   const [product, setProduct] = useState('');
 
-  useEffect(() => {
-    axios.get('/products')
-    .then((response) => {
-      console.log('does it hit this line?', response.data)
-    })
-    .catch((err) => {
-      console.log('could not access all products')
-      return;
-    })
-  },[])
+  // useEffect(async () => {
+  //   try {
+  //     let products = await axios.get('/products?count=20')
+  //     }
+  //   let newProducts = [];
+  //   if (products.data.length) {
+  //       products.data.map(async (product) => {
+  //         const productId = product.id;
+  //         console.log('PRODUCT ID', product_id)
+  //         let images = await axios.get('/styles?product_id=' + product_id)
+  //       })
+  //     }
+  // },[])
 
   const handleRenderHomePage = () => {
     setHomepage(true);
