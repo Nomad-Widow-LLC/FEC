@@ -18,8 +18,11 @@ import {AllProductInfo} from '../App.jsx';
 export const AllReviews = createContext();
 
 //Styled Components go here
+const ContainerContainer = styled.div`
+  background-color: #fafafa;
+`
 const ReviewWidgetContainer = styled.div`
-
+  background-color: #fafafa;
   margin: 0px 125px;
 `
 const ReviewWidgetBody = styled.div`
@@ -100,20 +103,22 @@ export default function ReviewWidget () {
 
   return (
     <div className="review-widget">
-    <ReviewWidgetContainer>
-        <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy, totalReviews, setTotalReviews, breakdownReviews, setBreakdownReviews, selectedStars, setSelectedStars, breakdownReviews, setBreakdownReviews, didSelect, setDidSelect}}>
-          <ReviewHeader />
+    <ContainerContainer>
+      <ReviewWidgetContainer>
+          <AllReviews.Provider value={{reviewData, setReviewData, metaData, setMetaData, reviewsShown, setReviewShown, sortBy, setSortBy, totalReviews, setTotalReviews, breakdownReviews, setBreakdownReviews, selectedStars, setSelectedStars, breakdownReviews, setBreakdownReviews, didSelect, setDidSelect}}>
+            <ReviewHeader />
 
-          <ReviewWidgetBody>
-            <SideBar>
-              <OverallRating />
-              <Characteristics/>
-            </SideBar>
-            <ReviewsList />
-          </ReviewWidgetBody>
+            <ReviewWidgetBody>
+              <SideBar>
+                <OverallRating />
+                <Characteristics/>
+              </SideBar>
+              <ReviewsList />
+            </ReviewWidgetBody>
 
-        </AllReviews.Provider>
-    </ReviewWidgetContainer>
+          </AllReviews.Provider>
+      </ReviewWidgetContainer>
+    </ContainerContainer>
     </div>
   );
 };
