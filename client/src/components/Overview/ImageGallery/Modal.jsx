@@ -14,7 +14,7 @@ const ModalStyles = styled.div`
   transform: translate(-50%, -50%);
   padding: 25px;
   zIndex: 1000;
-  background-color: rgb(0,0,0,0.3);
+  background-color: rgb(0,0,0,0.1);
   display: inline-block;
 `
 
@@ -97,23 +97,24 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
             {isExpanded ? <></> : <Icon>
               <FaTimes onClick={onClose}/>
             </Icon>}
-            {isExpanded ? <></> : <div
-          className='left'
-          onClick={() => {
-            if (image-1 === 0) {
-              setShowRightArrow('inline');
-              setShowLeftArrow('none');
-            }
-            if (image !== 0) {
-              setImage(image-1);
-              setShowRightArrow('inline');
-            }
-          }}
-          >
-            <FaArrowLeft
-            display={showLeftArrow}
-            size='40px'/>
-          </div> }
+            {isExpanded ? <></> :
+              <div
+              className='left-modal'
+              onClick={() => {
+                if (image-1 === 0) {
+                  setShowRightArrow('inline');
+                  setShowLeftArrow('none');
+                }
+                if (image !== 0) {
+                  setImage(image-1);
+                  setShowRightArrow('inline');
+                }
+            }}
+            >
+              <FaArrowLeft
+              display={showLeftArrow}
+              size='40px'/>
+            </div> }
           {isExpanded ? <></> :
           <div className='arrows-modal'>
             <div

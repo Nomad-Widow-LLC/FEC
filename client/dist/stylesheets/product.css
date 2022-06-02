@@ -38,15 +38,7 @@
 
 }
 
-.right-modal {
-  position:absolute;
-  color: black;
-  bottom: 50%;
-  left:0%;
-  cursor: pointer;
-  border-radius: 7px;
-  background-color: rgba(255, 254, 254, 0.5);
-}
+
 
 .right {
   position:absolute;
@@ -58,7 +50,24 @@
   background-color: rgba(255, 254, 254, 0.5);
 }
 
+.right-modal {
+  position:fixed;
+  color: black;
+  cursor: pointer;
+  border-radius: 7px;
+  left: 70%;
+  background-color: rgba(255, 254, 254, 0.5);
+}
 
+.left-modal {
+  position:fixed;
+  color: black;
+  cursor: pointer;
+  border-radius: 7px;
+  right: 75%;
+  bottom: 45%;
+  background-color: rgba(255, 254, 254, 0.5);
+}
 .style-selector {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
