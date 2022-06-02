@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
-import {FaCheck, FaArrowDown, FaArrowUp} from 'react-icons/fa';
+import {FaCheck, FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 
 const Thumbnails = ({photos, handleChoosingPic, hideCheckmark}) => {
   const [moreThanSeven, setMoreThanSeven] = useState(false);
@@ -45,7 +45,7 @@ const Thumbnails = ({photos, handleChoosingPic, hideCheckmark}) => {
   return (
     <div className='thumbnails-outer'>
       {moreThanSeven ? <div className='thumbnail-up'>
-        <FaArrowUp onClick={()=>handleUpArrow()}></FaArrowUp>
+        <FaArrowLeft onClick={()=>handleUpArrow()}></FaArrowLeft>
       </div> : <></> }
       {sevenPics?.map(photo =>
         <div className='thumbnail-container-outer'>
@@ -60,7 +60,7 @@ const Thumbnails = ({photos, handleChoosingPic, hideCheckmark}) => {
       </div>
       )}
       {moreThanSeven ? <div className='thumbnail-down'>
-        <FaArrowDown onClick={()=>handleDownArrow()}></FaArrowDown>
+        <FaArrowRight onClick={()=>handleDownArrow()}></FaArrowRight>
       </div> : <></>}
   </div>
   )

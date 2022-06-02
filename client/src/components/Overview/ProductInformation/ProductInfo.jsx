@@ -81,7 +81,7 @@ const ProductInfo = () => {
   return (
     <div className='productAndImage'>
         <Carousel style={style} handleOnClickStyle={handleOnClickStyle}/>
-        <div className='ProductInfo'>
+        <div className='product-information'>
           <StarRating rating={rating} reviewNum={reviewNum}/>
           <h6 className='ProductCategory'>{product.category}</h6>
           <h3 className='ProductTitle'>{product.name}</h3>

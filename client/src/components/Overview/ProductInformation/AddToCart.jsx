@@ -3,12 +3,12 @@ import styled from 'styled-components';
 
 export const DropdownWrapper = styled.form`
   margin-top: 5px;
-  font-size: 20px;
+  font-size: 100%;
 `;
 
 export const StyledSelect = styled.select`
   margin-bottom: 5px;
-  font-size: 20px;
+  font-size: 100%;
 
 `;
 
@@ -18,7 +18,7 @@ export const StyledOption = styled.option`
 
 export const StyledButton = styled.input`
   justify-content: center;
-  font-size: 20px;
+  font-size: 100%;
 `;
 
 export function Dropdown(props) {
