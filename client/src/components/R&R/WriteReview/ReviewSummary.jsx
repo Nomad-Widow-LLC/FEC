@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 import {AllReviewForm} from './NewReviewForm.jsx';
 const Summary = styled.input`
-  width: 600px;
+  width: 500px;
   margin-left: 5px;
 `
 
-const SummaryHeader = styled.h4`
- margin: 10px 0px 10px 5px;
-
+const SummaryHeader = styled.h3`
+  margin: 1.25em 0px 10px 5px;
+  text-decoration: underline;
 
 `
 export default function ReviewSummary () {

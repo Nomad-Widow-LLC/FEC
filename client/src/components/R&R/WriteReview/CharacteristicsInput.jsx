@@ -6,6 +6,13 @@ import {AllReviewForm} from './NewReviewForm.jsx';
 import {AllReviews} from '../ReviewWidget.jsx';
 
 
+const CharTitle = styled.h3`
+  text-decoration: underline;
+`
+const CharCats = styled.h4`
+  margin-left: 1em;
+`
+
 
 const RadioButton = styled.input`
   margin: 0px 10px;
@@ -19,8 +26,8 @@ export default function CharacteristicsInput () {
 
   return(
     <>
-      <h4>Characteristics Rating</h4>
-      {metaData.characteristics.Fit ? <h5>Fit</h5> : <></>}
+      <CharTitle>Characteristics Rating:</CharTitle>
+      {metaData.characteristics.Fit ? <CharCats>Fit</CharCats> : <></>}
       {metaData.characteristics.Fit ? <>
       {['Runs Tight', 'Runs Slightly Tight', 'Perfect', 'Runs Slightly Long', 'Runs Long'].map((qual, index) => {
         const ratingValue = index + 1;
@@ -33,7 +40,7 @@ export default function CharacteristicsInput () {
         );
       })}
     </> : <></>}
-      {metaData.characteristics.Length ? <h5>Length</h5> : <></>}
+      {metaData.characteristics.Length ? <CharCats>Length</CharCats> : <></>}
       {metaData.characteristics.Length ? <>
       {['Runs Short', 'Runs Slightly Short', 'Perfect', 'Runs Slightly Long', 'Runs Long'].map((qual, index) => {
         const ratingValue = index + 1;
@@ -46,7 +53,7 @@ export default function CharacteristicsInput () {
         );
       })}
     </> : <></>}
-      {metaData.characteristics.Comfort ? <h5>Comfort</h5> : <></>}
+      {metaData.characteristics.Comfort ? <CharCats>Comfort</CharCats> : <></>}
       {metaData.characteristics.Comfort ? <>
       {['Uncomfortable', 'Slightly Uncomfortable', 'Ok', 'Comfortable', 'Perfect'].map((qual, index) => {
         const ratingValue = index + 1;
@@ -59,7 +66,7 @@ export default function CharacteristicsInput () {
         );
       })}
     </> : <></>}
-      {metaData.characteristics.Quality ? <h5>Quality</h5> : <></>}
+      {metaData.characteristics.Quality ? <CharCats>Quality</CharCats> : <></>}
       {metaData.characteristics.Quality ? <>
       {['Poor', 'Below Average', 'Expected', 'Pretty Great', 'Perfect'].map((qual, index) => {
         const ratingValue = index + 1;

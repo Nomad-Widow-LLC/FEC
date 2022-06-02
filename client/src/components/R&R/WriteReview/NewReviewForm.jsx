@@ -26,11 +26,14 @@ const ModalStyles = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #FFF;
+  background-color: #f7ecc1;
   padding: 25px;
   zIndex: 1000;
+  min-width: 800px;
   max-height: 90%;
-  overflow-y: auto;
+  ${'' /* overflow-y: auto; */}
+  font-family: "Courier New", Monaco, "Lucida Console";
+  border-radius: 10px;
 `
 const OverlayStyles = styled.div`
   position: fixed;
@@ -41,8 +44,23 @@ const OverlayStyles = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   zIndex: 1000;
 `
+const Heads = styled.div`
+  overflow-y: initial;
+  border-width: 0px 0px 2px 0px;
+  border-bottom-style: groove;
+  border-color: #ff5e5e;
+
+`
+const Stys = styled.div`
+  height: 75vh;
+  overflow-y: auto;
+`
 
 const Icon = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 2em;
   position: absolute;
   top: 0;
   right: 0;
@@ -51,6 +69,10 @@ const Icon = styled.div`
   &:hover {
     opacity: 1.0
   }
+`
+const Close = styled.div`
+  font-size: 0.5em;
+
 `
 
 const H1Styles = styled.h1`
@@ -64,6 +86,7 @@ const H2Styles = styled.h2`
 export default function NewReviewForm ({open, onClose}) {
 
   const {productIDN, setProductIDN} = useContext(AllProductInfo);
+  const {product, setProduct} = useContext(AllProductInfo);
   const {metaData, setMetaData} = useContext(AllReviews);
   // Export context
   const [rating, setRating] = useState(null);
@@ -150,22 +173,27 @@ export default function NewReviewForm ({open, onClose}) {
       <AllReviewForm.Provider value={{rating, setRating, recommended, setRecommended, fitRating, setFitRating, lengthRating, setLengthRating, comfortRating, setComfortRating, qualityRating, setQualityRating, summary, setSummary, body, setBody, nickname, setNickname, email, setEmail, photos, setPhotos, photoCount, setPhotoCount}}>
         <OverlayStyles>
           <ModalStyles>
+          <Heads>
             <H1Styles>Write Your Review</H1Styles>
-            <H2Styles>About the 'Product Name Here'</H2Styles>
-            <Icon>
-                <FaTimes onClick={onClose}/>
-            </Icon>
-            <form onSubmit={handleFormSubmit}>
-              <StarRatingInput />
-              <DoYouRecommend />
-              <CharacteristicsInput />
-              <ReviewSummary />
-              <BodySummary />
-              <UploadPhotos />
-              <SetNickname />
-              <EmailInput />
-              <input type="submit"/>
-            </form>
+            <H2Styles>About the {product ? product : 'Product'}</H2Styles>
+              <Icon>
+                  <FaTimes onClick={onClose}/>
+                  <Close>close</Close>
+              </Icon>
+          </Heads>
+              <Stys>
+                <form onSubmit={handleFormSubmit}>
+                  <StarRatingInput />
+                  <DoYouRecommend />
+                  <CharacteristicsInput />
+                  <ReviewSummary />
+                  <BodySummary />
+                  <UploadPhotos />
+                  <SetNickname />
+                  <EmailInput />
+                  <input type="submit"/>
+                </form>
+              </Stys>
           </ModalStyles>
         </OverlayStyles>
       </AllReviewForm.Provider>

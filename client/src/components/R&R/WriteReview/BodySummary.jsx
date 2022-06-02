@@ -8,14 +8,17 @@ const Body = styled.input`
   margin-left: 5px;
 `
 
-const BodyHeader = styled.h4`
- margin: 10px 0px 10px 5px;
+const BodyHeader = styled.h3`
+  margin: 1.25em 0px 1em 5px;
+  text-decoration: underline;
 `
 
 const Minimum = styled.div`
   font-size: 0.75em;
   font-style: italic;
   padding: 0px 5px;
+  margin-top: .5em;
+  margin-left: 1em;
 `
 export default function BodySummary () {
   const {body, setBody} = useContext(AllReviewForm);

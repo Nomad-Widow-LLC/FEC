@@ -6,7 +6,10 @@ import imgBBToken from '../../../../dist/imgbb.js';
 
 import {AllReviewForm} from './NewReviewForm.jsx';
 
-const UploadPhotoHeader = styled.h4`
+const UploadPhotoHeader = styled.h3`
+  margin: 1em 0px 1em 5px;
+  text-decoration: underline;
+  margin-bottom: 25px;
 `
 const PhotoAlbum = styled.div`
   display: flex;
@@ -62,7 +65,7 @@ export default function UploadPhotos () {
 
   return (
     <>
-      <UploadPhotoHeader>Upload Your Photos Here (Optional, 5 Max)</UploadPhotoHeader>
+      <UploadPhotoHeader>Upload Your Photos Here (Optional, 5 Max):</UploadPhotoHeader>
         <PhotoAlbum>
           {photos.length > 0 ? <><img src={photos[0]} alt="Photo1" width="100" height="auto"/><br></br></> : <div></div>}
           {photos.length > 1 ? <><img src={photos[1]} alt="Photo2" width="100" height="auto"/><br></br></> : <div></div>}

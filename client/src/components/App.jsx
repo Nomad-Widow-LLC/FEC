@@ -15,7 +15,7 @@ export default function App () {
   // Assumption that product 40344 will be default
   const [productIDN, setProductIDN] = useState(40344);
   const [product, setProduct] = useState('');
-  // 135222
+
 
 
   return (
