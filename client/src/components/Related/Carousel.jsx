@@ -1,14 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, createContext } from 'react';
 import Card from './Card.jsx';
 import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Promise from 'bluebird';
 import { AllProductInfo } from '../App.jsx';
+import Modal from './Modal.jsx';
+
+export const CarouselStates = createContext();
 
 let Carousel = () => {
 
-  const {productIDN, setProductIDN} = useContext(AllProductInfo)
-  let overviewId = productIDN;
+  const {productIDN} = useContext(AllProductInfo);
+  let [overviewProduct, setOverviewProduct] = useState({});
   let [productList, setProductList] = useState([]);
   let [styleList, setStyleList] = useState([]);
   let [sectionIndex, setSectionIndex] = useState(0);
@@ -17,16 +20,11 @@ let Carousel = () => {
   let [nCardsDisplayed, setNCardsDisplayed] = useState(0);
   let [indexOffset, setIndexOffset] = useState(0);
   let [starsList, setStarsList] = useState([]);
+  let [card, setCard] = useState(0);
   const cardWidth = 259;
 
-
-  const logAll = (array) => {
-    array.forEach((value) => {
-      console.log(value);
-    })
-  }
-
   const clicker = (mode) => {
+
     if (mode === 'prev') {
 
       // This makes sure not to scroll past the first item
@@ -43,10 +41,6 @@ let Carousel = () => {
       track.style.transform = `translateX(-${jump}px)`;
 
     } else if (mode === 'next') {
-
-      setCarouselWidth(carouselWidth = document.querySelector(`.carousel-container`).clientWidth);
-      setNCardsDisplayed(nCardsDisplayed = Math.ceil(carouselWidth / cardWidth));
-
       if (nCardsDisplayed + sectionIndex !== productList.length) {
         setSectionIndex(sectionIndex += 1);
       }
@@ -81,7 +75,7 @@ let Carousel = () => {
 
   // Responsible for getting the data for the carousel
   useEffect(() => {
-    axios.get(`/products?id=${overviewId}&related=true`)
+    axios.get(`/products?id=${productIDN}&related=true`)
       .then((results) => {
         let idList = results.data;
         return idList;
@@ -98,9 +92,8 @@ let Carousel = () => {
       .then((idList) => {
         Promise.all(idList.map((id) => axios.get(`/products?id=${id}`)))
           .then((values) => {
-            let allValues = values.map((item) => {return item.data});
-            setProductList(allValues);
-            return allValues;
+            setProductList(productList = values.map((item, index) => {return item.data }));
+            return productList;
           })
         return idList;
       })
@@ -122,13 +115,21 @@ let Carousel = () => {
             })
           })
       })
+      .then (() => {
+        axios.get(`/products?id=${productIDN}`)
+          .then((result) => {
+            setOverviewProduct(overviewProduct = result.data);
+          })
+      })
       .catch((err) => console.log(`Error in carousel GET: ${err}`))
-  }, [])
+  }, [productIDN])
 
   // Controls the hiding and showing of the previous and next buttons at the appropriate time
   useEffect(() => {
     let prev = document.querySelector(`.prev`);
     let next = document.querySelector(`.next`);
+    setCarouselWidth(carouselWidth = document.querySelector(`.carousel-container`).clientWidth);
+    setNCardsDisplayed(nCardsDisplayed = Math.ceil(carouselWidth / cardWidth));
 
     if (sectionIndex === 0){
       prev.style.display = 'none';
@@ -136,7 +137,7 @@ let Carousel = () => {
       prev.style.display = 'block';
     }
 
-    if (sectionIndex + nCardsDisplayed === productList.length) {
+    if (sectionIndex + nCardsDisplayed >= productList.length) {
       next.style.display = 'none';
     } else {
       next.style.display = 'block';
@@ -144,25 +145,35 @@ let Carousel = () => {
   })
 
   return (
+    <CarouselStates.Provider value={{overviewProduct, setOverviewProduct}}>
     <div className="module-container">
-    <div className="carousel-container" key="outer" >
-      <div className="spacer"></div>
-      <div className="title">You May Also Like</div>
-      <div className="nav" key="nav">
-        <FaArrowLeft className="prev button" onClick={() => {clicker('prev')}} />
-        <FaArrowRight className="next button" onClick={() => {clicker('next')}} />
-      </div>
-      <div className="inner-carousel" key="inner">
-        <div className="track" key="track">
+      <div className="spacer" />
+      <div className="carousel-container" key="outer" >
+        <div className="title">You May Also Like</div>
+        <div className="spacer" />
+        <div className="nav" key="nav">
+          <FaArrowLeft className="prev button" onClick={() => clicker('prev')} />
+          <FaArrowRight className="next button" onClick={() => clicker('next')} />
+        </div>
+        <div className="inner-carousel" key="inner">
+          <div className="track" key="track">
           {
-            productList.map((product, index) =>
-              <Card stars={starsList[index]} pic={styleList[index].results[0].photos[0].url} item={product} salePrice={styleList[index].results[3].sale_price} key={product.product_id} />
-            )
-          }
+              productList.map((product, index) =>
+                <Card
+                stars={starsList[index]}
+                pic={styleList[index]?.results[0].photos[0].url}
+                item={product}
+                salePrice={styleList[index]?.results[0].sale_price}
+                key={product?.product_id}
+                mode="related"
+                />
+              )
+            }
+          </div>
         </div>
       </div>
     </div>
-    </div>
+    </CarouselStates.Provider>
   )
 }
 

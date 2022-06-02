@@ -1,33 +1,37 @@
 .module-container {
   width: 100%;
   background-color: #fafafa;
+  min-height: 330px;
 }
 .module-container .carousel-container {
   width: 1280px;
   margin: 50px auto;
-  min-height: 200px;
   position: relative;
+  align-self: center;
 }
 
 .carousel-container .title {
   font-size: 18pt;
   font-weight: bold;
-  margin-left: 50%;
-  margin-bottom: 30px;
+  display: flex;
+  padding-left: 50%;
 }
 
 .carousel-container .inner-carousel {
   overflow: hidden;
+  min-height: 100%;
 }
 
 .carousel-container .track {
+  position: relative;
   display: flex;
+  height: 315px;
   transition: transform 0.3s;
 }
 
 .carousel-container .card-container {
   width: 259px;
-  height: 250px;
+  height: 300px;
   flex-shrink: 0;
   padding-right: 15px;
   box-sizing: border-box;
@@ -38,6 +42,7 @@
   height: 100%;
   box-sizing: border-box;
   display: flex;
+  cursor: pointer;
   flex-direction: column;
 }
 
@@ -73,9 +78,12 @@
 .card .img {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 60%;
   width: 100%;
+  min-height: 200px;
+}
+
+.card .notFound {
+  padding-bottom: 20px;
 }
 
 .card .info .name {
@@ -95,12 +103,36 @@
   color: red;
 }
 
-.card .info .stars {
+.card .info .relatedStars {
   display: flex;
-  position: absolute;
-  transform: translateX(50%);
+  margin-right: 0px;
+  margin-left: auto;
+}
+
+.card .info .priceContainer {
+  position: relative;
 }
 
 .spacer {
-  height: 30px;
+  height: 15px;
+}
+
+.card-container .actionButton {
+  display: flex;
+  margin-right: 0px;
+  margin-left: auto;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.compareTable {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.compare .title {
+  display: flex;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-left: 33%;
 }

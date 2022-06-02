@@ -7,7 +7,7 @@ import axios from 'axios';
 import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import {AllProductInfo} from "../../App.jsx"
 
-const ProductInfo = () => {
+const ProductInfo = ({getAllProducts}) => {
   const [rating, setRating] = useState(0);
   const [reviewNum, setReviewNum] = useState(0);
   const [product, setProduct] = useState({});
@@ -62,6 +62,7 @@ const ProductInfo = () => {
       })
       .then((response) => {
         let quantity = 0;
+        console.log('DOES IT HIT THIS SPOT')
         let skus = response.data.results[0].skus;
         for(let sku in skus) {
           quantity += skus[sku].quantity;
@@ -71,26 +72,30 @@ const ProductInfo = () => {
         }
         setStyle(response.data.results[0]);
         setStyleSelector(response.data.results);
+        getAllProducts(response.data.results);
       })
       .catch((err) => {
         console.log('could not access data');
         return;
       })
-  }, [])
+  }, [productIDN])
 
   return (
     <div className='productAndImage'>
         <Carousel style={style} handleOnClickStyle={handleOnClickStyle}/>
-        <div className='ProductInfo'>
-          <StarRating rating={rating} reviewNum={reviewNum}/>
+        <div className='product-information'>
+          <StarRating className='starRating' rating={rating} reviewNum={reviewNum}/>
           <h6 className='ProductCategory'>{product.category}</h6>
           <h3 className='ProductTitle'>{product.name}</h3>
           { style.sale_price ? <span className="priceContainer">
-            <span className="sale-price">${style.sale_price}</span>
+            <span className="sale-price">${Math.round(style.sale_price)} USD</span>
             <span className="spacer">&nbsp;</span>
-            <span className="price">${style.original_price}</span>
-          </span>  : <span className="original-price">${style.original_price}</span> }
+            <span className="price">${Math.round(style.original_price)} USD</span>
+          </span>  : <span className="original-price">${Math.round(style.original_price)} USD</span> }
           <h6 className='ProductOverview'>{product.description}</h6>
+          <h6 className='style-name'>Style {style.name}</h6>
+          <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector} style={style} setSize={setSize}/>
+          <AddToCart style={style} size={size} setSize={setSize} handleChoosingSize={handleChoosingSize} quantity={quantity} allQuantity={allQuantity} sizeSelected={sizeSelected}/>
           <h6 className='SocialMedia'>Share on Social Media</h6>
           <span className='social-media-icons'>
             <a className='social-icon' href="https://www.youtube.com"><FaYoutube/></a>
@@ -98,9 +103,6 @@ const ProductInfo = () => {
             <a className='social-icon' href="https://www.twitter.com"><FaTwitter/></a>
             <a className='social-icon' href="https://www.instagram.com"><FaInstagram/></a>
           </span>
-          <h6 className='style-name'>{style.name}</h6>
-          <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector} style={style} setSize={setSize}/>
-          <AddToCart style={style} size={size} setSize={setSize} handleChoosingSize={handleChoosingSize} quantity={quantity} allQuantity={allQuantity} sizeSelected={sizeSelected}/>
       </div>
     </div>
   )

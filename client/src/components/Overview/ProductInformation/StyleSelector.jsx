@@ -7,7 +7,9 @@ const StyleSelector = ({handleOnClickStyle, styleSelector, style, setSize}) => {
 
   const hideCheckmark = (thumbnail)=>{
     if (thumbnail !== style) {
-      return 'display-overlay'
+      return 'style-thumbnail'
+    } else {
+      return 'style-thumbnail-overlay'
     }
   }
 
@@ -16,14 +18,11 @@ const StyleSelector = ({handleOnClickStyle, styleSelector, style, setSize}) => {
       {styleSelector.map(thumbnail =>
         <div className='thumbnail-container'>
           <img
-            className='style-thumbnail'
+            className={`${hideCheckmark(thumbnail)}`}
             src={thumbnail.photos?.[0].thumbnail_url}
             key={thumbnail.photos?.[0].thumbnail_url}
             onClick={()=>{handleOnClickStyle(thumbnail)}}
           />
-          <div className={`overlay ${hideCheckmark(thumbnail)}`}>
-            <FaCheck/>
-          </div>
         </div>
       )}
     </div>
