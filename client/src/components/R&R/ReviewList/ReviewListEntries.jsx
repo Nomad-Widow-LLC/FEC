@@ -71,6 +71,7 @@ const IndvStarRating = styled.div`
   padding-top: 0.5em;
   font-size: 10px;
   opacity: 0.6;
+  max-height: 4.5em;
 `
 
 const ReviewSummary = styled.div`

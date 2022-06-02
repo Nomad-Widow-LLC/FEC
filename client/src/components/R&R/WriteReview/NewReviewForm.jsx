@@ -6,6 +6,7 @@ import {FaTimes, FaStar} from 'react-icons/fa';
 
 
 import {AllReviews} from '../ReviewWidget.jsx';
+import {AllProductInfo} from '../../App.jsx';
 
 import StarRatingInput from './StarRatingInput.jsx';
 import DoYouRecommend from './DoYouRecommend.jsx';
@@ -18,6 +19,7 @@ import EmailInput from './EmailInput.jsx';
 
 
 export const AllReviewForm = createContext();
+
 
 const ModalStyles = styled.div`
   position: fixed;
@@ -61,6 +63,7 @@ const H2Styles = styled.h2`
 
 export default function NewReviewForm ({open, onClose}) {
 
+  const {productIDN, setProductIDN} = useContext(AllProductInfo);
   const {metaData, setMetaData} = useContext(AllReviews);
   // Export context
   const [rating, setRating] = useState(null);
@@ -76,6 +79,7 @@ export default function NewReviewForm ({open, onClose}) {
   const [body, setBody] = useState('');
 
   const [photos, setPhotos] = useState([]);
+  const [photoCount, setPhotoCount] = useState(0);
 
   const [nickname, setNickname] = useState('');
 
@@ -122,7 +126,20 @@ export default function NewReviewForm ({open, onClose}) {
 
   const handleFormSubmit = () => {
     event.preventDefault();
-    console.log('Sending Post Request:')
+    let postObj = {product_id: productIDN,
+                  rating: rating,
+                  summary: summary,
+                  body: body,
+                  recommend: recommended,
+                  name: nickname,
+                  email: email,
+                  photos: photos,
+                  characteristics: charsObj}
+    console.log('Sending Post Request: ', postObj);
+    axios.post('/review', postObj)
+      .then((res) => {console.log('Post Successful')})
+      .catch((err) => {console.log('Post Unsuccessful')})
+
   }
 
 
@@ -130,7 +147,7 @@ export default function NewReviewForm ({open, onClose}) {
 
   return ReactDOM.createPortal(
     <>
-      <AllReviewForm.Provider value={{rating, setRating, recommended, setRecommended, fitRating, setFitRating, lengthRating, setLengthRating, comfortRating, setComfortRating, qualityRating, setQualityRating, summary, setSummary, body, setBody, nickname, setNickname, email, setEmail}}>
+      <AllReviewForm.Provider value={{rating, setRating, recommended, setRecommended, fitRating, setFitRating, lengthRating, setLengthRating, comfortRating, setComfortRating, qualityRating, setQualityRating, summary, setSummary, body, setBody, nickname, setNickname, email, setEmail, photos, setPhotos, photoCount, setPhotoCount}}>
         <OverlayStyles>
           <ModalStyles>
             <H1Styles>Write Your Review</H1Styles>

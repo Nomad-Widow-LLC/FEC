@@ -13,7 +13,7 @@ export default function App () {
 
   // Going to set this as a universal value that can be changed anywhere see AllProduct.Provider,
   // Assumption that product 40344 will be default
-  const [productIDN, setProductIDN] = useState('40344');
+  const [productIDN, setProductIDN] = useState(40344);
   const [product, setProduct] = useState('');
   // 135222
 
@@ -21,10 +21,10 @@ export default function App () {
   return (
     <>
       <AllProductInfo.Provider value={{productIDN, setProductIDN, product, setProduct}}>
-        <ProductInfo />
+        {/* <ProductInfo />
         <div className="componentGap" />
         <Carousel />
-        <div className="componentGap" />
+        <div className="componentGap" /> */}
         <a id="review-widget"></a>
         <ReviewWidget />
       </AllProductInfo.Provider>
