@@ -41,10 +41,6 @@ const Carousel = ({ style, handleOnClickStyle}) => {
 
   return (
     <div className='main-image'>
-      <MainThumbnails
-          photos={style?.photos}
-          handleChoosingPic={handleChoosingPic}
-          hideCheckmark={hideCheckmark}/>
       <div className='carousel'>
         <img className='inner-image' src={style.photos?.[image].url} onClick={() => setIsOpen(true)} />
         <Modal
@@ -62,6 +58,7 @@ const Carousel = ({ style, handleOnClickStyle}) => {
         hideCheckmark={hideCheckmark}
         handleChoosingPic={handleChoosingPic}
         />
+        <div className='arrows'>
         <div
           className='left'
           onClick={() => {
@@ -94,7 +91,12 @@ const Carousel = ({ style, handleOnClickStyle}) => {
               display={showRightArrow}
               size='50px'/>
             </div>
+        </div>
       </div>
+      <MainThumbnails
+          photos={style?.photos}
+          handleChoosingPic={handleChoosingPic}
+          hideCheckmark={hideCheckmark}/>
     </div>
   )
 }
