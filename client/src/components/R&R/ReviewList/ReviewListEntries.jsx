@@ -144,7 +144,7 @@ export default function ReviewListEntries ({review}) {
       {review.response ? <ReviewResponse response={review.response}/> : <></>}
 
 
-      <ReviewHelpfulness helpful={review.helpfulness} />
+      <ReviewHelpfulness helpful={review.helpfulness} reviewID={review.review_id}/>
 
 
     </div>

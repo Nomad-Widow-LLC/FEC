@@ -79,9 +79,19 @@ app.post('/review', (req, res) => {
 
   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews`, req.body, api_header)
     .then(() => {
-      res.send(201);
+      res.sendStatus(201);
     })
     .catch((err) => {console.log(err)})
+})
+
+app.put('/review', (req, res) => {
+  console.log('Recieved Put Request: ', req.body.reviewID);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.body.reviewID}/helpful`, req.body, api_header)
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {console.log(err)})
+
 })
 
 app.get('/products', (req, res) => {
