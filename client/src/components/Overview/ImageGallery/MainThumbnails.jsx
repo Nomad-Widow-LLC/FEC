@@ -44,8 +44,10 @@ const Thumbnails = ({photos, handleChoosingPic, hideCheckmark}) => {
 
   return (
     <div className='thumbnails-outer'>
-      {moreThanSeven ? <div className='thumbnail-up'>
-        <FaArrowLeft onClick={()=>handleUpArrow()}></FaArrowLeft>
+      {moreThanSeven ? <div className='thumbnail-left'>
+        <FaArrowLeft
+        size='30px'
+        onClick={()=>handleUpArrow()}></FaArrowLeft>
       </div> : <></> }
       {sevenPics?.map(photo =>
         <div className='thumbnail-container-outer'>
@@ -59,8 +61,10 @@ const Thumbnails = ({photos, handleChoosingPic, hideCheckmark}) => {
             <FaCheck/> </div>
       </div>
       )}
-      {moreThanSeven ? <div className='thumbnail-down'>
-        <FaArrowRight onClick={()=>handleDownArrow()}></FaArrowRight>
+      {moreThanSeven ? <div className='thumbnail-right'>
+        <FaArrowRight
+         size='30px'
+         onClick={()=>handleDownArrow()}></FaArrowRight>
       </div> : <></>}
   </div>
   )

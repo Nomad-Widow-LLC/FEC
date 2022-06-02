@@ -74,7 +74,7 @@ const Carousel = ({ style, handleOnClickStyle}) => {
           >
             <FaArrowLeft
             display={showLeftArrow}
-            size='20px'/>
+            size='50px'/>
           </div>
         <div
           className='right'
@@ -89,7 +89,7 @@ const Carousel = ({ style, handleOnClickStyle}) => {
             }}}>
               <FaArrowRight
               display={showRightArrow}
-              size='20px'/>
+              size='50px'/>
             </div>
         </div>
       </div>

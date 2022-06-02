@@ -18,6 +18,17 @@ export default function App () {
   // Assumption that product 40344 will be default
   const [productIDN, setProductIDN] = useState('40344');
 
+  useEffect(() => {
+    axios.get('/products')
+    .then((response) => {
+      console.log('does it hit this line?', response.data)
+    })
+    .catch((err) => {
+      console.log('could not access all products')
+      return;
+    })
+  },[])
+
   const handleRenderHomePage = () => {
     setHomepage(true);
   }

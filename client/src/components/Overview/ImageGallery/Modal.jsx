@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import {FaTimes, FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 import Thumbnails from './Thumbnails.jsx'
+import MainThumbnails from './MainThumbnails.jsx'
 
 const ModalStyles = styled.div`
   position: fixed;
@@ -18,7 +19,7 @@ const ModalStyles = styled.div`
 `
 
 const OverlayStyles = styled.div`
-  // position: relative;
+  position: relative;
   bottom: 20px;
   zIndex: 1000;
 `
@@ -111,7 +112,7 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
           >
             <FaArrowLeft
             display={showLeftArrow}
-            size='50px'/>
+            size='40px'/>
           </div> }
           {isExpanded ? <></> :
           <div className='arrows-modal'>
@@ -128,13 +129,13 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
               }}}>
                 <FaArrowRight
                 display={showRightArrow}
-                size='50px'/>
+                size='40px'/>
               </div>
             </div> }
             {isExpanded ? <></> : <Thumbnails
-            photos={photos}
+            photos={style?.photos}
             handleChoosingPic={handleChoosingPic}
-            hideCheckmark={hideCheckmark} style={style}/> }
+            hideCheckmark={hideCheckmark}/>}
         </ModalStyles>
       </OverlayStyles>
       {isExpanded ? <ModalZoom  ><ExpandContainer  ><InnerExpandedImg src={photo?.url} alt={photo?.id} xAxis={xAxis} yAxis={yAxis} onMouseMove={handleZoomingPic} onMouseUp={handleZoomingOut}></InnerExpandedImg></ExpandContainer></ModalZoom>: <></>}

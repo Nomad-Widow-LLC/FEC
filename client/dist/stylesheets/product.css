@@ -1,13 +1,13 @@
 .main-image {
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction:column;
   align-items: center;
 }
 
 .carousel {
-  width: 60vh;
-  height: 80vh;
+  width: 80vh;
+  height: 100vh;
   object-fit: cover;
 }
 
@@ -35,6 +35,7 @@
   cursor: pointer;
   border-radius: 7px;
   background-color: rgba(255, 254, 254, 0.5);
+
 }
 
 .right-modal {
@@ -60,12 +61,20 @@
 
 .style-selector {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: space-evenly;
-  max-width: 700px;
-  grid-auto-rows: 2fr;
+  max-width: 400px;
+  grid-auto-rows: min-content;
   align-items: center;
   column-gap: 5px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .style-selector {
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+  }
 }
 
 .thumbnail-container {
@@ -106,30 +115,36 @@
 }
 
 .thumbnails {
-  display: grid;
-  grid-template-columns: repeat(7, 3fr);
-  align-content: center;
-  max-width: 900px;
-  grid-auto-rows: 1fr;
-  column-gap: 15px;
+  display: flex;
+  /* grid-template-columns: repeat(7, 3fr); */
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  bottom: 0%;
+  /* grid-auto-rows: 1fr;
+  column-gap: 5px; */
 }
 
 .thumbnail-container-zoom {
   justify-self: center;
+  width: 80px;
+  height: 80px;
+  position: relative;
+  /* left: 50%;
+  bottom: 90%; */
 }
 
 .style-thumbnail-zoom {
   width: 80px;
   height: 80px;
   cursor: pointer;
-  position: absolute;
+  position: relative;
   border-style: solid;
   border-width: 2px;
   border-color: rgb(0,0,0,0);
   color: rgb(0,0,0,0);
   margin: 3px;
-  bottom: 0%;
-
+  bottom: 0%
 }
 
 .style-thumbnail-zoom-overlay {
@@ -168,16 +183,26 @@
   justify-content: center;
   column-gap: 5px;
   grid-template-rows: 80px;
+  width: 600px;
 }
 
-.thumbnail-down, .thumbnail-up {
+.thumbnail-left {
   cursor: pointer;
   position: relative;
+  left: 50%;
+  top: 25%;
+}
+
+.thumbnail-right{
+  cursor: pointer;
+  position: relative;
+  right: 0%;
+  top: 25%;
 }
 
 .thumbnail-container-outer {
-  width: 100%;
-  height: 40%;
+  width: 70px;
+  height: 70px;
 }
 
 .style-thumbnail-zoom-outer {
@@ -239,16 +264,32 @@
 .homepage{
   display:flex;
   align-items: center;
+  /* justify-content: center; */
   flex-direction: column;
 }
 
 .shop-name {
   /* position: fixed; */
-  width: 100px;
-  height: 200px;
+  width: 217px;
+  height: 45px;
+  margin-top: 150px;
+  margin-bottom: 80px;
   align-self: center;
   display:inline-block;
+  background-color: rgb(53, 50, 50, 0.88);
+  color: white;
+  font-size: 35px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  text-align: center;
+  text-transform: lowercase;
+  font-style: italic;
+}
 
+.detail {
+  margin-left: 30%;
+  font-size: 10px;
 }
 .scroll-container{
   overflow: auto;
@@ -256,7 +297,7 @@
   /* padding: 5px 70px 5px 20px; */
   background: transparent;
   height: 400px;
-  width:30vw;
+  width:45vw;
   position: relative;
 }
 .gridscroll{
@@ -273,4 +314,24 @@
 .gridscroll-img {
   width: 50vw;
   height: 100%;
+}
+
+.thumbnails-outer2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+  grid-template-rows: 100px;
+  padding: 10px;
+  row-gap: 4px;
+}
+
+.thumbnail-up {
+  position: relative;
+  top:70%;
+  left: 2.6%;
+}
+
+.thumbnail-down {
+  position: relative;
+  left: 2%;
 }

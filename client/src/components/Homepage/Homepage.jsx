@@ -4,7 +4,7 @@ const Homepage = ({productPics}) => {
   console.log(productPics)
   return(
     <div className='homepage'>
-      <div className='shop-name'> my shop </div>
+      <div className='shop-name'>Nomad Widow </div>
       <div class="scroll-container">
         <div class="gridscroll">
         {productPics?.map(picture =>
@@ -18,6 +18,7 @@ const Homepage = ({productPics}) => {
         )}
         </div>
       </div>
+      <div className='detail'> Michael Robert Donna </div>
     </div>
   )
 }
