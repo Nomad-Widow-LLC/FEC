@@ -5,6 +5,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Promise from 'bluebird';
 import { AllProductInfo } from '../App.jsx';
 import Modal from './Modal.jsx';
+import Outfit from './Outfit.jsx';
 
 export const CarouselStates = createContext();
 
@@ -173,6 +174,7 @@ let Carousel = () => {
         </div>
       </div>
     </div>
+    <Outfit />
     </CarouselStates.Provider>
   )
 }
