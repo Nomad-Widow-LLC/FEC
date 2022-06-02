@@ -76,13 +76,13 @@ const ProductInfo = () => {
         console.log('could not access data');
         return;
       })
-  }, [])
+  }, [productIDN])
 
   return (
     <div className='productAndImage'>
         <Carousel style={style} handleOnClickStyle={handleOnClickStyle}/>
         <div className='ProductInfo'>
-          <StarRating rating={rating} reviewNum={reviewNum}/>
+          <StarRating className='starRating' rating={rating} reviewNum={reviewNum}/>
           <h6 className='ProductCategory'>{product.category}</h6>
           <h3 className='ProductTitle'>{product.name}</h3>
           { style.sale_price ? <span className="priceContainer">

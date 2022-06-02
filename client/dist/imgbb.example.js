@@ -1,6 +1,6 @@
 // Get API Token From imgbb
 
-const imgBBToken = 'PLACE_API_TOKEN_HERE';
+const imgBBToken = '667caf2bd29d9bf5f17441bc1d3c5cff';
 
 // export default imgBBToken;
 
