@@ -1,4 +1,5 @@
 import React, {useState, useContext, createContext, useEffect} from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import {FaRegThumbsUp, FaRegThumbsDown} from 'react-icons/fa';
 // import {AllReviews} from '../ReviewWidget.jsx';
@@ -50,7 +51,7 @@ const ThumbsDownClicked = styled.div`
 
 
 
-export default function ReviewHelpfulness({helpful}) {
+export default function ReviewHelpfulness({helpful, reviewID}) {
 
   const [feedback, setFeedback] = useState(false);
   const [thumbsUp, setThumbsUp] = useState(false);
@@ -59,62 +60,28 @@ export default function ReviewHelpfulness({helpful}) {
 
 
   const handleThumbsUp = () => {
-    console.log('You gave this a thumbs up!');
+    console.log('You gave this a thumbs up! Review ID: ', reviewID);
     //send axios post request to update helpfulness
+
+    axios.put('/review', {reviewID: reviewID})
+      .then(() => {console.log('Successful Put Request')})
+      .catch(err => console.log(err))
     //update number
-    setReviewHelpful(helpful + 1);
-    setFeedback(true);
-
-    // logic would be to check if setFeedback is true, if so, do not set axios post request to update number
-    // Q is there a way to send post request to reduce the number? if so we can incorp that logic
-    setThumbsUp(!thumbsUp);
-  }
-
-  const handleThumbsDown = () => {
-    console.log('You gave this a thumbs down!');
-    //send axios post request to update helfulness
-    // There's no data for handling thumbs down...
 
     setFeedback(true);
-    setThumbsDown(!thumbsDown);
+    // setThumbsUp(!thumbsUp);
   }
+
 
   return (
     <div className="helpfulness-review">
       <HelpfulStyle>
         <div>Was this review helpful?</div>
-        {/* {(feedback ?
-          ((thumbsUp ?
-            <ThumbsUpClicked>
-              <FaRegThumbsUp onClick={handleThumbsUp}/>
-            </ThumbsUpClicked> :
-            <ThumbsUpNotClicked>
-              <FaRegThumbsUp onClick={handleThumbsUp}/>
-            </ThumbsUpNotClicked>)
-          <div className="number-helpful">{helpful}</div>
-          (thumbsDown ?
-            <ThumbsDownClicked>
-              <FaRegThumbsDown />
-            </ThumbsDownClicked> :
-            <ThumbsDownNotClicked>
-              <FaRegThumbsDown />
-            </ThumbsDownNotClicked>)) :
-            <ThumbsUpNotClicked>
-              <FaRegThumbsUp onClick={handleThumbsUp}/>
-            </ThumbsUpNotClicked>
-            <div className="number-helpful">{helpful}</div>
-            <ThumbsDownNotClicked>
-              <FaRegThumbsDown onClick={handleThumbsDown}/>
-            </ThumbsDownNotClicked>)
-        } */}
-
-        <ThumbsUpNotClicked>
-              <FaRegThumbsUp onClick={handleThumbsUp}/>
-        </ThumbsUpNotClicked>
-        <div className="number-helpful">{helpful}</div>
-        <ThumbsDownNotClicked>
+        {feedback ? <ThumbsUpClicked><FaRegThumbsUp /></ThumbsUpClicked> : <ThumbsUpNotClicked><FaRegThumbsUp onClick={handleThumbsUp}/></ThumbsUpNotClicked>}
+        {feedback ? <div className="number-helpful">{helpful + 1}</div>: <div className="number-helpful">{helpful}</div>}
+        {/* <ThumbsDownNotClicked>
           <FaRegThumbsDown onClick={handleThumbsDown}/>
-        </ThumbsDownNotClicked>
+        </ThumbsDownNotClicked> */}
 
       </HelpfulStyle>
     </div>

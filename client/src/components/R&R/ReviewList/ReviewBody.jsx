@@ -4,6 +4,8 @@ import styled from 'styled-components';
 const ReviewBodyItem = styled.div`
   font-size: 12px;
   padding: 5px;
+  position: relative;
+  bottom: 2em;
 `
 
 const ShowHide = styled.div`

@@ -4,8 +4,9 @@ const axios = require('axios');
 const path = require("path")
 const express = require("express"); // npm installed
 
-const app = express();
 
+const app = express();
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client/dist")));
 // other configuration...
 
@@ -44,7 +45,7 @@ app.get('/styles', (req, res) => {
 // get reviews of a specific product
 app.get('/review', (req, res) => {
   let product = req.query.product_id;
-  let sort = req.query.sort || 'relevant'
+  let sort = req.query.sort || 'relevant';
   let count = req.query.count || 5;
   // console.log(product, sort);
   // console.log('WHAT IS THE DIFFERENce', config.TOKEN)
@@ -71,6 +72,26 @@ app.get('/review/meta', (req, res) => {
     res.status(200).send(response.data);
   })
   .catch((err) => {console.log(`meta Error: ${err}`)})
+})
+
+app.post('/review', (req, res) => {
+  // console.log('Recieved Post Request for Reviews: ', req.body);
+
+  axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews`, req.body, api_header)
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {console.log(err)})
+})
+
+app.put('/review', (req, res) => {
+  console.log('Recieved Put Request: ', req.body.reviewID);
+  axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.body.reviewID}/helpful`, req.body, api_header)
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {console.log(err)})
+
 })
 
 app.get('/products', (req, res) => {
@@ -108,3 +129,4 @@ app.get('/products', (req, res) => {
         res.status(200).send(results.data);
       })
 });
+
