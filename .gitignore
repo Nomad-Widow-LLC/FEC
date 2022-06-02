@@ -114,3 +114,7 @@ typings/
 
 # client/dist/dummyReviews.js
 client/dist/dummyReviews.js
+
+
+# img_bb
+client/dist/imgbb.js
