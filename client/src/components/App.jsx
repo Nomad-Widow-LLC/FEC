@@ -16,7 +16,8 @@ export default function App () {
 
   // Going to set this as a universal value that can be changed anywhere see AllProduct.Provider,
   // Assumption that product 40344 will be default
-  const [productIDN, setProductIDN] = useState('40344');
+  const [productIDN, setProductIDN] = useState(40344);
+  const [product, setProduct] = useState('');
 
   useEffect(() => {
     axios.get('/products')
@@ -40,7 +41,7 @@ export default function App () {
 
   return (
     <>
-      <AllProductInfo.Provider value={{productIDN, setProductIDN}}>
+      <AllProductInfo.Provider value={{productIDN, setProductIDN, product, setProduct}}>
         {homepage ? <Homepage productPics={productPics}/> :
         <div>
           <HomeButton handleRenderHomePage={handleRenderHomePage}/>

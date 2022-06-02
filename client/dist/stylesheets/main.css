@@ -43,12 +43,16 @@ color scheme
 }
 
 .ProductTitle {
-  font-size: 1.5em;
+  font-size: 3em;
   padding-bottom: 20px;
 }
 
+.ProductCategory {
+  font-size: 1.5em;
+}
+
  .ProductCategory, .ProductTitle, .Price, .ProductOverview  {
-   margin:0% 1% 1% 0%;
+   margin:0% 3% 3% 0%;
  }
 
  .SocialMedia{
