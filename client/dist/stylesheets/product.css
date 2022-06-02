@@ -235,3 +235,42 @@
   font-size: 20px;
   width: 300px;
 }
+
+.homepage{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.shop-name {
+  /* position: fixed; */
+  width: 100px;
+  height: 200px;
+  align-self: center;
+  display:inline-block;
+
+}
+.scroll-container{
+  overflow: auto;
+  white-space: nowrap;
+  /* padding: 5px 70px 5px 20px; */
+  background: transparent;
+  height: 400px;
+  width:30vw;
+  position: relative;
+}
+.gridscroll{
+  display:inline-block;
+}
+
+.container {
+  display:inline-block;
+  width: 50px;
+  height: 360px;
+  overflow:hidden;
+  margin-right:2px;
+}
+.gridscroll-img {
+  width: 50vw;
+  height: 100%;
+}

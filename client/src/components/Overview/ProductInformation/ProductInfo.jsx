@@ -7,7 +7,7 @@ import axios from 'axios';
 import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import {AllProductInfo} from "../../App.jsx"
 
-const ProductInfo = () => {
+const ProductInfo = ({getAllProducts}) => {
   const [rating, setRating] = useState(0);
   const [reviewNum, setReviewNum] = useState(0);
   const [product, setProduct] = useState({});
@@ -62,6 +62,7 @@ const ProductInfo = () => {
       })
       .then((response) => {
         let quantity = 0;
+        console.log('DOES IT HIT THIS SPOT')
         let skus = response.data.results[0].skus;
         for(let sku in skus) {
           quantity += skus[sku].quantity;
@@ -71,6 +72,7 @@ const ProductInfo = () => {
         }
         setStyle(response.data.results[0]);
         setStyleSelector(response.data.results);
+        getAllProducts(response.data.results);
       })
       .catch((err) => {
         console.log('could not access data');
