@@ -1,17 +1,16 @@
 .module-container {
   width: 100%;
   background-color: #fafafa;
-  min-height: 320px;
+  min-height: 330px;
 }
 .module-container .carousel-container {
   width: 1280px;
   margin: 50px auto;
-  min-height: 200px;
   position: relative;
   align-self: center;
 }
 
-.module-container .title {
+.carousel-container .title {
   font-size: 18pt;
   font-weight: bold;
   display: flex;
@@ -20,11 +19,13 @@
 
 .carousel-container .inner-carousel {
   overflow: hidden;
+  min-height: 100%;
 }
 
 .carousel-container .track {
   position: relative;
   display: flex;
+  height: 315px;
   transition: transform 0.3s;
 }
 
@@ -34,7 +35,6 @@
   flex-shrink: 0;
   padding-right: 15px;
   box-sizing: border-box;
-  cursor: pointer;
 }
 
 .carousel-container .card-container .card {
@@ -42,6 +42,7 @@
   height: 100%;
   box-sizing: border-box;
   display: flex;
+  cursor: pointer;
   flex-direction: column;
 }
 
@@ -113,17 +114,25 @@
 }
 
 .spacer {
-  height: 30px;
+  height: 15px;
 }
 
-.card .actionButton {
+.card-container .actionButton {
   display: flex;
-  position: absolute;
   margin-right: 0px;
   margin-left: auto;
-  margin-bottom: 5px;
-  min-height: 10px;
-  min-width: auto;
   cursor: pointer;
   z-index: 1;
+}
+
+.compareTable {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.compare .title {
+  display: flex;
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-left: 33%;
 }

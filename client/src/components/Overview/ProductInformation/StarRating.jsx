@@ -8,13 +8,8 @@ const StarRating = ({rating, reviewNum}) => {
   }
   // add className='starRating' back into to span tag
   return (
-<<<<<<< HEAD
-    <span>
-      {[1, 2, 3, 4, 5].map((idx) => {
-=======
     <span className='starRating'>
       {[1,2,3,4,5].map((idx) => {
->>>>>>> main
         return (
           <Star idx={idx} rating={rating} key={idx}/>
         )

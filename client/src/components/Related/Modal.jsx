@@ -2,8 +2,9 @@ import React, {useState, useContext, createContext, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import {FaTimes} from 'react-icons/fa';
+import Feature from './Feature.jsx';
+import { CarouselStates } from './Carousel.jsx';
 import { CardStates } from './Card.jsx';
-
 
 const ModalStyles = styled.div`
   position: fixed;
@@ -23,37 +24,38 @@ const OverlayStyles = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   zIndex: 1000;
 `
-const ExpandedImg = styled.img`
-  width: 400px;
-  height: auto;
-`
-const Icon = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0.7;
-  cursor: pointer;
-  &:hover {
-    opacity: 1.0
-  }
-`
+  export const ModalStates = createContext();
 
 export default function Modal({open, onClose}) {
 
-  const {isOpen, setIsOpen} = useContext(CardStates);
+  let {overviewProduct, setOverviewProduct} = useContext(CarouselStates);
+  let {compareFeatures, product, isOpen, setIsOpen} = useContext(CardStates);
+  let [productName, setProductName] = useState(product.name);
 
   if (!open) return null
 
   return ReactDOM.createPortal(
-    <>
+    <ModalStates.Provider value={{productName}}>
       <OverlayStyles >
         <ModalStyles>
-          <div onClick={() => {setIsOpen(false)}}>
-            Hello World!
+          <div className="compare" onClick={() => {setIsOpen(false)}}>
+            <div className="title">Comparing</div>
+            <table className="compareTable">
+              <tr className="compareTable">
+                <th className="compareTable">{overviewProduct.name}</th>
+                <th className="compareTable">Feature</th>
+                <th className="compareTable">{productName}</th>
+              </tr>
+              {
+                compareFeatures.map((feature) =>
+                  <Feature feature={feature} />
+                )
+              }
+            </table>
           </div>
         </ModalStyles>
       </OverlayStyles>
-    </>,
+    </ModalStates.Provider>,
     document. getElementById('portal')
   );
 }

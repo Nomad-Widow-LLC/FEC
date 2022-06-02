@@ -4,6 +4,9 @@ import axios from 'axios';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Promise from 'bluebird';
 import { AllProductInfo } from '../App.jsx';
+import Modal from './Modal.jsx';
+
+export const CarouselStates = createContext();
 
 let Carousel = () => {
 
@@ -38,8 +41,6 @@ let Carousel = () => {
       track.style.transform = `translateX(-${jump}px)`;
 
     } else if (mode === 'next') {
-      console.log(styleList);
-
       if (nCardsDisplayed + sectionIndex !== productList.length) {
         setSectionIndex(sectionIndex += 1);
       }
@@ -125,7 +126,6 @@ let Carousel = () => {
 
   // Controls the hiding and showing of the previous and next buttons at the appropriate time
   useEffect(() => {
-    console.log(productList);
     let prev = document.querySelector(`.prev`);
     let next = document.querySelector(`.next`);
     setCarouselWidth(carouselWidth = document.querySelector(`.carousel-container`).clientWidth);
@@ -144,15 +144,13 @@ let Carousel = () => {
     }
   })
 
-  useEffect(() => {
-    console.log(overviewProduct);
-  })
-
   return (
+    <CarouselStates.Provider value={{overviewProduct, setOverviewProduct}}>
     <div className="module-container">
-      <div className="spacer"></div>
-      <div className="title">You May Also Like</div>
+      <div className="spacer" />
       <div className="carousel-container" key="outer" >
+        <div className="title">You May Also Like</div>
+        <div className="spacer" />
         <div className="nav" key="nav">
           <FaArrowLeft className="prev button" onClick={() => clicker('prev')} />
           <FaArrowRight className="next button" onClick={() => clicker('next')} />
@@ -163,10 +161,10 @@ let Carousel = () => {
               productList.map((product, index) =>
                 <Card
                 stars={starsList[index]}
-                pic={styleList[index].results[0].photos[0].url}
+                pic={styleList[index]?.results[0].photos[0].url}
                 item={product}
-                salePrice={styleList[index].results[3]?.sale_price}
-                key={product.product_id}
+                salePrice={styleList[index]?.results[0].sale_price}
+                key={product?.product_id}
                 mode="related"
                 />
               )
@@ -175,6 +173,7 @@ let Carousel = () => {
         </div>
       </div>
     </div>
+    </CarouselStates.Provider>
   )
 }
 

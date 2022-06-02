@@ -76,7 +76,7 @@ const ProductInfo = () => {
         console.log('could not access data');
         return;
       })
-  }, [])
+  }, [productIDN])
 
   return (
     <div className='productAndImage'>
