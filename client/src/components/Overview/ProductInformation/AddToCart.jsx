@@ -3,12 +3,21 @@ import styled from 'styled-components';
 
 export const DropdownWrapper = styled.form`
   margin-top: 5px;
-  font-size: 20px;
+  font-size: 100%;
+  @media (max-width: 1100px) {
+    // position: relative;
+    // left: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+  }
 `;
 
 export const StyledSelect = styled.select`
-  margin-bottom: 5px;
-  font-size: 20px;
+  margin-bottom: 25px;
+  font-size: 25px;
+  width: 150px;
 
 `;
 
@@ -18,7 +27,7 @@ export const StyledOption = styled.option`
 
 export const StyledButton = styled.input`
   justify-content: center;
-  font-size: 20px;
+  font-size: 27px;
 `;
 
 export function Dropdown(props) {

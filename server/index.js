@@ -30,7 +30,7 @@ app.get('/product', (req, res) => {
 
 app.get('/styles', (req, res) => {
   let product = req.query.product_id;
-  //console.log('PRODUCT', product);
+  console.log('PRODUCT', product);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${product}/styles`,{headers:{Authorization: `${process.env.TOKEN}`}})
     .then ((response) => {
       res.status(200).send(response.data);
