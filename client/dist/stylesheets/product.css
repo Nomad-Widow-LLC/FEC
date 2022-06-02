@@ -24,7 +24,7 @@
 }
 
 .arrows-modal {
-  position: relative;
+  position: absolute;
   bottom: 50%;
 }
 
@@ -41,7 +41,7 @@
   position:absolute;
   color: black;
   bottom: 50%;
-  right:0%;
+  left:0%;
   cursor: pointer;
   border-radius: 7px;
   background-color: rgba(255, 254, 254, 0.5);
@@ -61,14 +61,11 @@
 .style-selector {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* row-gap: 10px; */
   justify-content: space-evenly;
-  max-width: 300px;
-  grid-auto-rows: 1fr;
+  max-width: 700px;
+  grid-auto-rows: 2fr;
   align-items: center;
   column-gap: 5px;
-  /* margin-top: 5%;
-  margin-bottom: 5%; */
 }
 
 .thumbnail-container {
@@ -78,8 +75,8 @@
 }
 
 .style-thumbnail {
-  width: 80%;
-  height: 65%;
+  width: 90%;
+  height: 60%;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
@@ -93,8 +90,8 @@
 }
 
 .style-thumbnail-overlay {
-  width: 80%;
-  height: 65%;
+  width: 90%;
+  height: 60%;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
@@ -108,35 +105,45 @@
   padding: 3px;
 }
 
-/* .overlay {
-  text-align: center;
-  font-size: 150%;
-  position: absolute;
-  display: inline-block;
-  top: 0.2%;
-  left: 0.04%;
-  width: 94%;
-  height: 80%;
-  opacity: 70%;
-  border-style: solid;
-  border-radius: 50%;
-  border-width: 2px;
-} */
-
 .thumbnails {
   display: grid;
-  grid-template-columns: repeat(7, 85px);
-  row-gap: 10px;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  justify-content: center;
+  grid-template-columns: repeat(7, 3fr);
+  align-content: center;
+  max-width: 900px;
+  grid-auto-rows: 1fr;
+  column-gap: 15px;
+}
+
+.thumbnail-container-zoom {
+  justify-self: center;
 }
 
 .style-thumbnail-zoom {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(0,0,0,0);
+  color: rgb(0,0,0,0);
+  margin: 3px;
+  bottom: 0%;
+
+}
+
+.style-thumbnail-zoom-overlay {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  position: absolute;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgb(0,0,0,1);
+  border-spacing: 10px;
+  margin: 3px;
+  bottom: 0%;
+
 }
 
 .overlay-thumbnail {
@@ -200,12 +207,18 @@
   justify-content: center;
 }
 
+.original-price {
+  color: rgb(103, 94, 94);
+}
+
 .price {
   text-decoration: line-through;
+  color: rgb(161,161,161);
+  margin-left: 8px;
 }
 
 .sale-price {
-  color: red;
+  color: rgb(103, 94, 94);
 }
 
 .social-media-icons {

@@ -4,6 +4,9 @@ import styled from 'styled-components';
 export const DropdownWrapper = styled.form`
   margin-top: 5px;
   font-size: 100%;
+  // @media (max-width: 1100px) {
+  //   flex-direction: column;
+  // }
 `;
 
 export const StyledSelect = styled.select`
