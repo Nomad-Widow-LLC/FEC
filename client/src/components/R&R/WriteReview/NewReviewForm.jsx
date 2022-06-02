@@ -26,14 +26,13 @@ const ModalStyles = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f7ecc1;
+  background-color: #f5f1e1;
   padding: 25px;
   zIndex: 1000;
   min-width: 800px;
   max-height: 90%;
-  ${'' /* overflow-y: auto; */}
   font-family: "Courier New", Monaco, "Lucida Console";
-  border-radius: 10px;
+  border-radius: 5px;
 `
 const OverlayStyles = styled.div`
   position: fixed;
@@ -177,8 +176,8 @@ export default function NewReviewForm ({open, onClose}) {
             <H1Styles>Write Your Review</H1Styles>
             <H2Styles>About the {product ? product : 'Product'}</H2Styles>
               <Icon>
-                  <FaTimes onClick={onClose}/>
                   <Close>close</Close>
+                  <FaTimes onClick={onClose}/>
               </Icon>
           </Heads>
               <Stys>
