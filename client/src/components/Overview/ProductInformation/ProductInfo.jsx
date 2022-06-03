@@ -17,7 +17,7 @@ const Overview = styled.div`
   }
 `
 
-const ProductInfo = ({getAllProducts}) => {
+const ProductInfo = ({}) => {
   const [rating, setRating] = useState(0);
   const [reviewNum, setReviewNum] = useState(0);
   const [product, setProduct] = useState({});
@@ -72,7 +72,6 @@ const ProductInfo = ({getAllProducts}) => {
       })
       .then((response) => {
         let quantity = 0;
-        console.log('DOES IT HIT THIS SPOT')
         let skus = response.data.results[0].skus;
         for(let sku in skus) {
           quantity += skus[sku].quantity;
@@ -82,7 +81,6 @@ const ProductInfo = ({getAllProducts}) => {
         }
         setStyle(response.data.results[0]);
         setStyleSelector(response.data.results);
-        getAllProducts(response.data.results);
       })
       .catch((err) => {
         console.log('could not access data');
@@ -91,7 +89,7 @@ const ProductInfo = ({getAllProducts}) => {
   }, [productIDN])
 
   return (
-    <div className='productAndImage'>
+    <div className='productAndImage font'>
         <Overview>
           <Carousel style={style} handleOnClickStyle={handleOnClickStyle}/>
           <div className='product-information'>

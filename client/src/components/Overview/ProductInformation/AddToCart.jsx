@@ -5,8 +5,6 @@ export const DropdownWrapper = styled.form`
   margin-top: 5px;
   font-size: 100%;
   @media (max-width: 1600px) {
-    // position: relative;
-    // left: 50%;
     justify-content: center;
     align-items: center;
     flex-direction: column;

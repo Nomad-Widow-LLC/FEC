@@ -2,7 +2,7 @@ import React from "react";
 
 const HomeButton = ({handleRenderHomePage}) => {
   return (
-    <button onClick={()=>{handleRenderHomePage()}}> Homepage </button>
+    <button className='shop-button' onClick={()=>{handleRenderHomePage()}}> home </button>
   )
 }
 

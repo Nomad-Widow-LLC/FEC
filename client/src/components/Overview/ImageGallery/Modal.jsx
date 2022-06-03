@@ -136,7 +136,7 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
             {isExpanded ? <></> : <Thumbnails
             photos={style?.photos}
             handleChoosingPic={handleChoosingPic}
-            hideCheckmark={hideCheckmark}/>}
+            hideCheckmark={hideCheckmark} style={style}/>}
         </ModalStyles>
       </OverlayStyles>
       {isExpanded ? <ModalZoom  ><ExpandContainer  ><InnerExpandedImg src={photo?.url} alt={photo?.id} xAxis={xAxis} yAxis={yAxis} onMouseMove={handleZoomingPic} onMouseUp={handleZoomingOut}></InnerExpandedImg></ExpandContainer></ModalZoom>: <></>}
