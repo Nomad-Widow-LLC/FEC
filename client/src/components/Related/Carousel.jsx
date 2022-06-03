@@ -22,10 +22,16 @@ let Carousel = () => {
   let [indexOffset, setIndexOffset] = useState(0);
   let [starsList, setStarsList] = useState([]);
   let [card, setCard] = useState(0);
+  let [outfitCarousel, setOutfitCarousel] = useState([{
+    pic: 'https://media.istockphoto.com/vectors/black-plus-sign-positive-symbol-vector-id688550958?k=20&m=688550958&s=612x612&w=0&h=wvzUqT3u3feYygOXg3GB9pYBbqIsyu_xpvfTX-6HOd0=',
+    product: {name: 'Add To Outfit', default: true},
+    salePrice: null,
+    key: 'default-outfit-card',
+  }]);
+  let [overviewStyle, setOverviewStyle] = useState({});
   const cardWidth = 259;
 
   const clicker = (mode) => {
-
     if (mode === 'prev') {
 
       // This makes sure not to scroll past the first item
@@ -61,7 +67,7 @@ let Carousel = () => {
 
     let totalReviews = 0;
     let totalStars = 0;
-
+3
     for (let key in ratingsObj) {
       if (ratingsObj[key] !== NaN) {
         totalReviews += parseInt(ratingsObj[key]);
@@ -122,8 +128,14 @@ let Carousel = () => {
             setOverviewProduct(overviewProduct = result.data);
           })
       })
+      .then(() => {
+        axios.get(`/products?id=${productIDN}&styles=true`)
+          .then((result) => {
+            setOverviewStyle(overviewStyle = result.data)
+          })
+      })
       .catch((err) => console.log(`Error in carousel GET: ${err}`))
-  }, [productIDN])
+  }, [productIDN, outfitCarousel])
 
   // Controls the hiding and showing of the previous and next buttons at the appropriate time
   useEffect(() => {
@@ -146,7 +158,7 @@ let Carousel = () => {
   })
 
   return (
-    <CarouselStates.Provider value={{overviewProduct, setOverviewProduct}}>
+    <CarouselStates.Provider value={{overviewStyle, setOverviewStyle, overviewProduct, setOverviewProduct, outfitCarousel, setOutfitCarousel}}>
     <div className="module-container">
       <div className="spacer" />
       <div className="carousel-container" key="outer" >
@@ -158,7 +170,7 @@ let Carousel = () => {
         </div>
         <div className="inner-carousel" key="inner">
           <div className="track" key="track">
-          {
+            {
               productList.map((product, index) =>
                 <Card
                 stars={starsList[index]}
