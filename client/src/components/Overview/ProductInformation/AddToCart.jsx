@@ -16,6 +16,7 @@ export const StyledSelect = styled.select`
   margin-bottom: 25px;
   font-size: 25px;
   width: 150px;
+  padding-top: 10px;
 
 `;
 

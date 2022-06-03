@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import {FaCheck, FaArrowLeft, FaArrowRight} from 'react-icons/fa';
+import {FaCheck, FaArrowLeft, FaArrowRight, FaCheckCircle} from 'react-icons/fa';
 import {IoIosArrowDown, IoIosArrowUp} from 'react-icons/io'
 
 const Thumbnails = ({photos, handleChoosingPic, hideCheckmark, style}) => {
   const [moreThanSeven, setMoreThanSeven] = useState(false);
   const [sevenPics, setSevenPics] = useState([]);
+  const [leftArrow, setLeftArrow] =useState(false);
+  const [rightArrow, setRightArrow] = useState(true);
 
   useEffect(() => {
     console.log('photos',photos)
@@ -47,7 +49,7 @@ const Thumbnails = ({photos, handleChoosingPic, hideCheckmark, style}) => {
             onClick={()=>{handleChoosingPic(photo)}}
           />
           <div className={`overlay-thumbnail-outer ${hideCheckmark(photo)}`} >
-            <FaCheck/> </div>
+            <FaCheckCircle size='30px'/> </div>
       </div>
       )}
       {moreThanSeven ? <div className='thumbnail-down'>
