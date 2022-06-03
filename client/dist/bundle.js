@@ -431,11 +431,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// Get API Token From imgbb\nconst imgBBToken = '667caf2bd29d9bf5f17441bc1d3c5cff';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (imgBBToken); // GO to https://api.imgbb.com/ to get API Token\n\n//# sourceURL=webpack://fec/./client/dist/imgbb.js?");
-=======
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// Get API Token From imgbb\nconst imgBBToken = '1ec95b17923fe217cc674f0b27a90be1';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (imgBBToken);\n\n//# sourceURL=webpack://fec/./client/dist/imgbb.js?");
->>>>>>> fd175828c413b8368695ca6854de565781dcd6d6
 
 /***/ }),
 
