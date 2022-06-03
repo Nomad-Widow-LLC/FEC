@@ -21,10 +21,12 @@ export default function ShowingReviews () {
   const {reviewsShown, setReviewShown} = useContext(AllReviews);
   const {breakdownReviews, setBreakdownReviews} = useContext(AllReviews);
   const {didSelect, setDidSelect} = useContext(AllReviews);
+  const {numReviews, setNumReviews} = useContext(AllProductInfo);
   const [numberReviews, setNumberReviews] = useState(useGetNumberRatings(metaData.ratings));
 
   useEffect(() => {
     setNumberReviews(reviewData.results.length);
+    setNumReviews(reviewData.results.length);
     setTotalReviews(useGetNumberRatings(metaData.ratings));
   },[reviewData])
 

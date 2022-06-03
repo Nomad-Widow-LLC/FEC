@@ -19,19 +19,7 @@ export default function App () {
   const [productIDN, setProductIDN] = useState(40344);
   const [product, setProduct] = useState('');
 
-  // useEffect(async () => {
-  //   try {
-  //     let products = await axios.get('/products?count=20')
-  //     }
-  //   let newProducts = [];
-  //   if (products.data.length) {
-  //       products.data.map(async (product) => {
-  //         const productId = product.id;
-  //         console.log('PRODUCT ID', product_id)
-  //         let images = await axios.get('/styles?product_id=' + product_id)
-  //       })
-  //     }
-  // },[])
+  const [numReviews, setNumReviews] = useState();
 
   const handleRenderHomePage = () => {
     setHomepage(true);
@@ -44,7 +32,7 @@ export default function App () {
 
   return (
     <>
-      <AllProductInfo.Provider value={{productIDN, setProductIDN, product, setProduct}}>
+      <AllProductInfo.Provider value={{productIDN, setProductIDN, product, setProduct, numReviews, setNumReviews}}>
         {homepage ? <Homepage productPics={productPics}/> :
         <div>
           <HomeButton handleRenderHomePage={handleRenderHomePage}/>
