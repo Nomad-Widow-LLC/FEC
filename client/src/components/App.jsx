@@ -19,6 +19,7 @@ export default function App () {
   const [productIDN, setProductIDN] = useState(40344);
   const [product, setProduct] = useState('');
 
+  const [numReviews, setNumReviews] = useState();
   useEffect(() => {
     axios.get('/products?count=20')
     .then((results) => {
@@ -68,7 +69,7 @@ export default function App () {
 
   return (
     <>
-      <AllProductInfo.Provider value={{productIDN, setProductIDN, product, setProduct}}>
+      <AllProductInfo.Provider value={{productIDN, setProductIDN, product, setProduct, numReviews, setNumReviews}}>
         {homepage ? <Homepage productPics={productPics} getProduct={getProduct}/> :
         <div>
           <HomeButton handleRenderHomePage={handleRenderHomePage}/>

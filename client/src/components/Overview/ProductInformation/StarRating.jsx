@@ -1,7 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Star from './Star.jsx';
 
+import {AllProductInfo} from '../../App.jsx';
+
+
 const StarRating = ({rating, reviewNum}) => {
+
+  const {numReviews, setNumReviews} = useContext(AllProductInfo);
 
   if (rating === 0) {
     return null;
@@ -14,7 +19,7 @@ const StarRating = ({rating, reviewNum}) => {
           <Star idx={idx} rating={rating} key={idx}/>
         )
       })}
-      {reviewNum ? <a className='readAllRatingsButton' href="#review-widget"> Read all {reviewNum} reviews </a> : <></>}
+      {reviewNum ? <a className='readAllRatingsButton' href="#review-widget"> Read all {numReviews} reviews </a> : <></>}
 
     </span>
   )
