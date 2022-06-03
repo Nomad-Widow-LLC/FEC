@@ -7,7 +7,11 @@ import { CarouselStates } from './Carousel.jsx';
 
 let Outfit = () => {
 
-  let {overviewProduct} = useContext(CarouselStates);
+  let {overviewProduct, overviewStyle, outfitCarousel, setOutfitCarousel} = useContext(CarouselStates);
+
+  useEffect(() => {
+
+  }, [outfitCarousel])
 
   return (
     <div className="module-container">
@@ -17,11 +21,21 @@ let Outfit = () => {
         <div className="spacer" />
         <div className="nav" key="outfitnav">
           <FaArrowLeft className="prev button" onClick={() => {console.log(overviewProduct);}} />
-          <FaArrowRight className="next button" />
+          <FaArrowRight className="next button" onClick={() => {console.log(outfitCarousel); console.log(overviewStyle)}} />
         </div>
         <div className="inner-carousel" key="inner">
           <div className="track" key="outfittrack">
-            <div>Hello World</div>
+            {
+              outfitCarousel.map((item) =>
+                <Card
+                  pic={item.pic}
+                  item={item.product}
+                  salePrice={item.salePrice}
+                  key={item.key}
+                  mode="outfit"
+                />
+              )
+            }
           </div>
         </div>
       </div>
