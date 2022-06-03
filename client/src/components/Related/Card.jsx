@@ -15,13 +15,15 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   let sale;
   let actionButton;
   let image;
+  let cardInfo;
+  let fullCard;
   let [isOpen, setIsOpen] = useState(false);
   let [product, setProduct] = useState(item);
   let [compareFeatures, setCompareFeatures] = useState([]);
 
 
   let {productIDN, setProductIDN} = useContext(AllProductInfo);
-  let {overviewProduct, setOverviewProduct} = useContext(CarouselStates);
+  let {overviewStyle, overviewProduct, setOverviewProduct, outfitCarousel, setOutfitCarousel} = useContext(CarouselStates);
 
   let actionButtonClick = () => {
     // import list of overview product features
@@ -76,6 +78,32 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
     setIsOpen(true);
   }
 
+  let addCard = () => {
+    let cardIsNotInCarousel = true;
+
+    for (let i = 0; i < outfitCarousel.length; i++) {
+      if (outfitCarousel[i].product.name === overviewProduct.name) {
+        cardIsNotInCarousel = false;
+      }
+    }
+
+    if (cardIsNotInCarousel) {
+      let newCard = {
+        pic: overviewStyle?.results[0].photos[0].url,
+        salePrice: overviewStyle?.results[0].sale_price,
+        key: `${overviewStyle?.product_id}-outfit`,
+        product: overviewProduct
+      }
+
+      if (outfitCarousel.length === 0) {
+        setOutfitCarousel(outfitCarousel = [newCard]);
+      } else {
+        setOutfitCarousel(outfitCarousel = [...outfitCarousel, newCard]);
+      }
+    }
+  }
+
+
   if (!pic) {
     image = <img className="img" src="https://klizos.com/wp-content/uploads/funny-404-error-page-GIF.gif" />;
   } else {
@@ -85,7 +113,9 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   if (mode === 'related') {
     actionButton = <FaRegStar className="actionButton" onClick={() => {actionButtonClick()}} />
   } else if (mode === 'outfit') {
-    actionButton = <FaRegWindowClose className="actionButton" />
+    if (!item.default) {
+      actionButton = <FaRegWindowClose className="actionButton" />
+    }
   }
 
   if (stars) {
@@ -94,31 +124,48 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
 
   if (salePrice) {
     sale = <span className="priceContainer">
-            <span className="price redSale">${salePrice}</span>
-            <span className="price lineThrough">${item.default_price}</span>
+            <span className=" redSale font">${salePrice}</span>
+            <span className=" lineThrough font">${item.default_price}</span>
             {starBar}
            </span>
   } else {
-    sale = <span className="priceContainer">
-            <span className="price">${item.default_price}</span>
-            {starBar}
-           </span>
+    if (!item.default) {
+      sale = <span className="priceContainer">
+              <span className="font">${item.default_price}</span>
+              {starBar}
+             </span>
+    }
   }
 
-  let card = <div className="card" onClick={() => {setProductIDN(item.id)}}>
-               {image}
-               <div className="info">
-                 <div className="name">{item.name}</div>
-                 <div className="category">{item.category}</div>
+  if (item.default) {
+    cardInfo = <div className="info">
+                 <div className="name font addCard">{item.name}</div>
+               </div>
+  } else {
+    cardInfo = <div className="info">
+                 <div className="name font">{item.name}</div>
+                 <div className="category font">{item.category}</div>
                  {sale}
                </div>
-             </div>;
+  }
+
+  if (!item.default){
+    fullCard = <div className="card" onClick={() => {setProductIDN(item.id)}}>
+                {image}
+                {cardInfo}
+              </div>;
+  } else {
+    fullCard = <div className="card" onClick={() => {addCard()}}>
+                {image}
+                {cardInfo}
+              </div>;
+  }
 
   return (
     <CardStates.Provider value={{isOpen, setIsOpen, product, setProduct, compareFeatures}}>
       <div className="card-container">
         {actionButton}
-        {card}
+        {fullCard}
       </div>
       <Modal open={isOpen} onClose={() => setIsOpen(false)} />
     </CardStates.Provider>

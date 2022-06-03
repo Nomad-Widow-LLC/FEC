@@ -4,7 +4,7 @@
   min-height: 330px;
 }
 .module-container .carousel-container {
-  width: 1280px;
+  width: 1036px;
   margin: 50px auto;
   position: relative;
   align-self: center;
@@ -135,4 +135,13 @@
   font-weight: bold;
   padding-bottom: 10px;
   margin-left: 33%;
+}
+
+.info .addCard {
+  display: flex;
+  padding-left: 33%;
+}
+
+.font {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
