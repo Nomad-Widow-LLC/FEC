@@ -14,7 +14,7 @@ const ModalStyles = styled.div`
   transform: translate(-50%, -50%);
   padding: 25px;
   zIndex: 1000;
-  background-color: rgb(0,0,0,0.1);
+  background-color: rgb(0,0,0,0.8);
   display: inline-block;
 `
 
@@ -65,6 +65,7 @@ const Icon = styled.div`
   right: 0;
   opacity: 0.7;
   cursor: pointer;
+  color: white;
   &:hover {
     opacity: 1.0
   }
@@ -136,7 +137,7 @@ export default function Modal({open, photo, onClose, showLeftArrow, setShowLeftA
             {isExpanded ? <></> : <Thumbnails
             photos={style?.photos}
             handleChoosingPic={handleChoosingPic}
-            hideCheckmark={hideCheckmark}/>}
+            hideCheckmark={hideCheckmark} style={style}/>}
         </ModalStyles>
       </OverlayStyles>
       {isExpanded ? <ModalZoom  ><ExpandContainer  ><InnerExpandedImg src={photo?.url} alt={photo?.id} xAxis={xAxis} yAxis={yAxis} onMouseMove={handleZoomingPic} onMouseUp={handleZoomingOut}></InnerExpandedImg></ExpandContainer></ModalZoom>: <></>}
