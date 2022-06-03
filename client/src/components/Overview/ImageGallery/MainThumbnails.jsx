@@ -1,43 +1,32 @@
 import React, {useState, useEffect, useMemo} from 'react';
 import axios from 'axios';
-import {FaCheck, FaArrowLeft, FaArrowRight} from 'react-icons/fa';
+import {FaCheck, FaArrowLeft, FaArrowRight, FaCheckCircle} from 'react-icons/fa';
 
 const Thumbnails = ({photos, handleChoosingPic, hideCheckmark}) => {
   const [moreThanSeven, setMoreThanSeven] = useState(false);
   const [sevenPics, setSevenPics] = useState([]);
 
   useEffect(() => {
-    let firstPhotos = [];
-    for (let i=0; i< 5; i++) {
-      firstPhotos.push(photos?.[i])
+    let firstPhotos = photos?.slice(0,5);
     setSevenPics(firstPhotos);
-
     if (photos?.length >= 6) {
-      setMoreThanSeven(true);}
-
+      setMoreThanSeven(true);
   }},[photos])
 
   const handleUpArrow = () => {
     let start = photos.indexOf(sevenPics[0])
-
-    if (photos.length - start < 6) {
-      let newPic = [];
-      for(let i=start-1; i< 5; i++) {
-        newPic.push(photos?.[i])
-      }
+    console.log('start', start);
+    console.log('photo', photos?.length)
+    if (photos.length - start <= photos.length-1) {
+      let newPic = photos?.slice(start-1,start+4);
       setSevenPics(newPic);
     }
   }
 
   const handleDownArrow = () => {
     let start = photos.indexOf(sevenPics[0])
-    console.log('photos.length', photos.length)
-    console.log('start', start);
     if (photos.length - start >= 6) {
-      let newPics = [];
-      for(let i=start + 1 ; i< 6; i++) {
-        newPics.push(photos?.[i])
-      }
+      let newPics = photos?.slice(start+1,start+6);
       setSevenPics(newPics);
     }
   }
@@ -58,7 +47,7 @@ const Thumbnails = ({photos, handleChoosingPic, hideCheckmark}) => {
             onClick={()=>{handleChoosingPic(photo)}}
           />
           <div className={`overlay-thumbnail-outer ${hideCheckmark(photo)}`} >
-            <FaCheck/> </div>
+            <FaCheckCircle size='30px'/> </div>
       </div>
       )}
       {moreThanSeven ? <div className='thumbnail-right'>
