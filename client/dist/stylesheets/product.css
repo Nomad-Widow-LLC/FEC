@@ -1,5 +1,5 @@
 .main-image {
-  width: 80%;
+  width: 60%;
   display: flex;
   flex-direction:column;
   align-items: center;
@@ -68,12 +68,13 @@
 }
 .style-selector {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 3fr);
   justify-content: space-evenly;
   max-width: 400px;
   grid-auto-rows: min-content;
   align-items: center;
   column-gap: 5px;
+  margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 1600px) {
@@ -91,13 +92,11 @@
 }
 
 .style-thumbnail {
-  width: 90%;
-  height: 60%;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
-  top: 9%;
-  left: 11%;
   border-style: solid;
   border-width: 2px;
   border-color: rgb(0,0,0,0);
@@ -106,18 +105,15 @@
 }
 
 .style-thumbnail-overlay {
-  width: 90%;
-  height: 60%;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
-  top: 9%;
-  left: 11%;
   border-style: solid;
   border-width: 2px;
   border-color: rgb(0, 0, 0);
   color: rgb(0, 0, 0);
-  border-spacing: 10px;
   padding: 3px;
 }
 
@@ -198,6 +194,7 @@
   position: relative;
   left: 50%;
   top: 25%;
+  width: 20px;
 }
 
 .thumbnail-right{
@@ -205,6 +202,7 @@
   position: relative;
   right: 0%;
   top: 25%;
+  width: 20px;
 }
 
 .thumbnail-container-outer {
@@ -216,6 +214,14 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+  border-width: 3px;
+}
+.style-thumbnail-zoom-overlay {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  box-shadow: 0px 0px 5px #fff;
+  border-width: 3px;
 }
 
 .overlay-thumbnail-outer {
@@ -223,7 +229,6 @@
   font-size: 100%;
   position: relative;
   bottom:70%;
-  right:10%;
   opacity: 70%;
 }
 
@@ -241,16 +246,19 @@
 
 .original-price {
   color: rgb(103, 94, 94);
+  font-size:30px;
 }
 
 .price {
   text-decoration: line-through;
   color: rgb(161,161,161);
   margin-left: 8px;
+  font-size:30px;
 }
 
 .sale-price {
   color: rgb(103, 94, 94);
+  font-size:30px;
 }
 
 .social-media-icons {
@@ -277,10 +285,10 @@
 
 .shop-name {
   /* position: fixed; */
-  width: 217px;
-  height: 45px;
+  width: 130px;
+  height: 35px;
   margin-top: 150px;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
   align-self: center;
   display:inline-block;
   background-color: rgb(53, 50, 50, 0.88);
@@ -294,19 +302,46 @@
   font-style: italic;
 }
 
-.detail {
-  margin-left: 30%;
-  font-size: 10px;
-  margin-top: 10px;
+.shop-button {
+  /* position: fixed; */
+  width: 120px;
+  height: 45px;
+  align-self: center;
+  display:inline-block;
+  background-color: rgb(53, 50, 50, 0.88);
+  color: white;
+  font-size: 35px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  text-align: center;
+  text-transform: lowercase;
+  font-style: italic;
+  font-weight: bold;
 }
+
+.detail {
+  margin-left: 26%;
+  font-size: 12px;
+  margin-top: 150px;
+  font-family: "Courier New", Courier, Monaco;
+}
+
+.time {
+  font-size: 12px;
+  font-family: "Courier New", Courier, Monaco;
+  margin-bottom: 45px;
+}
+
 .scroll-container{
   overflow: auto;
   white-space: nowrap;
   /* padding: 5px 70px 5px 20px; */
   background: transparent;
-  height: 400px;
-  width:45vw;
+  height: 360px;
+  width:33vw;
   position: relative;
+  scrollbar-width: 20px;
 }
 .gridscroll{
   display:inline-block;
@@ -315,7 +350,7 @@
 .container {
   display:inline-block;
   width: 50px;
-  height: 360px;
+  height: 342px;
   overflow:hidden;
   margin-right:2px;
 }
@@ -337,9 +372,14 @@
   position: relative;
   top:70%;
   left: 2.6%;
+  height: 35px;
 }
 
 .thumbnail-down {
   position: relative;
   left: 2%;
+}
+
+.font {
+  font-family: Calibre, Helvetica Neue, Helvectia, Roboto, Arial, sans-serif;
 }

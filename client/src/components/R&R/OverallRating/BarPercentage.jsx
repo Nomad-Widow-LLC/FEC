@@ -12,7 +12,7 @@ const StarTextStyles = styled.div`
   padding-top: 2.5px;
   cursor: pointer;
   &:hover {
-    color: blue;
+    color: #ff5e5e;
   }
 `
 
@@ -43,7 +43,7 @@ export default function BarPercentage ({ratio, star, num}) {
 
   const labelStyles = {
     padding: 5,
-    color: `${selectedStars['' + star] ? 'blue' : 'black'}`,
+    color: `${selectedStars['' + star] ? '#ff5e5e' : 'black'}`,
     fontWeight: 'bold',
     fontSize: 10,
     verticalAlign: 'top',

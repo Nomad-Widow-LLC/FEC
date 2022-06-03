@@ -37,6 +37,7 @@ const BreakdownStyles = styled.div`
 `
 const StarRatingItem = styled.div`
   vertical-align: bottom;
+
 `
 
 export default function OverallRating () {
