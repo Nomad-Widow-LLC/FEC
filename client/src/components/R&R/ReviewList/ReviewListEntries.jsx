@@ -15,7 +15,7 @@ const IndvReview = styled.div`
   flex-direction: column;
   border-style: groove;
   border-width: 1px;
-  border-color: black;
+  border-color: #ff5e5e;
   border-radius: 1px;
   box-shadow: 1px 1px grey;
   font: Helvetica;
