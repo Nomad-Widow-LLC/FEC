@@ -46,7 +46,10 @@ export default function Modal({open, photo, onClose}) {
       <OverlayStyles>
         <ModalStyles>
           <div>
-            Hello World!
+            <ExpandedImg src={photo.url} alt={photo.id}></ExpandedImg>
+            <Icon>
+              <FaTimes onClick={onClose}/>
+            </Icon>
           </div>
         </ModalStyles>
       </OverlayStyles>

@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
+import styled from 'styled-components';
 import StarRating from './StarRating.jsx';
 import Carousel from "../ImageGallery/Carousel.jsx";
 import StyleSelector from "./StyleSelector.jsx";
@@ -6,6 +7,15 @@ import AddToCart from "./AddToCart.jsx";
 import axios from 'axios';
 import { FaYoutube, FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 import {AllProductInfo} from "../../App.jsx"
+
+const Overview = styled.div`
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 1600px) {
+    display: flex;
+    flex-direction: column;
+  }
+`
 
 const ProductInfo = ({getAllProducts}) => {
   const [rating, setRating] = useState(0);
@@ -82,28 +92,30 @@ const ProductInfo = ({getAllProducts}) => {
 
   return (
     <div className='productAndImage'>
-        <Carousel style={style} handleOnClickStyle={handleOnClickStyle}/>
-        <div className='product-information'>
-          <StarRating className='starRating' rating={rating} reviewNum={reviewNum}/>
-          <h6 className='ProductCategory'>{product.category}</h6>
-          <h3 className='ProductTitle'>{product.name}</h3>
-          { style.sale_price ? <span className="priceContainer">
-            <span className="sale-price">${Math.round(style.sale_price)} USD</span>
-            <span className="spacer">&nbsp;</span>
-            <span className="price">${Math.round(style.original_price)} USD</span>
-          </span>  : <span className="original-price">${Math.round(style.original_price)} USD</span> }
-          <h6 className='ProductOverview'>{product.description}</h6>
-          <h6 className='style-name'>Style {style.name}</h6>
-          <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector} style={style} setSize={setSize}/>
-          <AddToCart style={style} size={size} setSize={setSize} handleChoosingSize={handleChoosingSize} quantity={quantity} allQuantity={allQuantity} sizeSelected={sizeSelected}/>
-          <h6 className='SocialMedia'>Share on Social Media</h6>
-          <span className='social-media-icons'>
-            <a className='social-icon' href="https://www.youtube.com"><FaYoutube/></a>
-            <a className='social-icon' href="https://www.facebook.com"><FaFacebook/></a>
-            <a className='social-icon' href="https://www.twitter.com"><FaTwitter/></a>
-            <a className='social-icon' href="https://www.instagram.com"><FaInstagram/></a>
-          </span>
-      </div>
+        <Overview>
+          <Carousel style={style} handleOnClickStyle={handleOnClickStyle}/>
+          <div className='product-information'>
+            <StarRating className='starRating' rating={rating} reviewNum={reviewNum}/>
+            <h6 className='ProductCategory'>{product.category}</h6>
+            <h3 className='ProductTitle'>{product.name}</h3>
+            { style.sale_price ? <span className="priceContainer">
+              <span className="sale-price">${Math.round(style.sale_price)} USD</span>
+              <span className="spacer">&nbsp;</span>
+              <span className="price">${Math.round(style.original_price)} USD</span>
+            </span>  : <span className="original-price">${Math.round(style.original_price)} USD</span> }
+            <h6 className='ProductOverview'>{product.description}</h6>
+            <h6 className='style-name'>Style {style.name}</h6>
+            <StyleSelector handleOnClickStyle={handleOnClickStyle} styleSelector={styleSelector} style={style} setSize={setSize}/>
+            <AddToCart style={style} size={size} setSize={setSize} handleChoosingSize={handleChoosingSize} quantity={quantity} allQuantity={allQuantity} sizeSelected={sizeSelected}/>
+            <h6 className='SocialMedia'>Share on Social Media</h6>
+            <span className='social-media-icons'>
+              <a className='social-icon' href="https://www.youtube.com"><FaYoutube/></a>
+              <a className='social-icon' href="https://www.facebook.com"><FaFacebook/></a>
+              <a className='social-icon' href="https://www.twitter.com"><FaTwitter/></a>
+              <a className='social-icon' href="https://www.instagram.com"><FaInstagram/></a>
+            </span>
+        </div>
+        </Overview>
     </div>
   )
 }
