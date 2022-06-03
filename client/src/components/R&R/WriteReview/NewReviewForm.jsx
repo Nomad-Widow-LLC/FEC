@@ -26,7 +26,7 @@ const ModalStyles = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f5f1e1;
+  background-color: #fafafa;
   padding: 25px;
   zIndex: 1000;
   min-width: 800px;
