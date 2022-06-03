@@ -9,23 +9,32 @@ color scheme
   display: flex;
   justify-content: center;
   margin-top: 1%;
-  width:100vw;
+  width:auto;
   height:auto;
   background-color: rgb(250,250,250);
-  gap: 10px;
+  margin-left: 20px;
 }
 
  .product-information {
    width: 30%;
-   margin-left: 10px;
+   /* margin-left: 80px; */
  }
 
- @media only screen and (max-width: 1600px) {
+ .ProductOverview {
+  font-size: 1em;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 70%;
+}
+
+@media only screen and (max-width: 1600px) {
   .productAndImage {
-    flex-direction: column;
-    width: 100%;
+    /* display:flex; */
+    /* flex-direction: column; */
+    width: 100vw;
     align-items: center;
-    justify-content: left;
+    justify-content: space-between;
+    position: relative;
   }
   .product-information {
     width: 100vw;
@@ -33,15 +42,25 @@ color scheme
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
-    background-color: rgb(250,250,250)
+    background-color: rgb(250,250,250);
+    margin-left: 0px;
   }
-}
-
- .ProductOverview {
-  font-size: 1em;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  width: 70%;
+  .carousel {
+    width: 60vh;
+    height: 80vh;
+    object-fit: cover;
+  }
+  .main-image {
+    width: 50%;
+    /* display: flex; */
+    /* flex-direction:column; */
+    /* align-items: center; */
+    left:25%;
+    position: relative;
+  }
+  .ProductOverview {
+    text-align: center;
+  }
 }
 
 .ProductTitle {

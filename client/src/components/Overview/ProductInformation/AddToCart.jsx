@@ -5,8 +5,6 @@ export const DropdownWrapper = styled.form`
   margin-top: 5px;
   font-size: 100%;
   @media (max-width: 1600px) {
-    // position: relative;
-    // left: 50%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -18,6 +16,7 @@ export const StyledSelect = styled.select`
   margin-bottom: 25px;
   font-size: 25px;
   width: 150px;
+  padding-top: 10px;
 
 `;
 
