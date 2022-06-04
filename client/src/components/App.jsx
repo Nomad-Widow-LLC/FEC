@@ -72,13 +72,13 @@ export default function App () {
       <AllProductInfo.Provider value={{productIDN, setProductIDN, product, setProduct, numReviews, setNumReviews}}>
         {homepage ? <Homepage productPics={productPics} getProduct={getProduct}/> :
         <div>
-          <HomeButton handleRenderHomePage={handleRenderHomePage}/>
-          <ProductInfo />
+          {/* <HomeButton handleRenderHomePage={handleRenderHomePage}/>
+          <ProductInfo /> */}
           <div className="componentGap" />
           <Carousel />
-          <div className="componentGap" />
+          {/* <div className="componentGap" />
           <a id="review-widget"></a>
-          <ReviewWidget />
+          <ReviewWidget /> */}
         </div>
         }
       </AllProductInfo.Provider>

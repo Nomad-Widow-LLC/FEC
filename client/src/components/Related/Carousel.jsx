@@ -67,7 +67,7 @@ let Carousel = () => {
 
     let totalReviews = 0;
     let totalStars = 0;
-3
+
     for (let key in ratingsObj) {
       if (ratingsObj[key] !== NaN) {
         totalReviews += parseInt(ratingsObj[key]);
@@ -102,6 +102,8 @@ let Carousel = () => {
             setProductList(productList = values.map((item, index) => {return item.data }));
             return productList;
           })
+          .catch((err) => {return `Error in getting related product data: ${err}`})
+
         return idList;
       })
       .then((idList) => {
@@ -121,20 +123,25 @@ let Carousel = () => {
               starsList[index]['avg'] = average;
             })
           })
+          .catch((err) => {return `Error in getting meta data: ${err}`})
       })
+      .catch((err) => {return err})
       .then (() => {
         axios.get(`/products?id=${productIDN}`)
           .then((result) => {
             setOverviewProduct(overviewProduct = result.data);
           })
+          .catch((err) => {return err})
       })
       .then(() => {
         axios.get(`/products?id=${productIDN}&styles=true`)
           .then((result) => {
             setOverviewStyle(overviewStyle = result.data)
           })
+          .catch((err) => {console.log(err)})
+
       })
-      .catch((err) => console.log(`Error in carousel GET: ${err}`))
+      .catch((err) => `Error in carousel GET: ${err}`)
   }, [productIDN, outfitCarousel])
 
   // Controls the hiding and showing of the previous and next buttons at the appropriate time
@@ -158,7 +165,7 @@ let Carousel = () => {
   })
 
   return (
-    <CarouselStates.Provider value={{overviewStyle, setOverviewStyle, overviewProduct, setOverviewProduct, outfitCarousel, setOutfitCarousel}}>
+    <CarouselStates.Provider value={{overviewStyle, setOverviewStyle, overviewProduct, setOverviewProduct, outfitCarousel, setOutfitCarousel, carouselWidth, setCarouselWidth, nCardsDisplayed, setNCardsDisplayed, sectionIndex, setSectionIndex}}>
     <div className="module-container">
       <div className="spacer" />
       <div className="carousel-container" key="outer" >

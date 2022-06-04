@@ -29,6 +29,13 @@
   transition: transform 0.3s;
 }
 
+.carousel-container .inner-carousel .outfittrack {
+  position: relative;
+  display: flex;
+  height: 315px;
+  transition: transform 0.3s;
+}
+
 .carousel-container .card-container {
   width: 259px;
   height: 300px;
@@ -139,7 +146,7 @@
 
 .info .addCard {
   display: flex;
-  padding-left: 33%;
+  padding-left: 28%;
 }
 
 .font {

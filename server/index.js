@@ -30,7 +30,7 @@ app.get('/product', (req, res) => {
 
 app.get('/styles', (req, res) => {
   let product = req.query.product_id;
-  console.log('PRODUCT', product);
+  //console.log('PRODUCT', product);
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${product}/styles`,{headers:{Authorization: `${process.env.TOKEN}`}})
     .then ((response) => {
       res.status(200).send(response.data);
@@ -85,7 +85,7 @@ app.post('/review', (req, res) => {
 })
 
 app.put('/review', (req, res) => {
-  console.log('Recieved Put Request: ', req.body.reviewID);
+  //console.log('Recieved Put Request: ', req.body.reviewID);
   axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${req.body.reviewID}/helpful`, req.body, api_header)
     .then(() => {
       res.sendStatus(204);
