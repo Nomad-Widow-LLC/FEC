@@ -21,6 +21,10 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   let [product, setProduct] = useState(item);
   let [compareFeatures, setCompareFeatures] = useState([]);
   let [cardID, setCardId] = useState();
+  let [overviewFeatures, setOverviewFeatures] = useState();
+  let [overviewName, setOverviewName] = useState();
+  let [compProductFeatures, setCompProductFeatures] = useState();
+  let [compProductName, setCompProductName] = useState();
 
 
   let {productIDN, setProductIDN} = useContext(AllProductInfo);
@@ -29,12 +33,12 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   let actionButtonClick = () => {
     if (mode === 'related') {
       // import list of overview product features
-      let overviewFeatures = overviewProduct.features;
+      setOverviewFeatures(overviewProduct.features);
       // Get overviewName]
-      let overviewName = overviewProduct.name;
+      setOverviewName(overviewProduct.name);
       // import list of compProduct features
-      let compProductFeatures = product.features;
-      let compProductName = product.name;
+      setCompProductFeatures(product.features);
+      setCompProductName(product.name);
       // create empty featureList object
       let featureList = {};
       // create empty result obj {overviewName: overviewFeatureValue, feature: featureName, compProductName: compProductFeatureValue}
