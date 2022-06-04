@@ -20,6 +20,7 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   let [isOpen, setIsOpen] = useState(false);
   let [product, setProduct] = useState(item);
   let [compareFeatures, setCompareFeatures] = useState([]);
+  let [cardID, setCardId] = useState();
 
 
   let {productIDN, setProductIDN} = useContext(AllProductInfo);
@@ -79,24 +80,26 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
       setIsOpen(true);
     } else if (mode === 'outfit') {
 
-      let deleteId = overviewStyle?.product_id;
+      setCardId(cardID = item.id);
+
       let itemIndex;
       let modifiedOutfit = outfitCarousel.slice();
       // get the index number in the array where the card is
-      console.log(`Id To Find: ${deleteId}`);
-      console.log(typeof(deleteId));
+      console.log(`Card ID: ${cardID}`);
+
 
       modifiedOutfit.map((item, index) => {
 
         console.log(item.product.id);
 
-        if (item.product.id === parseInt(deleteId)) {
+        if (item.product.id === cardID) {
           console.log(item.product.id)
           console.log(`Found a Match!`);
+          modifiedOutfit.splice(index, 1);
           itemIndex = index;
         }
       })
-      let test = modifiedOutfit.splice(itemIndex, 1);
+
       console.log(modifiedOutfit);
       setOutfitCarousel(modifiedOutfit);
       console.log(`ID to delete: ${deleteId}\nIndex: ${itemIndex}`);
