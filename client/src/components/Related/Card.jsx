@@ -26,56 +26,85 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
   let {overviewStyle, overviewProduct, setOverviewProduct, outfitCarousel, setOutfitCarousel} = useContext(CarouselStates);
 
   let actionButtonClick = () => {
-    // import list of overview product features
-    let overviewFeatures = overviewProduct.features;
-    // Get overviewName]
-    let overviewName = overviewProduct.name;
-    // import list of compProduct features
-    let compProductFeatures = product.features;
-    let compProductName = product.name;
-    // create empty featureList object
-    let featureList = {};
-    // create empty result obj {overviewName: overviewFeatureValue, feature: featureName, compProductName: compProductFeatureValue}
-    let featureTableArr = [];
+    if (mode === 'related') {
+      // import list of overview product features
+      let overviewFeatures = overviewProduct.features;
+      // Get overviewName]
+      let overviewName = overviewProduct.name;
+      // import list of compProduct features
+      let compProductFeatures = product.features;
+      let compProductName = product.name;
+      // create empty featureList object
+      let featureList = {};
+      // create empty result obj {overviewName: overviewFeatureValue, feature: featureName, compProductName: compProductFeatureValue}
+      let featureTableArr = [];
 
-    // loop through both and save all features into feature object
-    for (let i = 0; i < overviewFeatures.length; i++) {
-      let feature = overviewFeatures[i].feature;
-      let value = overviewFeatures[i].value;
-      if (featureList[feature] === undefined) {
-        let featureObj = {};
-        featureObj[overviewName] = value;
-        featureObj[compProductName] = null;
-        featureList[feature] = featureObj;
-      } else {
-        console.log(`Error`)
+      // loop through both and save all features into feature object
+      for (let i = 0; i < overviewFeatures.length; i++) {
+        let feature = overviewFeatures[i].feature;
+        let value = overviewFeatures[i].value;
+        if (featureList[feature] === undefined) {
+          let featureObj = {};
+          featureObj[overviewName] = value;
+          featureObj[compProductName] = null;
+          featureList[feature] = featureObj;
+        } else {
+          console.log(`Error`)
+        }
       }
-    }
 
-    for (let i = 0; i < compProductFeatures.length; i++) {
-      let feature = compProductFeatures[i].feature;
-      let value = compProductFeatures[i].value;
-      if (featureList[feature] === undefined) {
-        let featureObj = {};
-        featureObj[compProductName] = value;
-        featureObj[overviewName] = null;
-        featureList[feature] = featureObj;
-      } else {
-        featureList[feature][compProductName] = value;
+      for (let i = 0; i < compProductFeatures.length; i++) {
+        let feature = compProductFeatures[i].feature;
+        let value = compProductFeatures[i].value;
+        if (featureList[feature] === undefined) {
+          let featureObj = {};
+          featureObj[compProductName] = value;
+          featureObj[overviewName] = null;
+          featureList[feature] = featureObj;
+        } else {
+          featureList[feature][compProductName] = value;
+        }
       }
+
+      for (let feature in featureList) {
+        let obj = {};
+        obj[overviewName] = featureList[feature][overviewName];
+        obj['feature'] = feature;
+        obj[compProductName] = featureList[feature][compProductName];
+        featureTableArr.push(obj);
+      }
+
+
+      setCompareFeatures(featureTableArr);
+      setIsOpen(true);
+    } else if (mode === 'outfit') {
+
+      let deleteId = overviewStyle?.product_id;
+      let itemIndex;
+      let modifiedOutfit = outfitCarousel.slice();
+      // get the index number in the array where the card is
+      console.log(`Id To Find: ${deleteId}`);
+      console.log(typeof(deleteId));
+
+      modifiedOutfit.map((item, index) => {
+
+        console.log(item.product.id);
+
+        if (item.product.id === parseInt(deleteId)) {
+          console.log(item.product.id)
+          console.log(`Found a Match!`);
+          itemIndex = index;
+        }
+      })
+      let test = modifiedOutfit.splice(itemIndex, 1);
+      console.log(modifiedOutfit);
+      setOutfitCarousel(modifiedOutfit);
+      console.log(`ID to delete: ${deleteId}\nIndex: ${itemIndex}`);
+      // slice that index from the array
+
     }
 
-    for (let feature in featureList) {
-      let obj = {};
-      obj[overviewName] = featureList[feature][overviewName];
-      obj['feature'] = feature;
-      obj[compProductName] = featureList[feature][compProductName];
-      featureTableArr.push(obj);
-    }
 
-
-    setCompareFeatures(featureTableArr);
-    setIsOpen(true);
   }
 
   let addCard = () => {
@@ -114,7 +143,7 @@ var Card = ({key, pic, item, salePrice, stars, mode}) => {
     actionButton = <FaRegStar className="actionButton" onClick={() => {actionButtonClick()}} />
   } else if (mode === 'outfit') {
     if (!item.default) {
-      actionButton = <FaRegWindowClose className="actionButton" />
+      actionButton = <FaRegWindowClose className="actionButton" onClick={() => {actionButtonClick()}} />
     }
   }
 

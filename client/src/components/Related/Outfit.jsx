@@ -7,43 +7,67 @@ import { CarouselStates } from './Carousel.jsx';
 
 let Outfit = () => {
 
-  let {overviewProduct, overviewStyle, outfitCarousel, setOutfitCarousel} = useContext(CarouselStates);
+  const cardWidth = 259;
 
-  const clicker = (mode) => {
+  let {outfitCarousel, setOutfitCarousel} = useContext(CarouselStates);
+  let [outfitIndex, setOutfitIndex] = useState(0);
+  let [jump, setJump] = useState(0);
+  let [carouselWidth, setCarouselWidth] = useState(0);
+  let [nCardsDisplayed, setNCardsDisplayed] = useState(0);
+  let [outfitTrack, setOutfitTrack] = useState();
+  let [prevButton, setPrevButton] = useState();
+  let [nextButton, setNextButton] = useState();
+
+  // Setting all dependencies
+  useEffect(() => {
+    setNCardsDisplayed(nCardsDisplayed = Math.ceil(carouselWidth / cardWidth));
+    setCarouselWidth(carouselWidth = document.querySelector(`.carousel-container`).clientWidth);
+    setOutfitTrack(outfitTrack = document.querySelector('.outfittrack'));
+    setPrevButton(prevButton = document.querySelector('.outfitPrev'));
+    setNextButton(nextButton = document.querySelector('.outfitNext'));
+  }, [outfitTrack])
+
+  // Setting appearance of navigation arrows
+  useEffect(() => {
+    if (outfitIndex === 0) {
+      prevButton.style.display = 'none';
+    } else {
+      prevButton.style.display = 'block';
+    }
+
+    if (outfitIndex + nCardsDisplayed >= outfitCarousel.length) {
+      nextButton.style.display = 'none';
+    } else {
+      nextButton.style.display = 'block';
+    }
+  }, [outfitCarousel, outfitIndex, nextButton, prevButton])
+
+  const outfitNavigation = (mode) => {
     if (mode === 'prev') {
 
-      // This makes sure not to scroll past the first item
-      if (sectionIndex !== -1) {
-        setSectionIndex(sectionIndex -= 1)
+      // Making sure not to scroll past the first item
+      if (outfitIndex !== 0) {
+        setOutfitIndex(outfitIndex -= 1);
       }
-      setJump(jump = sectionIndex * cardWidth);
 
-      //logAll([`Carousel Width: ${carouselWidth}`, `Number Of Cards Displayed: ${nCardsDisplayed}`, `Idex Offset: ${indexOffset}`, `Section Index: ${sectionIndex}`, `Jump: ${jump}`, `===============`]);
+      // Settign the distance to transform the carousel in px
+      setJump(jump = outfitIndex * cardWidth);
 
-      // Finding the track on the DOM
-      let track = document.querySelector(`.track`);
-      // Transforming the carousel according to how far it needs to jump
-      track.style.transform = `translateX(-${jump}px)`;
+      // Transform the carousel by the 'jump'
+      outfitTrack.style.transform = `translateX(-${jump}px)`;
 
     } else if (mode === 'next') {
-      if (nCardsDisplayed + sectionIndex !== productList.length) {
-        setSectionIndex(sectionIndex += 1);
+      if (nCardsDisplayed + outfitIndex !== outfitCarousel.length) {
+        setOutfitIndex(outfitIndex += 1);
       }
 
-      setJump(jump = sectionIndex * cardWidth);
+      setJump(jump = outfitIndex * cardWidth);
 
-      //logAll([`Carousel Width: ${carouselWidth}`, `Number Of Cards Displayed: ${nCardsDisplayed}`, `Idex Offset: ${indexOffset}`, `Section Index: ${sectionIndex}`, `Jump: ${jump}`, `# of Products: ${productList.length}`, `===============`]);
+      outfitTrack.style.transform = `translateX(-${jump}px)`;
 
-      let track = document.querySelector(`.track`);
-      track.style.transform = `translateX(-${jump}px)`;
-    } else {
-      console.log(`Danger in clicker Will Robinson!`)
     }
   }
 
-  useEffect(() => {
-
-  }, [outfitCarousel])
 
   return (
     <div className="module-container">
@@ -52,11 +76,11 @@ let Outfit = () => {
         <div className="title">Your Outfit</div>
         <div className="spacer" />
         <div className="nav" key="outfitnav">
-          <FaArrowLeft className="prev button" onClick={() => {clicker('prev')}} />
-          <FaArrowRight className="next button" onClick={() => {clicker('next')}} />
+          <FaArrowLeft className="prev outfitPrev button" onClick={() => {outfitNavigation('prev')}} />
+          <FaArrowRight className="next outfitNext button" onClick={() => {outfitNavigation('next')}} />
         </div>
         <div className="inner-carousel" key="inner">
-          <div className="track" key="outfittrack">
+          <div className="outfittrack" key="outfittrack">
             {
               outfitCarousel.map((item) =>
                 <Card

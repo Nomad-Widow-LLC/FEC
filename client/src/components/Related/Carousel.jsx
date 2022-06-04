@@ -67,7 +67,7 @@ let Carousel = () => {
 
     let totalReviews = 0;
     let totalStars = 0;
-3
+
     for (let key in ratingsObj) {
       if (ratingsObj[key] !== NaN) {
         totalReviews += parseInt(ratingsObj[key]);
@@ -165,7 +165,7 @@ let Carousel = () => {
   })
 
   return (
-    <CarouselStates.Provider value={{overviewStyle, setOverviewStyle, overviewProduct, setOverviewProduct, outfitCarousel, setOutfitCarousel}}>
+    <CarouselStates.Provider value={{overviewStyle, setOverviewStyle, overviewProduct, setOverviewProduct, outfitCarousel, setOutfitCarousel, carouselWidth, setCarouselWidth, nCardsDisplayed, setNCardsDisplayed, sectionIndex, setSectionIndex}}>
     <div className="module-container">
       <div className="spacer" />
       <div className="carousel-container" key="outer" >
