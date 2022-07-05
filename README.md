@@ -1,4 +1,4 @@
-# Nomad Widow LCC
+# Nomad Widow LLC
 
 ## Summary
 
