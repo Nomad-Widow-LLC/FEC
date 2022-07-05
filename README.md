@@ -10,8 +10,10 @@ This is a fully built front-end e-commerce website designed to showcase thousand
 
 Product Overview: Donna
 https://github.com/donnalikestocode
+
 Related Products: Robert
 https://github.com/recampbelljr
+
 Reviews & Ratings: Michael
 https://github.com/michaelin-96
 
